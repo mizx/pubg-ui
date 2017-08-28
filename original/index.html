@@ -6,10 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
-        var _dev_ = false;
-        var broConfiguration =
-        {     "gate": "https://prod-live-front.playbattlegrounds.com/index.html",     "uri": "https://prod-live-entry.playbattlegrounds.com/publicproxy",     "entry": "ws://prod-live-entry.playbattlegrounds.com:81/userproxy",     "secureEntry": "wss://prod-live-entry.playbattlegrounds.com/userproxy",     "useSecure": true,     "credential": {         "steam": "provider={provider}&ticket={ticket}&playerNetId={playerNetId}&cc={cc}&clientGameVersion={clientGameVersion}"     },     "verreq": "2.5.39",     "LayoutMode": "",     "LanpartyHome": "http://52.59.158.42/Dreamhack/Game/{accountId}/day1_qualifying/1" }
-        var production = true;
+        var _dev_ = true;
+        var broConfiguration = {
+          "gate": "https://prod-live-front.playbattlegrounds.com/index.html",
+          "uri": "https://prod-live-entry.playbattlegrounds.com/publicproxy",
+          "entry": "ws://prod-live-entry.playbattlegrounds.com:81/userproxy",
+          "secureEntry": "wss://prod-live-entry.playbattlegrounds.com/userproxy",
+          "useSecure": true,
+          "credential": {
+            "steam": "provider={provider}&ticket={ticket}&playerNetId={playerNetId}&cc={cc}&clientGameVersion={clientGameVersion}"
+          },
+          "verreq": "2.5.39",
+          "LayoutMode": "",
+          "LanpartyHome": "http://52.59.158.42/Dreamhack/Game/{accountId}/day1_qualifying/1"
+        }
+        var production = false;
     </script>
     <link href="./coherent/coherent.mock.style.css" rel="stylesheet" type="text/css" />
     <script src="./coherent/coherent.js"></script>
@@ -38,7 +49,7 @@
         //    $('.build-ver').text(unrealVersion);
         //});
     </script>
-    <script>
+    <!-- <script>
         var ua = navigator.userAgent;
         if (ua.lastIndexOf('Chrome/') > 0) {
             var version = ua.substr(ua.lastIndexOf('Chrome/') + 7, 2);
@@ -52,7 +63,7 @@
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    </script>
+    </script> -->
     <script type="text/javascript" src="./inline.bundle.js"></script>
     <script type="text/javascript" src="./polyfills.bundle.js"></script>
     <script type="text/javascript" src="./vendor.bundle.js"></script>

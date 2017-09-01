@@ -17,7 +17,5 @@
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
-  "devDependencies": {
-    "styled-components": "^2.1.2"
-  }
+  "devDependencies": {}
 }

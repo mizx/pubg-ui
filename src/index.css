@@ -1,5 +1,19 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.0;
+  background: url('/background.jpg');
+  background-size: 100% 100%;
+}
+
+.alt-font {
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
 }

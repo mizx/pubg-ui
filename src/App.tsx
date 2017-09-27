@@ -11,7 +11,7 @@ const styles: { [key: string]: CSSProperties } = {
     marginTop: '4vw',
     marginLeft: '4vw'
   }
-}
+};
 
 class App extends React.Component {
   render() {
@@ -28,14 +28,14 @@ class App extends React.Component {
           <Button>
             <Typography type="display2" bottomGutter={true}>Marketplace</Typography>
           </Button>
-          <Button>
+          <Button onClick={() => window.engine.trigger('ShowGameOption')}>
             <Typography type="display3">Settings</Typography>
           </Button>
           <Button>
             <Typography type="display3">Patch Notes</Typography>
           </Button>
-          <Button>
-            <Typography type="display3">Exit</Typography>
+          <Button onClick={() => window.engine.trigger('Quit')}>
+            <Typography type="display3">Quit</Typography>
           </Button>
         </div>
       </div>

@@ -4,7 +4,7 @@ interface Props { }
 
 const style: CSSProperties = {
   position: 'absolute',
-  top: 0,
+  top: '6vh',
   right: 0,
   width: '20%'
 };

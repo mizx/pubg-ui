@@ -1,13 +1,43 @@
-import React from 'react';
-import './App.css';
+import React, { CSSProperties } from 'react';
 
-import ActionBar from 'components/action-bar';
+import './App.css';
+import Logo from 'components/logo';
+import Typography from 'components/typography';
+import Button from 'components/button';
+
+const styles: { [key: string]: CSSProperties } = {
+  main: {
+    flexDirection: 'column',
+    marginTop: '4vw',
+    marginLeft: '4vw'
+  }
+}
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <ActionBar />
+        <Logo />
+        <div style={styles.main}>
+          <Button>
+            <Typography type="display2">Character</Typography>
+          </Button>
+          <Button>
+            <Typography type="display2">Leaderboards</Typography>
+          </Button>
+          <Button>
+            <Typography type="display2" bottomGutter={true}>Marketplace</Typography>
+          </Button>
+          <Button>
+            <Typography type="display3">Settings</Typography>
+          </Button>
+          <Button>
+            <Typography type="display3">Patch Notes</Typography>
+          </Button>
+          <Button>
+            <Typography type="display3">Exit</Typography>
+          </Button>
+        </div>
       </div>
     );
   }

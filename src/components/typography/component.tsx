@@ -5,6 +5,7 @@ type Type =
   | 'display2' // large button
   | 'display3' // small button
   | 'profile'
+  | 'debug'
 ;
 
 interface Props {
@@ -28,6 +29,11 @@ const styles: { [K in Type]: CSSProperties } = {
   profile: {
     fontSize: 40,
     fontFamily: 'sans-serif'
+  },
+  debug: {
+    fontSize: 20,
+    fontFamily: 'sans-serif',
+    color: '#fff'
   }
 };
 

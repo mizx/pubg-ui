@@ -13,11 +13,35 @@ const styles: { [key: string]: CSSProperties } = {
   }
 };
 
-class App extends React.Component {
+interface Props { }
+interface State {
+  version?: string;
+}
+
+class App extends React.Component<Props, State> {
+
+  constructor() {
+    super();
+
+    this.state = { };
+  }
+
+  componentDidMount() {
+    this.getVersion();
+  }
+
+  getVersion() {
+    window.engine.call('GetGameVersion')
+      .then((version: string) => this.setState({ version }));
+  }
+
   render() {
     return (
       <div>
         <Logo />
+        <Typography type="display1">
+          Version: {this.state.version}
+        </Typography>
         <div style={styles.main}>
           <Button>
             <Typography type="display2">Character</Typography>

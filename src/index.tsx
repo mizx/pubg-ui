@@ -6,6 +6,7 @@ import './polyfills';
 
 import App from './App';
 import store from './store';
+import './coherent';
 
 import './index.css';
 

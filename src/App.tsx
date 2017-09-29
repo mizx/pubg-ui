@@ -4,6 +4,7 @@ import './App.css';
 import Logo from 'components/logo';
 import Typography from 'components/typography';
 import Button from 'components/button';
+import Version from './components/version';
 
 const styles: { [key: string]: CSSProperties } = {
   main: {
@@ -39,9 +40,6 @@ class App extends React.Component<Props, State> {
     return (
       <div>
         <Logo />
-        <Typography type="display1">
-          Version: {this.state.version}
-        </Typography>
         <div style={styles.main}>
           <Button>
             <Typography type="display2">Character</Typography>
@@ -56,7 +54,7 @@ class App extends React.Component<Props, State> {
             <Typography type="display3">Settings</Typography>
           </Button>
           <Button>
-            <Typography type="display3">Patch Notes</Typography>
+            <Typography type="display3">Patch Notes <Version /></Typography>
           </Button>
           <Button onClick={() => window.engine.trigger('Quit')}>
             <Typography type="display3">Quit</Typography>

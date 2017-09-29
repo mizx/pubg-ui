@@ -10,6 +10,7 @@ export interface Engine {
 declare global {
   interface Window {
     engine: Engine;
-    engineCreateDeferred: any;
+    __REDUX_DEVTOOLS_EXTENSION__: any;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }

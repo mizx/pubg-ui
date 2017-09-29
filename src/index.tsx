@@ -1,14 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+
+import './polyfills';
 
 import App from './App';
+import store from './store';
+
 import './index.css';
 
-import './coherent';
-
-setTimeout(() =>
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root') as HTMLElement
-  )
+const Root = (
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
+
+const selector = document.getElementById('root') as HTMLElement;
+
+setTimeout(() => render(Root, selector));

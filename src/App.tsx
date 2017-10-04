@@ -4,7 +4,8 @@ import './App.css';
 import Logo from 'components/logo';
 import Typography from 'components/typography';
 import Button from 'components/button';
-import Version from './components/version';
+import Version from 'components/version';
+import Profile from 'components/profile';
 
 const styles: { [key: string]: CSSProperties } = {
   main: {
@@ -40,6 +41,7 @@ class App extends React.Component<Props, State> {
     return (
       <div>
         <Logo />
+        <Profile />
         <div style={styles.main}>
           <Button>
             <Typography type="display2">Character</Typography>

@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable';
 
-import { epic as app } from './app';
+import { epic as game } from './game';
 
 export const rootEpic = combineEpics(
-  app
+  game
 );

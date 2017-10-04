@@ -1,14 +1,14 @@
 import { Dispatch as ReduxDispatch } from 'redux';
 import { Epic } from 'redux-observable';
 
-import { State as AppState, Action as AppAction } from './app';
+import { State as GameState, Action as GameAction } from './game';
 
 export interface RootState {
-  app: AppState;
+  game: GameState;
 }
 
 export type RootAction =
-  | AppAction
+  | GameAction
 ;
 
 export type Epic = Epic<RootAction, RootState>;

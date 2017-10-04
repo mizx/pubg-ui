@@ -4,7 +4,7 @@ import VersionComponent from './component';
 import { RootState } from 'modules';
 
 const mapStateToProps = (state: RootState) => ({
-  version: state.app.version
+  version: state.game.version
 });
 
 export default connect(mapStateToProps)(VersionComponent);

@@ -12,7 +12,7 @@ export const setVersion = (version: string): SetVersion => ({
 
 export interface SetLayoutMode {
   type: ActionType.SET_LAYOUT_MODE,
-  payload: { mode: string }
+  payload: { mode: string; }
 }
 
 export const setLayoutMode = (mode: string): SetLayoutMode => ({

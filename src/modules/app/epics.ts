@@ -8,7 +8,7 @@ import * as ActionType from './action-types';
 
 const version: Epic = (action$) => Observable
   .fromPromise(window.engine.call<string>('GetGameVersion'))
-  .mergeMap(version => Observable.of(setVersion(version)))
+  .mergeMap(v => Observable.of(setVersion(v)));
 
 export default combineEpics(
   version

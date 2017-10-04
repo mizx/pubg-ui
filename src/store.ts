@@ -28,4 +28,7 @@ const configureStore  = (initialState?: RootState) => {
 
 const store = configureStore();
 
+// hack to get around coherent not binding their custom Promise object fast enough
+setTimeout(() => store.dispatch({ type: 'APP::INIT' }), 16);
+
 export default store;

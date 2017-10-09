@@ -8,10 +8,6 @@ import App from './App';
 import store from './store';
 import './coherent';
 
-if (process.env.NODE_ENV !== 'production') {
-  require('utils/debug');
-}
-
 import './index.css';
 
 const Root = (

@@ -2,15 +2,10 @@
   "name": "pubg-ui",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-redux": "^5.0.6",
-    "react-scripts-ts": "2.6.0",
-    "redux": "^3.7.2",
-    "redux-observable": "^0.16.0",
-    "rxjs": "^5.4.3"
-  },
+  "description": "PUBG UI",
+  "main": "build/index.js",
+  "author": "Cody Mathisen",
+  "license": "MIT",
   "scripts": {
     "debug-server": "python packages/debug-server/debug-server.py",
     "react:start": "react-scripts-ts start",
@@ -21,6 +16,15 @@
     "start:debug": "concurrently \"yarn debug-server\" \"http-server null -p 80 -P http://localhost:3001\"",
     "start:game": "http-server null -p 80 -P https://prod-live-front.playbattlegrounds.com"
   },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "react-scripts-ts": "2.6.0",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.16.0",
+    "rxjs": "^5.4.3"
+  },
   "devDependencies": {
     "@types/jest": "^20.0.8",
     "@types/node": "^8.0.26",
@@ -28,9 +32,5 @@
     "@types/react-dom": "^15.5.4",
     "@types/react-redux": "^5.0.9",
     "concurrently": "^3.5.0"
-  },
-  "description": "PUBG UI",
-  "main": "build/index.js",
-  "author": "Cody Mathisen",
-  "license": "MIT"
+  }
 }

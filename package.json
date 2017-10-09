@@ -12,7 +12,7 @@
     "rxjs": "^5.4.3"
   },
   "scripts": {
-    "debug-server": "python packages/debug-server/debug-server.py debug=True",
+    "debug-server": "python packages/debug-server/debug-server.py",
     "react:start": "react-scripts-ts start",
     "react:build": "react-scripts-ts build",
     "react:test": "react-scripts-ts test --env=jsdom",

@@ -12,17 +12,22 @@
     "rxjs": "^5.4.3"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "debug-server": "python packages/debug-server/debug-server.py debug=True",
+    "react:start": "react-scripts-ts start",
+    "react:build": "react-scripts-ts build",
+    "react:test": "react-scripts-ts test --env=jsdom",
+    "react:eject": "react-scripts-ts eject",
+    "start:dev": "concurrently \"yarn react:start\" \"http-server null -p 80 -P http://localhost:3000\"",
+    "start:debug": "concurrently \"yarn debug-server\" \"http-server null -p 80 -P http://localhost:3001\"",
+    "start:game": "http-server null -p 80 -P https://prod-live-front.playbattlegrounds.com"
   },
   "devDependencies": {
     "@types/jest": "^20.0.8",
     "@types/node": "^8.0.26",
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
-    "@types/react-redux": "^5.0.9"
+    "@types/react-redux": "^5.0.9",
+    "concurrently": "^3.5.0"
   },
   "description": "PUBG UI",
   "main": "build/index.js",

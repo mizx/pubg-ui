@@ -1,5 +1,3 @@
-import requestPromise from 'request-promise';
-
 // reference original console methods
 const ref = {
   log: console.log,
@@ -12,13 +10,14 @@ type Level = 'error' | 'warn' | 'log';
 const sendError = async (message?: {}, level?: Level) => {
   const options = {
     method: 'POST',
-    uri: 'http://localhost:3001/log',
-    json: true,
-    body: { message, level }
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ message, level })
   };
 
   try {
-    requestPromise(options);
+    fetch('http://localhost:3001/log', options);
   } catch (e) {
     const body = document.getElementsByTagName('body')[0];
     body.innerHTML = `<p style="color: #000">POST Debugger Error: ${e.message}</p>`;

@@ -1,0 +1,14 @@
+{
+  "name": "debug-client",
+  "version": "1.0.0",
+  "description": "Contains JS to relay logs to debug-server.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc src/index.ts --out dist/index.js --target ES5 --lib ES2015,DOM"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^2.5.3"
+  }
+}

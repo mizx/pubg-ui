@@ -13,7 +13,7 @@ export const ProfileComponent: React.SFC<Props> = props => (
     </div>
     <div style={styles.right}>
       <Points total={1337} />
-      <Avatar url={'http://cdn.edgecast.steamstatic.com/steamcommunity/public/images/avatars/f5/f5871fb821ca0f02fd642fdb260631b263904e35_full.jpg'} />
+      <Avatar url={'/img/profile.jpg'} />
     </div>
   </div>
 );

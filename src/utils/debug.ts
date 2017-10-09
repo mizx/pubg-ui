@@ -9,7 +9,7 @@ const ref = {
 
 type Level = 'error' | 'warn' | 'log';
 
-const sendError = async (message: string, level: Level) => {
+const sendError = async (message?: {}, level?: Level) => {
   const options = {
     method: 'POST',
     uri: 'http://localhost:3001/log',
@@ -32,17 +32,17 @@ const windowEventListener = (event: ErrorEvent) => {
 // Let the overrides begin
 window.addEventListener('error', windowEventListener, true);
 
-console.log = (message: string) => {
-  ref.log(message);
+console.log = (message?: {}, ...optionalParams: {}[]) => {
+  ref.log(message, ...optionalParams);
   sendError(message, 'log');
 };
 
-console.error = (message: string) => {
-  ref.error(message);
+console.error = (message?: {}, ...optionalParams: {}[]) => {
+  ref.error(message, ...optionalParams);
   sendError(message, 'error');
 };
 
-console.warn = (message: string) => {
-  ref.warn(message);
+console.warn = (message?: {}, ...optionalParams: {}[]) => {
+  ref.warn(message, ...optionalParams);
   sendError(message, 'warn');
 };

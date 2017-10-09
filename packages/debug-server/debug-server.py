@@ -29,14 +29,23 @@ class LogHandler(tornado.web.RequestHandler):
         else:
             self.json_args = None
 
+    def options(self):
+        self.set_header('Access-Control-Allow-Origin', '*')
+        self.set_header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+        self.set_header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token')
+
     def post(self):
+        self.set_header('Access-Control-Allow-Origin', '*')
+        self.set_header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+        self.set_header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token')
+
         if not self.json_args:
             self.set_status(400)
             return
 
         pretty_print = json.dumps(self.json_args, indent=4, sort_keys=True)
         print(highlight(
-            unicode(pretty_print, 'UTF-8'),
+            pretty_print,
             lexers.JsonLexer(),
             formatters.TerminalFormatter(),
         ))

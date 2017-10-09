@@ -11,6 +11,7 @@ const sendError = async (...args: {}[]) => {
   const options = {
     method: 'POST',
     uri: 'http://localhost:3001/log',
+    json: true,
     body: args
   };
 

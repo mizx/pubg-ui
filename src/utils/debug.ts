@@ -7,12 +7,14 @@ const ref = {
   warn: console.warn
 };
 
-const sendError = async (...args: {}[]) => {
+type Level = 'error' | 'warn' | 'log';
+
+const sendError = async (message: string, level: Level) => {
   const options = {
     method: 'POST',
     uri: 'http://localhost:3001/log',
     json: true,
-    body: args
+    body: { message, level }
   };
 
   try {
@@ -24,24 +26,23 @@ const sendError = async (...args: {}[]) => {
 };
 
 const windowEventListener = (event: ErrorEvent) => {
-  const { message, lineno, filename, type } = event;
-  sendError({ message, lineno, filename, type, level: 'error' });
+  sendError(event.message, 'error');
 };
 
 // Let the overrides begin
 window.addEventListener('error', windowEventListener, true);
 
-console.log = (...args: {}[]) => {
-  ref.log(...args);
-  sendError({ ...args, level: 'log' });
+console.log = (message: string) => {
+  ref.log(message);
+  sendError(message, 'log');
 };
 
-console.error = (...args: {}[]) => {
-  ref.error(...args);
-  sendError({ ...args, level: 'error' });
+console.error = (message: string) => {
+  ref.error(message);
+  sendError(message, 'error');
 };
 
-console.warn = (...args: {}[]) => {
-  ref.warn(...args);
-  sendError({ ...args, level: 'warn' });
+console.warn = (message: string) => {
+  ref.warn(message);
+  sendError(message, 'warn');
 };

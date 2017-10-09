@@ -23,9 +23,11 @@ class MainHandler(tornado.web.RequestHandler):
 
 class LogHandler(tornado.web.RequestHandler):
     def prepare(self):
-        self.json_args = None
-        if self.request.headers["Content-Type"].startswith("application/json"):
+        content_type = self.request.headers.get("Content-Type")
+        if content_type and content_type.startswith("application/json"):
             self.json_args = tornado.escape.json_decode(self.request.body)
+        else:
+            self.json_args = None
 
     def post(self):
         if not self.json_args:

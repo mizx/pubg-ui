@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import print_function
+
 import json
 import logging
 import sys
@@ -31,11 +33,11 @@ class LogHandler(tornado.web.RequestHandler):
             return
 
         pretty_print = json.dumps(self.json_args, indent=4, sort_keys=True)
-        print highlight(
+        print(highlight(
             unicode(pretty_print, 'UTF-8'),
             lexers.JsonLexer(),
             formatters.TerminalFormatter(),
-        )
+        ))
 
 
 def setup_logging():

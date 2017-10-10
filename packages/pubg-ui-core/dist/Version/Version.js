@@ -22,6 +22,10 @@ var VersionComponent = (function (_super) {
     }
     VersionComponent.prototype.componentDidMount = function () {
         var _this = this;
+        setTimeout(function () { return _this.getVersion(); });
+    };
+    VersionComponent.prototype.getVersion = function () {
+        var _this = this;
         Observable
             .fromPromise(window.engine.call('GetGameVersion'))
             .subscribe(function (version) { return _this.setState({ version: version }); });

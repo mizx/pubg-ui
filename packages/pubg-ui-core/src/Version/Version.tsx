@@ -17,6 +17,11 @@ class VersionComponent extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+    // hack to get around promise never firing with coherent
+    setTimeout(() => this.getVersion());
+  }
+
+  getVersion() {
     Observable
       .fromPromise(window.engine.call<string>('GetGameVersion'))
       .subscribe(version => this.setState({ version }));

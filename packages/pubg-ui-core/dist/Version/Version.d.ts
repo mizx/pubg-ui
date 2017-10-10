@@ -9,6 +9,7 @@ export interface State {
 declare class VersionComponent extends React.Component<Props, State> {
     constructor();
     componentDidMount(): void;
+    getVersion(): void;
     render(): JSX.Element;
 }
 export default VersionComponent;

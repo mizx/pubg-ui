@@ -11,7 +11,7 @@ const style: CSSProperties = {
 
 export const LogoComponent: React.SFC<Props> = props => (
   <img
-    src="/logo.png"
+    src="/img/logo.png"
     style={style}
   />
 );

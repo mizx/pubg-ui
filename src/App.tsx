@@ -6,6 +6,7 @@ import Typography from 'components/typography';
 import Button from 'components/button';
 import Version from 'components/version';
 import Profile from 'components/profile';
+import SocialTray from 'components/social';
 
 const styles: { [key: string]: CSSProperties } = {
   main: {
@@ -16,6 +17,7 @@ const styles: { [key: string]: CSSProperties } = {
 };
 
 interface Props { }
+
 interface State {
   version?: string;
 }
@@ -42,6 +44,7 @@ class App extends React.Component<Props, State> {
       <div>
         <Logo />
         <Profile />
+        <SocialTray />
         <div style={styles.main}>
           <Button>
             <Typography type="display2">Character</Typography>

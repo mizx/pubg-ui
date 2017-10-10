@@ -1,0 +1,27 @@
+{
+  "name": "pubg-ui-core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Core components used by PUBG UIs made with React.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Cody Mathisen",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.33",
+    "@types/react": "^16.0.10",
+    "@types/react-dom": "^16.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "rxjs": "^5.4.3",
+    "typescript": "^2.5.3"
+  }
+}

@@ -4,9 +4,10 @@ import './App.css';
 import Logo from 'components/logo';
 import Typography from 'components/typography';
 import Button from 'components/button';
-import Version from 'components/version';
+// import Version from 'components/version';
 import Profile from 'components/profile';
 import SocialTray from 'components/social';
+import { Version } from 'pubg-ui-core';
 
 const styles: { [key: string]: CSSProperties } = {
   main: {

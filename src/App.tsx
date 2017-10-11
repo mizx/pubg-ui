@@ -8,6 +8,7 @@ import Button from 'components/button';
 import Profile from 'components/profile';
 import SocialTray from 'components/social';
 import { Version } from 'pubg-ui-core';
+import { ButtonLink, ButtonAction } from 'pubg-ui-core';
 
 const styles: { [key: string]: CSSProperties } = {
   main: {
@@ -47,15 +48,18 @@ class App extends React.Component<Props, State> {
         <Profile />
         <SocialTray />
         <div style={styles.main}>
-          <Button>
-            <Typography type="display2">Character</Typography>
-          </Button>
-          <Button>
-            <Typography type="display2">Leaderboards</Typography>
-          </Button>
-          <Button>
-            <Typography type="display2" bottomGutter={true}>Marketplace</Typography>
-          </Button>
+          <ButtonLink url="https://www.google.com">
+            <Typography type="display2">Google Platform</Typography>
+          </ButtonLink>
+          <ButtonLink url="http://www.google.com" type="External">
+            <Typography type="display2">Google External</Typography>
+          </ButtonLink>
+          <ButtonAction action="Options">
+            <Typography type="display2">Options</Typography>
+          </ButtonAction>
+          <ButtonAction action="Quit">
+            <Typography type="display2" bottomGutter={true}>Quit</Typography>
+          </ButtonAction>
           <Button onClick={() => window.engine.trigger('ShowGameOption')}>
             <Typography type="display3">Settings</Typography>
           </Button>

@@ -51,13 +51,13 @@ class App extends React.Component<Props, State> {
           <ButtonLink url="https://www.google.com">
             <Typography type="display2">Google Platform</Typography>
           </ButtonLink>
-          <ButtonLink url="http://www.google.com" type="External">
+          <ButtonLink url="http://www.google.com" type="external">
             <Typography type="display2">Google External</Typography>
           </ButtonLink>
-          <ButtonAction action="Options">
+          <ButtonAction action="options">
             <Typography type="display2">Options</Typography>
           </ButtonAction>
-          <ButtonAction action="Quit">
+          <ButtonAction action="quit">
             <Typography type="display2" bottomGutter={true}>Quit</Typography>
           </ButtonAction>
           <Button onClick={() => window.engine.trigger('ShowGameOption')}>

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 export type LinkType =
-  | 'Platform'
-  | 'External'
+  | 'platform'
+  | 'external'
 ;
 
 export interface Props {
@@ -13,11 +13,11 @@ export interface Props {
 const handleClick = (url: string, type: LinkType) =>
   (event: React.MouseEvent<HTMLButtonElement>) => {
     switch (type) {
-      case 'Platform': {
+      case 'platform': {
         window.engine.trigger('ShowWebPageOnPlatform', url);
         return;
       }
-      case 'External': {
+      case 'external': {
         window.engine.trigger('OpenExternalBrowser', url);
         return;
       }
@@ -25,7 +25,7 @@ const handleClick = (url: string, type: LinkType) =>
   };
 
 export const ButtonLink: React.SFC<Props> = (props) => {
-  const { children, type = 'Platform', url } = props;
+  const { children, type = 'platform', url } = props;
 
   return (
     <button onClick={handleClick(url, type)}>

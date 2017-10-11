@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 export type Action =
-  | 'Quit'
-  | 'Options'
+  | 'quit'
+  | 'options'
 ;
 
 const actionMap: { [A in Action]: string } = {
-  'Quit': 'Quit',
-  'Options': 'ShowGameOption'
+  quit: 'Quit',
+  options: 'ShowGameOption'
 };
 
 export interface Props {

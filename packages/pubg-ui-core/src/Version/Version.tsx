@@ -8,7 +8,7 @@ export interface State {
   version: string;
 }
 
-class VersionComponent extends React.Component<Props, State> {
+class Version extends React.Component<Props, State> {
 
   constructor() {
     super();
@@ -32,4 +32,4 @@ class VersionComponent extends React.Component<Props, State> {
   }
 }
 
-export default VersionComponent;
+export default Version;

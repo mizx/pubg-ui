@@ -9,12 +9,14 @@ import SocialTray from 'components/social';
 import { Version } from 'pubg-ui-core';
 import { ButtonLink, ButtonAction } from 'pubg-ui-core';
 import Party from 'components/party';
+import Background from 'components/background';
 
 const styles: { [key: string]: CSSProperties } = {
   main: {
     flexDirection: 'column',
     marginTop: '4vw',
-    marginLeft: '4vw'
+    marginLeft: '4vw',
+    position: 'relative'
   }
 };
 
@@ -44,6 +46,7 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <div>
+        <Background />
         <Logo />
         <Profile />
         <div style={styles.main}>

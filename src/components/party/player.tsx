@@ -64,7 +64,7 @@ const getAvatarBasedOnState = (state: PlayerState) => {
     }
     case 'connected':
     case 'ready': {
-      return <img src="/img/profile.jpg" />
+      return <img src="/img/profile.jpg" />;
     }
     default: {
       return null;
@@ -72,27 +72,24 @@ const getAvatarBasedOnState = (state: PlayerState) => {
   }
 };
 
-const renderCrownIfLeader = (isLeader: boolean) => {
-  return isLeader ? <LeaderCrown src="/img/crown.png" /> : null;
-};
+const renderCrownIfLeader = (isLeader: boolean) => (
+  isLeader ? <LeaderCrown src="/img/crown.png" /> : null
+);
 
-const checkmarkIfReady = (state: PlayerState) => {
-  return state === 'ready' ? <ReadyCheckmark src="/img/checkmark.png" /> : null
-};
+const checkmarkIfReady = (state: PlayerState) => (
+  state === 'ready' ? <ReadyCheckmark src="/img/checkmark.png" /> : null
+);
 
-export const PlayerComponent: React.SFC<Props> = props => {
-
-  return (
-    <Player>
-      {renderCrownIfLeader(props.isLeader)}
-      <Avatar>
-        {getAvatarBasedOnState(props.state)}
-      </Avatar>
-      <Name>{props.name}</Name>
-      <span />
-      {checkmarkIfReady(props.state)}
-    </Player>
-  );
-};
+export const PlayerComponent: React.SFC<Props> = props => (
+  <Player>
+    {renderCrownIfLeader(props.isLeader)}
+    <Avatar>
+      {getAvatarBasedOnState(props.state)}
+    </Avatar>
+    <Name>{props.name}</Name>
+    <span />
+    {checkmarkIfReady(props.state)}
+  </Player>
+);
 
 export default PlayerComponent;

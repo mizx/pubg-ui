@@ -39,3 +39,15 @@ ul, li {
   font-family: 'Headliner45';
   src: url('/font/headliner-no45.ttf');
 }
+
+div {
+  display: flex;
+}
+
+img {
+  max-width: 100%;
+}
+
+span {
+  flex: 1;
+}

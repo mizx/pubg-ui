@@ -4,11 +4,11 @@ import './App.css';
 import Logo from 'components/logo';
 import Typography from 'components/typography';
 import Button from 'components/button';
-// import Version from 'components/version';
 import Profile from 'components/profile';
 import SocialTray from 'components/social';
 import { Version } from 'pubg-ui-core';
 import { ButtonLink, ButtonAction } from 'pubg-ui-core';
+import Party from 'components/party';
 
 const styles: { [key: string]: CSSProperties } = {
   main: {
@@ -46,7 +46,6 @@ class App extends React.Component<Props, State> {
       <div>
         <Logo />
         <Profile />
-        <SocialTray />
         <div style={styles.main}>
           <ButtonLink url="https://www.google.com">
             <Typography type="display2">Google Platform</Typography>
@@ -69,6 +68,7 @@ class App extends React.Component<Props, State> {
           <Button onClick={() => window.engine.trigger('Quit')}>
             <Typography type="display3">Quit</Typography>
           </Button>
+          <Party />
         </div>
       </div>
     );

@@ -1,0 +1,14 @@
+url:
+    hostname: prod-live-front.playbattlegrounds.com
+    protocol: https
+    index: index.html
+
+server:
+    # Override with `--debug=False`
+    debug: true
+
+    # Override with `--port=80`
+    port: 3001
+
+    # Folder path for optional js and css files to embed
+    assets: "assets"

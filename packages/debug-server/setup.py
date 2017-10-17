@@ -1,9 +1,9 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 
 setup(
     name='Debug server',
-    version='0.1',
+    version='0.2',
     license='MIT',
-    install_requires=['pygments', 'tornado'],
+    install_requires=['pygments', 'pyyaml', 'tornado'],
 )

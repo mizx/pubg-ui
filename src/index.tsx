@@ -18,4 +18,4 @@ const Root = (
 
 const selector = document.getElementById('root') as HTMLElement;
 
-setTimeout(() => render(Root, selector));
+render(Root, selector);

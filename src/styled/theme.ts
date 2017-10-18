@@ -1,3 +1,5 @@
+type ViewportUnit = 'vmin' | 'vmax' | 'vw' | 'vh';
+
 export interface Theme {
   color: {
     primary: string;
@@ -13,10 +15,8 @@ export interface Theme {
   appBar: {
     height: string;
   };
-  unit: (unit: number) => string;
+  unit: (unit: number, vUnit?: ViewportUnit) => string;
 }
-
-type ViewportUnit = 'vmin' | 'vmax' | 'vw' | 'vh';
 
 export const unit = (value: number, vUnit: ViewportUnit = 'vmin') => `${value}${vUnit}`;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled';
-import { Version } from 'pubg-ui-core';
+import { Link } from 'react-router-dom';
+import { ButtonAction } from 'pubg-ui-core';
 
 import Typography from 'components/typography';
 import Logo from 'components/logo';
@@ -11,9 +12,16 @@ const Main = styled.div`
 
 export const MainComponent: React.SFC = props => (
   <Main>
-    <Logo />
-    <Typography type="version"><Version /></Typography>
-    <Typography type="main">Main Menu</Typography>
+    <Logo version={true} />
+    <Link to="/play">
+      <Typography type="main">Play</Typography>
+    </Link>
+    <ButtonAction action="options">
+      <Typography type="main-sm">Options</Typography>
+    </ButtonAction>
+    <ButtonAction action="quit">
+      <Typography type="main-sm">Quit</Typography>
+    </ButtonAction>
   </Main>
 );
 

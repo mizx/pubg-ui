@@ -17,18 +17,11 @@ body {
   background-size: 100% 100%;
 }
 
-button {
+a, button {
   background: transparent;
   border: none;
   outline: none;
-}
-
-.alt-font {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.headliner45 {
-  font-family: 'Headliner45', sans-serif;
+  text-decoration: none;
 }
 
 ul, li {

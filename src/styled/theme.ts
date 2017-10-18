@@ -30,7 +30,7 @@ export const theme: Theme = {
     body: `'Roboto', sans-serif`
   },
   app: {
-    margin: `${unit(2, 'vh')} ${unit(2, 'vw')}}`
+    margin: `${unit(4, 'vh')} ${unit(4, 'vw')}}`
   },
   appBar: {
     height: unit(6)

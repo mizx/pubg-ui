@@ -34,7 +34,7 @@ export const LogoComponent: React.SFC<Props> = (props) => {
           <Version />
         </Typography>
       </VersionWrapper>
-    )
+    );
   }
 
   return (

@@ -12,6 +12,7 @@ const MainSmall = styled.div`
   font-size: ${props => props.theme.unit(4)};
   font-family: ${props => props.theme.font.display};
   text-transform: uppercase;
+  letter-spacing: ${props => props.theme.unit(.2)}
 `;
 
 const Version = styled.div`

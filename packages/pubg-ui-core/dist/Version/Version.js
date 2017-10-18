@@ -17,12 +17,12 @@ var Version = (function (_super) {
     __extends(Version, _super);
     function Version() {
         var _this = _super.call(this) || this;
-        _this.state = { version: 'x.x.x' };
+        _this.state = { version: '' };
         return _this;
     }
     Version.prototype.componentDidMount = function () {
         var _this = this;
-        setTimeout(function () { return _this.getVersion(); });
+        setTimeout(function () { return _this.getVersion(); }, 32);
     };
     Version.prototype.getVersion = function () {
         var _this = this;
@@ -31,7 +31,11 @@ var Version = (function (_super) {
             .subscribe(function (version) { return _this.setState({ version: version }); });
     };
     Version.prototype.render = function () {
-        return React.createElement("div", null, this.state.version);
+        var _a = this.props.prefix, prefix = _a === void 0 ? '' : _a;
+        var version = this.state.version;
+        return React.createElement("div", null,
+            prefix,
+            version);
     };
     return Version;
 }(React.Component));

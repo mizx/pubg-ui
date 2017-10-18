@@ -2,6 +2,7 @@
 import React from 'react';
 import 'rxjs/add/observable/fromPromise';
 export interface Props {
+    prefix?: string;
 }
 export interface State {
     version: string;

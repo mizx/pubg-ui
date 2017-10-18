@@ -2,7 +2,9 @@ import React from 'react';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/fromPromise';
 
-export interface Props { };
+export interface Props {
+  prefix?: string;
+};
 
 export interface State {
   version: string;
@@ -13,12 +15,12 @@ class Version extends React.Component<Props, State> {
   constructor() {
     super();
 
-    this.state = { version: 'x.x.x' };
+    this.state = { version: '' };
   }
 
   componentDidMount() {
     // hack to get around promise never firing with coherent
-    setTimeout(() => this.getVersion());
+    setTimeout(() => this.getVersion(), 32);
   }
 
   getVersion() {
@@ -28,7 +30,10 @@ class Version extends React.Component<Props, State> {
   }
 
   render() {
-    return <div>{this.state.version}</div>
+    const { prefix = '' } = this.props;
+    const { version } = this.state;
+
+    return <div>{prefix}{version}</div>
   }
 }
 

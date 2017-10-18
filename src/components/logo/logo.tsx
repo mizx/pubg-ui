@@ -20,8 +20,8 @@ const Logo = styled.div`
 
 const VersionWrapper = styled.div`
   position: absolute;
-  top: 2.8vmin;
-  right: 6.6vmin;
+  bottom: 70%;
+  left: 78%;
 `;
 
 export const LogoComponent: React.SFC<Props> = (props) => {

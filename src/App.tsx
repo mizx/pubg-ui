@@ -1,6 +1,11 @@
 import React, { CSSProperties } from 'react';
+import { Provider as ReduxProvider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+import { theme, ThemeProvider } from 'styled';
 
 import './App.css';
+
+import store from './store';
 import Logo from 'components/logo';
 import Typography from 'components/typography';
 import Button from 'components/button';
@@ -22,60 +27,42 @@ const styles: { [key: string]: CSSProperties } = {
 
 interface Props { }
 
-interface State {
-  version?: string;
-}
-
-class App extends React.Component<Props, State> {
-
-  constructor() {
-    super();
-
-    this.state = { };
-  }
-
-  componentDidMount() {
-    this.getVersion();
-  }
-
-  getVersion() {
-    window.engine.call('GetGameVersion')
-      .then((version: string) => this.setState({ version }));
-  }
-
-  render() {
-    return (
-      <div>
-        <Background />
-        <Logo />
-        <Profile />
-        <div style={styles.main}>
-          <ButtonLink url="https://www.google.com">
-            <Typography type="display2">Google Platform</Typography>
-          </ButtonLink>
-          <ButtonLink url="http://www.google.com" type="external">
-            <Typography type="display2">Google External</Typography>
-          </ButtonLink>
-          <ButtonAction action="options">
-            <Typography type="display2">Options</Typography>
-          </ButtonAction>
-          <ButtonAction action="quit">
-            <Typography type="display2" bottomGutter={true}>Quit</Typography>
-          </ButtonAction>
-          <Button onClick={() => window.engine.trigger('ShowGameOption')}>
-            <Typography type="display3">Settings</Typography>
-          </Button>
-          <Button>
-            <Typography type="display3">Patch Notes <Version /></Typography>
-          </Button>
-          <Button onClick={() => window.engine.trigger('Quit')}>
-            <Typography type="display3">Quit</Typography>
-          </Button>
-          <Party />
+export const App: React.SFC<Props> = props => (
+  <ThemeProvider theme={theme}>
+    <ReduxProvider store={store}>
+      <HashRouter>
+        <div>
+          <Background />
+          <Logo />
+          <Profile />
+          <div style={styles.main}>
+            <ButtonLink url="https://www.google.com">
+              <Typography type="main">Google Platform</Typography>
+            </ButtonLink>
+            <ButtonLink url="http://www.google.com" type="external">
+              <Typography type="main">Google External</Typography>
+            </ButtonLink>
+            <ButtonAction action="options">
+              <Typography type="main-sm">Options</Typography>
+            </ButtonAction>
+            <ButtonAction action="quit">
+              <Typography type="main-sm">Quit</Typography>
+            </ButtonAction>
+            <Button onClick={() => window.engine.trigger('ShowGameOption')}>
+              <Typography type="main-sm">Settings</Typography>
+            </Button>
+            <Button>
+              <Typography type="main-sm">Patch Notes <Version /></Typography>
+            </Button>
+            <Button onClick={() => window.engine.trigger('Quit')}>
+              <Typography type="version">Quit</Typography>
+            </Button>
+            <Party />
+          </div>
         </div>
-      </div>
-    );
-  }
-}
+      </HashRouter>
+    </ReduxProvider>
+  </ThemeProvider>
+);
 
 export default App;

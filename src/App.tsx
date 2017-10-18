@@ -16,6 +16,8 @@ import { ButtonLink, ButtonAction } from 'pubg-ui-core';
 import Party from 'components/party';
 import Background from 'components/background';
 
+import Routes from 'components/routes';
+
 const styles: { [key: string]: CSSProperties } = {
   main: {
     flexDirection: 'column',
@@ -33,32 +35,7 @@ export const App: React.SFC<Props> = props => (
       <HashRouter>
         <div>
           <Background />
-          <Logo />
-          <Profile />
-          <div style={styles.main}>
-            <ButtonLink url="https://www.google.com">
-              <Typography type="main">Google Platform</Typography>
-            </ButtonLink>
-            <ButtonLink url="http://www.google.com" type="external">
-              <Typography type="main">Google External</Typography>
-            </ButtonLink>
-            <ButtonAction action="options">
-              <Typography type="main-sm">Options</Typography>
-            </ButtonAction>
-            <ButtonAction action="quit">
-              <Typography type="main-sm">Quit</Typography>
-            </ButtonAction>
-            <Button onClick={() => window.engine.trigger('ShowGameOption')}>
-              <Typography type="main-sm">Settings</Typography>
-            </Button>
-            <Button>
-              <Typography type="main-sm">Patch Notes <Version /></Typography>
-            </Button>
-            <Button onClick={() => window.engine.trigger('Quit')}>
-              <Typography type="version">Quit</Typography>
-            </Button>
-            <Party />
-          </div>
+          <Routes />
         </div>
       </HashRouter>
     </ReduxProvider>

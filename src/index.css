@@ -6,6 +6,10 @@ div, button, p {
   color: rgba(255, 255, 255, .5);
 }
 
+div {
+  cursor: default;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -15,6 +19,7 @@ body {
   line-height: 1.0;
   background: url('/img/background.jpg');
   background-size: 100% 100%;
+  user-select: none;
 }
 
 a, button {

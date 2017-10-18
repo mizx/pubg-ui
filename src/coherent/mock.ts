@@ -18,5 +18,5 @@ const openExternalUrl = (url: string) => {
 };
 window.engine.mock('OpenExternalBrowser', openExternalUrl);
 
-window.engine.mock('ShowGameOptions', () => log('OPEN OPTIONS'));
+window.engine.mock('ShowGameOption', () => log('OPEN OPTIONS'));
 window.engine.mock('Quit', () => log('QUIT'));

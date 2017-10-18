@@ -7,7 +7,7 @@ import Main from './main';
 import Play from './play';
 
 const Wrapper = styled.div`
-  padding: 2vh 2vw;
+  margin: ${props => props.theme.app.margin};
   z-index: 1;
 `;
 

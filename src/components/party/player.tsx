@@ -4,40 +4,36 @@ import styled from 'styled-components';
 import Loading from 'components/common/loading';
 
 const Player = styled.div`
-  background: rgba(0, 0, 0, .4);
-  padding: 1vmin;
-  margin: .4vmin;
+  margin: ${props => props.theme.unit(.4)};
   align-items: center;
   position: relative;
 `;
 
 const Avatar = styled.div`
-  width: 5vmin;
-  height: 5vmin;
-`;
-
-const Name = styled.div`
-  font-size: 2vmin;
-  padding: 0 2vmin;
-  color: #fff;
+  width: ${props => props.theme.appBar.height};
+  height: ${props => props.theme.appBar.height};
 `;
 
 const LoadingWrapper = styled.div`
-  padding: 1vmin;
+  padding: ${props => props.theme.unit(1)};
 `;
 
 const LeaderCrown = styled.img`
   position: absolute;
   top: 0;
   left: 0;
-  width: 2vmin;
-  height: 2vmin;
-  transform: rotate(-20deg);
+  width: ${props => props.theme.unit(2)};
+  height: ${props => props.theme.unit(2)};
+  transform: translateY(-1vmin) rotate(-20deg);
 `;
 
 const ReadyCheckmark = styled.img`
-  width: 3vmin;
-  height: 3vmin;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: ${props => props.theme.unit(2)};
+  height: ${props => props.theme.unit(2)};
+  transform: translate(${props => props.theme.unit(1)}, ${props => props.theme.unit(1)});
 `;
 
 type PlayerState =
@@ -86,7 +82,6 @@ export const PlayerComponent: React.SFC<Props> = props => (
     <Avatar>
       {getAvatarBasedOnState(props.state)}
     </Avatar>
-    <Name>{props.name}</Name>
     <span />
     {checkmarkIfReady(props.state)}
   </Player>

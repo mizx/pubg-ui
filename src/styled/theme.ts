@@ -7,8 +7,18 @@ export interface Theme {
     display: string;
     body: string;
   };
+  app: {
+    margin: string;
+  };
+  appBar: {
+    height: string;
+  };
   unit: (unit: number) => string;
 }
+
+type ViewportUnit = 'vmin' | 'vmax' | 'vw' | 'vh';
+
+export const unit = (value: number, vUnit: ViewportUnit = 'vmin') => `${value}${vUnit}`;
 
 export const theme: Theme = {
   color: {
@@ -19,7 +29,13 @@ export const theme: Theme = {
     display: `'Headliner45', sans-serif`,
     body: `'Roboto', sans-serif`
   },
-  unit: (unit: number) => `${unit}vmin`
+  app: {
+    margin: `${unit(2, 'vh')} ${unit(2, 'vw')}}`
+  },
+  appBar: {
+    height: unit(6)
+  },
+  unit: unit
 };
 
 export default theme;

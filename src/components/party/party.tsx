@@ -4,7 +4,10 @@ import styled from 'styled-components';
 import Player from './player';
 
 const Party = styled.div`
-  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: ${props => props.theme.app.margin}
 `;
 
 interface Props { }

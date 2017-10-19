@@ -1,4 +1,7 @@
 {
   "private": true,
-  "name": "pubg-ui-packages"
+  "name": "pubg-ui-packages",
+  "workspaces": [
+    "packages/*"
+  ]
 }

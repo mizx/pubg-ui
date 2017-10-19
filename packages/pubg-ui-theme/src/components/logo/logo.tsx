@@ -1,5 +1,5 @@
 import React from 'react';
-import { Version } from 'pubg-ui-core';
+import { Version } from 'pubg-ui';
 
 import styled from 'styled';
 import Typography from 'components/typography';

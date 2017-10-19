@@ -1,17 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import styled from 'styled';
+import Avatar from 'components/player/avatar';
+import Summary from 'components/player/summary';
 import Loading from 'components/common/loading';
 
 const Player = styled.div`
   margin: ${props => props.theme.unit(.4)};
   align-items: center;
   position: relative;
-`;
-
-const Avatar = styled.div`
-  width: ${props => props.theme.appBar.height};
-  height: ${props => props.theme.appBar.height};
 `;
 
 const LoadingWrapper = styled.div`
@@ -45,28 +42,11 @@ type PlayerState =
 
 interface Props {
   name: string;
+  avatar: string;
   state: PlayerState;
   isLeader: boolean;
+  isLocal: boolean;
 }
-
-const getAvatarBasedOnState = (state: PlayerState) => {
-  switch (state) {
-    case 'connecting': {
-      return (
-        <LoadingWrapper>
-          <Loading />
-        </LoadingWrapper>
-      );
-    }
-    case 'connected':
-    case 'ready': {
-      return <img src="/img/profile.jpg" />;
-    }
-    default: {
-      return null;
-    }
-  }
-};
 
 const renderCrownIfLeader = (isLeader: boolean) => (
   isLeader ? <LeaderCrown src="/img/crown.png" /> : null
@@ -76,14 +56,19 @@ const checkmarkIfReady = (state: PlayerState) => (
   state === 'ready' ? <ReadyCheckmark src="/img/checkmark.png" /> : null
 );
 
+const renderAvatar = (props: Props) => {
+  if (props.isLocal) {
+    return <Summary name={props.name} avatar={props.avatar} />;
+  }
+
+  return <Avatar image={props.avatar} />;
+};
+
 export const PlayerComponent: React.SFC<Props> = props => (
   <Player>
     {renderCrownIfLeader(props.isLeader)}
-    <Avatar>
-      {getAvatarBasedOnState(props.state)}
-    </Avatar>
-    <span />
     {checkmarkIfReady(props.state)}
+    {renderAvatar(props)}
   </Player>
 );
 

@@ -14,10 +14,34 @@ interface Props { }
 
 export const PartyComponent: React.SFC<Props> = props => (
   <Party>
-    <Player name="Empty" state="empty" isLeader={false} />
-    <Player name="Plural.." state="connecting" isLeader={false} />
-    <Player name="Cliff" state="connected" isLeader={false} />
-    <Player name="mizx" state="ready" isLeader={true} />
+    <Player
+      name="Empty"
+      state="empty"
+      isLeader={false}
+      isLocal={false}
+      avatar="/img/profile.jpg"
+    />
+    <Player
+      name="Plural.."
+      state="connecting"
+      isLeader={false}
+      isLocal={false}
+      avatar="/img/profile.jpg"
+    />
+    <Player
+      name="Cliff"
+      state="ready"
+      isLeader={false}
+      isLocal={false}
+      avatar="/img/profile.jpg"
+    />
+    <Player
+      name="mizx"
+      state="connected"
+      isLeader={true}
+      isLocal={true}
+      avatar="/img/profile.jpg"
+    />
   </Party>
 );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled';
 import { Link } from 'react-router-dom';
-import { ButtonAction } from 'pubg-ui-core';
+import { ButtonAction } from 'pubg-ui';
 
 import Typography from 'components/typography';
 import Logo from 'components/logo';

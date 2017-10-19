@@ -1,5 +1,5 @@
 {
-  "name": "pubg-ui-core",
+  "name": "pubg-ui",
   "version": "1.0.0",
   "private": true,
   "description": "Core components used by PUBG UIs made with React.",

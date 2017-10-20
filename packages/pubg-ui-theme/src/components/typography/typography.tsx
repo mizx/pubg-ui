@@ -18,7 +18,6 @@ const MainSmall = styled.div`
 const Version = styled.div`
   font-size: ${props => props.theme.unit(1)};
   font-family: ${props => props.theme.font.body};
-  text-transform: uppercase;
 `;
 
 type Type =

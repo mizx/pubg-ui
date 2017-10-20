@@ -1,3 +1,5 @@
+import { Authentication } from 'pubg-ui';
+
 // tslint:disable-next-line:no-console
 const log = (...message: string[]) => console.log(...message);
 
@@ -20,3 +22,12 @@ window.engine.mock('OpenExternalBrowser', openExternalUrl);
 
 window.engine.mock('ShowGameOption', () => log('OPEN OPTIONS'));
 window.engine.mock('Quit', () => log('QUIT'));
+
+window.engine.mock('GetClientAuthData', (): Authentication => ({
+  accessToken: '408f3157d2637898e36a...',
+  appId: '578080',
+  platformType: 'Steam',
+  playerNetId: '76561197988861...',
+  userDisplayName: 'Player Name',
+  userSerial: '76561197988861...'
+}));

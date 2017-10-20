@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import styled, { theme, ThemeProvider } from 'styled';
+import { PubgProvider } from 'pubg-ui';
 
 import './App.css';
 
@@ -20,11 +21,13 @@ export const App: React.SFC = props => (
   <ThemeProvider theme={theme}>
     <ReduxProvider store={store}>
       <HashRouter>
-        <Wrapper>
-          <Background />
-          <Party />
-          <Routes />
-        </Wrapper>
+        <PubgProvider>
+          <Wrapper>
+            <Background />
+            <Party />
+            <Routes />
+          </Wrapper>
+        </PubgProvider>
       </HashRouter>
     </ReduxProvider>
   </ThemeProvider>

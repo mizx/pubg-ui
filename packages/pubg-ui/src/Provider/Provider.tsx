@@ -9,18 +9,28 @@ import { Authentication } from './auth';
 export interface Props { }
 
 export interface State {
-  auth: Authentication;
+  auth: Authentication | null;
 }
 
 class Provider extends React.Component<Props, State> {
 
+  constructor() {
+    super();
+
+    this.state = {
+      auth: null
+    };
+  }
+
   static childContextTypes = {
-    pubg: PropTypes.string
+    pubg: PropTypes.object
   };
 
   getChildContext(): ProviderContext {
+    const { auth } = this.state;
+
     return {
-      pubg: 'ohai mark'
+      pubg: { auth }
     };
   }
 
@@ -32,11 +42,7 @@ class Provider extends React.Component<Props, State> {
   authenticate() {
     Observable
       .fromPromise(window.engine.call<Authentication>('GetClientAuthData'))
-      // .subscribe(auth => this.setState({ auth }))
-      .subscribe(auth => {
-        this.setState({ auth });
-        console.log('AUTH', auth);
-      })
+      .subscribe(auth => this.setState({ auth })) // TODO: this.setState causing crash in-game
   }
 
   render() {

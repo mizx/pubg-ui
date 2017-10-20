@@ -1,3 +1,7 @@
+import { Authentication } from  './auth';
+
 export interface ProviderContext {
-  pubg: string;
+  pubg: {
+    auth: Authentication | null;
+  };
 }

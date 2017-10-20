@@ -31,9 +31,8 @@ class Version extends React.Component<Props, State> {
 
   render() {
     const { prefix = '' } = this.props;
-    const { version } = this.state;
 
-    return <div>{prefix}{version}</div>
+    return `${prefix}${this.state.version}`;
   }
 }
 

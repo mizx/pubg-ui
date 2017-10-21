@@ -37,9 +37,6 @@ export const MainComponent: React.SFC = props => (
       <ButtonAction action="quit">
         <Typography type="main-sm">Quit</Typography>
       </ButtonAction>
-      <Typography type="main-sm">
-        Your name: <PlayerName />
-      </Typography>
     </ButtonGroup>
   </Main>
 );

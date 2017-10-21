@@ -19,7 +19,7 @@ const SummaryText = styled.div`
 `;
 
 interface Props {
-  name: string;
+  name: React.ReactNode;
   avatar: string;
 }
 

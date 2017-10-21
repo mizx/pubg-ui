@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PlayerName } from 'pubg-ui';
 
 import Player from './player';
 
@@ -36,7 +37,7 @@ export const PartyComponent: React.SFC<Props> = props => (
       avatar="/img/profile.jpg"
     />
     <Player
-      name="mizx"
+      name={<PlayerName />}
       state="connected"
       isLeader={true}
       isLocal={true}

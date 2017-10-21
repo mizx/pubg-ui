@@ -41,7 +41,7 @@ type PlayerState =
 ;
 
 interface Props {
-  name: string;
+  name: React.ReactNode;
   avatar: string;
   state: PlayerState;
   isLeader: boolean;

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Typography from 'components/typography';
 import styled from 'styled';
+import { withPreferences, PreferenceProps, Region, SquadSize, Perspective } from 'pubg-ui';
 
 const Button = styled.button`
   padding: ${props => props.theme.unit(1)};
@@ -16,16 +17,6 @@ const Play = styled.div`
   flex-direction: column;
 `;
 
-type Region =
-| 'na'
-| 'eu'
-| 'as'
-| 'jp'
-| 'oc'
-| 'sa'
-| 'sea'
-;
-
 const regionMap: { [key in Region]: string } = {
   na: 'North America',
   eu: 'Europe',
@@ -36,70 +27,35 @@ const regionMap: { [key in Region]: string } = {
   sea: 'Sea'
 };
 
-type Squad =
-  | 'solo'
-  | 'duo'
-  | 'squad'
-;
-
-const squadMap: { [key in Squad]: string } = {
+const squadMap: { [key in SquadSize]: string } = {
   solo: 'Solo',
   duo: 'Duo',
   squad: 'Squad'
 };
 
-type Mode =
-  | 'tpp'
-  | 'fpp'
-;
-
-const modeMap: { [key in Mode]: string } = {
-  fpp: 'First-Person',
-  tpp: 'Third-Person'
+const perspectiveMap: { [key in Perspective]: string } = {
+  'first-person': 'First-Person',
+  'third-person': 'Third-Person'
 };
 
 interface Props { }
 
-interface State {
-  region: Region;
-  squad: Squad;
-  mode: Mode;
-}
-
-export class PlayComponent extends React.Component<Props, State> {
+export class PlayComponent extends React.Component<Props & PreferenceProps> {
 
   constructor() {
     super();
-
-    this.state = {
-      region: 'na',
-      squad: 'solo',
-      mode: 'fpp'
-    };
-  }
-
-  setRegion(region: Region) {
-    this.setState({ region });
-  }
-
-  setSquad(squad: Squad) {
-    this.setState({ squad });
-  }
-
-  setMode(mode: Mode) {
-    this.setState({ mode });
   }
 
   renderRegions() {
     return Object.keys(regionMap).map((region: Region) => {
       const regionName = regionMap[region];
-      const className = region === this.state.region ? 'active' : '';
+      const className = region === this.props.preferences.region ? 'active' : '';
 
       return (
         <Button
           key={region}
           className={className}
-          onClick={() => this.setRegion(region)}
+          onClick={() => this.props.setPreference('region', region)}
         >
           {regionName}
         </Button>
@@ -108,15 +64,15 @@ export class PlayComponent extends React.Component<Props, State> {
   }
 
   renderSquads() {
-    return Object.keys(squadMap).map((squad: Squad) => {
+    return Object.keys(squadMap).map((squad: SquadSize) => {
       const squadName = squadMap[squad];
-      const className = squad === this.state.squad ? 'active' : '';
+      const className = squad === this.props.preferences.squad ? 'active' : '';
 
       return (
         <Button
           key={squad}
           className={className}
-          onClick={() => this.setSquad(squad)}
+          onClick={() => this.props.setPreference('squad', squad)}
         >
           {squadName}
         </Button>
@@ -124,18 +80,18 @@ export class PlayComponent extends React.Component<Props, State> {
     });
   }
 
-  renderModes() {
-    return Object.keys(modeMap).map((mode: Mode) => {
-      const modeName = modeMap[mode];
-      const className = mode === this.state.mode ? 'active' : '';
+  renderPerspectives() {
+    return Object.keys(perspectiveMap).map((perspective: Perspective) => {
+      const perspectiveName = perspectiveMap[perspective];
+      const className = perspective === this.props.preferences.perspective ? 'active' : '';
 
       return (
         <Button
-          key={mode}
+          key={perspective}
           className={className}
-          onClick={() => this.setMode(mode)}
+          onClick={() => this.props.setPreference('perspective', perspective)}
         >
-          {modeName}
+          {perspectiveName}
         </Button>
       );
     });
@@ -154,11 +110,11 @@ export class PlayComponent extends React.Component<Props, State> {
       </div>
       <Typography type="main-sm">Perspective</Typography>
       <div>
-        {this.renderModes()}
+        {this.renderPerspectives()}
       </div>
       </Play>
     );
   }
 }
 
-export default PlayComponent;
+export default withPreferences<Props>(PlayComponent);

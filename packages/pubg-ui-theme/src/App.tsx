@@ -10,6 +10,7 @@ import store from './store';
 import Background from 'components/background';
 import Party from 'components/party';
 import Routes from 'components/routes';
+import Navigation from 'components/navigation';
 
 const Wrapper = styled.div`
   position: relative;
@@ -25,6 +26,7 @@ export const App: React.SFC = props => (
           <Wrapper>
             <Background />
             <Party />
+            <Navigation />
             <Routes />
           </Wrapper>
         </PubgProvider>

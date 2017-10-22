@@ -3,23 +3,26 @@ import PropTypes from 'prop-types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 
-import { ProviderContext } from './context';
-import { Authentication } from './auth';
+import { Authentication, ProviderContext, ProviderState, ProviderAction } from './interfaces';
+import { getPreferences, setPreferences, PreferenceOptions } from '../preferences';
 
 export interface Props { }
 
-export interface State {
-  auth: Authentication | null;
+export const initialState: ProviderState = {
+  auth: null,
+  preference: {
+    region: 'na',
+    squad: 'solo',
+    perspective: 'first-person'
+  }
 }
 
-class Provider extends React.Component<Props, State> {
+class Provider extends React.Component<Props, ProviderState> {
 
   constructor() {
     super();
 
-    this.state = {
-      auth: null
-    };
+    this.state = initialState;
   }
 
   static childContextTypes = {
@@ -30,13 +33,37 @@ class Provider extends React.Component<Props, State> {
     const { auth } = this.state;
 
     return {
-      pubg: { auth }
+      pubg: {
+        ...this.state,
+        action: {
+          setPreference: this.setPreference.bind(this)
+        }
+      }
     };
   }
 
   componentDidMount() {
+    this.loadPreferences();
+
     // hack to get around promise never firing with coherent
     setTimeout(() => this.authenticate(), 100);
+  }
+
+  loadPreferences() {
+    const preference = { ...this.state.preference, ...getPreferences() };
+
+    this.setState({ preference });
+  }
+
+  savePreferences(preferences: Partial<PreferenceOptions>) {
+    const preference = { ...this.state.preference, ...preferences };
+
+    this.setState({ preference });
+    setPreferences(preference);
+  }
+
+  setPreference(key: keyof PreferenceOptions, value: string | number) {
+    this.savePreferences({ [key]: String(value) });
   }
 
   authenticate() {

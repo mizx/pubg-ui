@@ -23,6 +23,7 @@
     "@types/react-dom": "^16.0.1",
     "@types/react-redux": "^5.0.10",
     "@types/react-router-dom": "^4.0.8",
+    "core-js": "^2.5.1",
     "prop-types": "^15.6.0",
     "pubg-ui": "^1.0.0",
     "react": "^16.0.0",

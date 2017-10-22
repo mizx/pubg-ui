@@ -110,7 +110,7 @@ export class PlayComponent extends React.Component<Props, State> {
   renderSquads() {
     return Object.keys(squadMap).map((squad: Squad) => {
       const squadName = squadMap[squad];
-      const className = squad === this.state.squad ? 'active': '';
+      const className = squad === this.state.squad ? 'active' : '';
 
       return (
         <Button
@@ -121,15 +121,13 @@ export class PlayComponent extends React.Component<Props, State> {
           {squadName}
         </Button>
       );
-    })
+    });
   }
-
-
 
   renderModes() {
     return Object.keys(modeMap).map((mode: Mode) => {
       const modeName = modeMap[mode];
-      const className = mode === this.state.mode ? 'active': '';
+      const className = mode === this.state.mode ? 'active' : '';
 
       return (
         <Button
@@ -140,7 +138,7 @@ export class PlayComponent extends React.Component<Props, State> {
           {modeName}
         </Button>
       );
-    })
+    });
   }
 
   render() {
@@ -159,7 +157,7 @@ export class PlayComponent extends React.Component<Props, State> {
         {this.renderModes()}
       </div>
       </Play>
-    )
+    );
   }
 }
 

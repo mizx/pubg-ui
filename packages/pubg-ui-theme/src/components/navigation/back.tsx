@@ -23,7 +23,7 @@ export const BackComponent: React.SFC<RouteComponentProps<Props>> = props => {
     >
       Back
     </Back>
-  )
+  );
 };
 
 export default withRouter<Props>(BackComponent);

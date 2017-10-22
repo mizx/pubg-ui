@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const Routes: React.SFC = props => (
   <Wrapper>
     <Switch>
-      <Route path="/" exact={true} component={Main} />
+      <Route path="/" exact={true} component={Root} />
       <Route path="/main" component={Main} />
       <Route path="/play" component={Play} />
     </Switch>

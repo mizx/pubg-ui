@@ -7,9 +7,10 @@ export interface Props { }
 
 export const PlayerNameComponent: React.SFC<Props> = (props, context: ProviderContext) => {
   const { auth } = context.pubg;
-
-  // stateless components don't allow string returns?
-  return auth ? auth.userDisplayName as any : null;
+  if (auth) {
+    return <div>{auth.userDisplayName}</div>;
+  }
+  return null;
 };
 
 PlayerNameComponent.contextTypes = {

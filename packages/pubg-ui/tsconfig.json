@@ -1,15 +1,19 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es5",
     "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "dom"],
     "moduleResolution": "node",
     "removeComments": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "rootDir": "src",
-    "strict": true
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"]
+    }
   },
   "include": [
     "src/**/*"

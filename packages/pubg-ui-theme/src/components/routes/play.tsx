@@ -2,7 +2,7 @@ import React from 'react';
 
 import Typography from 'components/typography';
 import styled from 'styled';
-import { withPreferences, PreferenceProps, Region, SquadSize, Perspective } from 'pubg-ui';
+import { withOptions, OptionProps, Region, SquadSize, Perspective } from 'pubg-ui';
 
 const Button = styled.button`
   padding: ${props => props.theme.unit(1)};
@@ -40,7 +40,7 @@ const perspectiveMap: { [key in Perspective]: string } = {
 
 interface Props { }
 
-export class PlayComponent extends React.Component<Props & PreferenceProps> {
+export class PlayComponent extends React.Component<Props & OptionProps> {
 
   constructor() {
     super();
@@ -49,13 +49,13 @@ export class PlayComponent extends React.Component<Props & PreferenceProps> {
   renderRegions() {
     return Object.keys(regionMap).map((region: Region) => {
       const regionName = regionMap[region];
-      const className = region === this.props.preferences.region ? 'active' : '';
+      const className = region === this.props.option.region ? 'active' : '';
 
       return (
         <Button
           key={region}
           className={className}
-          onClick={() => this.props.setPreference('region', region)}
+          onClick={() => this.props.setOption.setRegion(region)}
         >
           {regionName}
         </Button>
@@ -66,13 +66,13 @@ export class PlayComponent extends React.Component<Props & PreferenceProps> {
   renderSquads() {
     return Object.keys(squadMap).map((squad: SquadSize) => {
       const squadName = squadMap[squad];
-      const className = squad === this.props.preferences.squad ? 'active' : '';
+      const className = squad === this.props.option.squadSize ? 'active' : '';
 
       return (
         <Button
           key={squad}
           className={className}
-          onClick={() => this.props.setPreference('squad', squad)}
+          onClick={() => this.props.setOption.setSquadSize(squad)}
         >
           {squadName}
         </Button>
@@ -83,13 +83,13 @@ export class PlayComponent extends React.Component<Props & PreferenceProps> {
   renderPerspectives() {
     return Object.keys(perspectiveMap).map((perspective: Perspective) => {
       const perspectiveName = perspectiveMap[perspective];
-      const className = perspective === this.props.preferences.perspective ? 'active' : '';
+      const className = perspective === this.props.option.perspective ? 'active' : '';
 
       return (
         <Button
           key={perspective}
           className={className}
-          onClick={() => this.props.setPreference('perspective', perspective)}
+          onClick={() => this.props.setOption.setPerspective(perspective)}
         >
           {perspectiveName}
         </Button>
@@ -117,4 +117,4 @@ export class PlayComponent extends React.Component<Props & PreferenceProps> {
   }
 }
 
-export default withPreferences<Props>(PlayComponent);
+export default withOptions<Props>(PlayComponent);

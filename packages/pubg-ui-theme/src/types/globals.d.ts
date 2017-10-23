@@ -10,7 +10,5 @@ export interface Engine {
 declare global {
   interface Window {
     engine: Engine;
-    __REDUX_DEVTOOLS_EXTENSION__: any;
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
   }
 }

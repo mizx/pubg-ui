@@ -1,5 +1,3 @@
-import { PreferenceOptions } from './interfaces';
-
 export type Region =
   | 'na'
   | 'eu'
@@ -20,5 +18,3 @@ export type Perspective =
   | 'first-person'
   | 'third-person'
 ;
-
-export type SetPreference = (key: keyof PreferenceOptions, value: string) => void;

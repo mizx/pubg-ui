@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 
-import store from '../store';
+import store from '../redux/store';
 
 export interface ProviderContext {
   pubg: string;

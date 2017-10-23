@@ -5,7 +5,7 @@ import { RootState, Dispatch } from '../redux';
 import { State as OptionState, setRegion, setSquadSize, setPerspective } from '../redux/option';
 
 export interface StateProps {
-  options: OptionState;
+  option: OptionState;
 }
 
 export interface DispatchProps {
@@ -18,11 +18,11 @@ export interface DispatchProps {
 
 export type InjectedProps = StateProps & DispatchProps;
 
-const mapStateToProps = (state: RootState) => ({
-  options: state.option
+const mapStateToProps = (state: RootState): StateProps => ({
+  option: state.option
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   setOption: bindActionCreators({
     setRegion,
     setSquadSize,

@@ -1,2 +1,2 @@
-export { withPreferences, InjectedProps as OptionProps } from './withOptions';
+export { withOptions, InjectedProps as OptionProps } from './withOptions';
 export * from './types';

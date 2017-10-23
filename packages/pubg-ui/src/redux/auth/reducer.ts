@@ -3,22 +3,27 @@ import * as ActionCreators from './action-creators';
 import { Actions } from './action-creators';
 
 export interface State {
-  accessToken: string;      // 468 character hex string
+  accessToken: string | null;      // 468 character hex string
   appId: string;            // "578080"
   platformType: string;     // "Steam"
-  playerNetId: string;      // "76561197988861..."
+  playerNetId: string | null;      // "76561197988861..."
   userDisplayName: string;  // steam name
-  userSerial: string;       // "76561197988861..."
+  userSerial: string | null;       // "76561197988861..."
 }
 
-export type AuthState = State | null;
+export const initialState: State = {
+  accessToken: null,
+  appId: '578080',
+  platformType: 'Steam',
+  playerNetId: null,
+  userDisplayName: '',
+  userSerial: null
+};
 
-export const initialState: AuthState = null;
-
-export default (state: AuthState = initialState, action: Actions): AuthState => {
+export default (state: State = initialState, action: Actions): State => {
   switch(action.type) {
     case ActionType.SET_AUTH_DATA: {
-      return { ...action.payload }
+      return { ...state, ...action.payload }
     }
     default: return state;
   }

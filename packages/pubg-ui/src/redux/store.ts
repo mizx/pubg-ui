@@ -30,7 +30,9 @@ const persistedState = loadState<RootState>();
 const store = configureStore(persistedState);
 
 store.subscribe(() => {
-  saveState(store.getState());
+  const { option } = store.getState();
+
+  saveState({ option });
 });
 
 export default store;

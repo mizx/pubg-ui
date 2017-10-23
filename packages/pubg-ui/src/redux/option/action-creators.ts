@@ -32,7 +32,7 @@ export const setPerspective = (perspective: Perspective) => ({
   payload: { perspective }
 });
 
-export type Action =
+export type Actions =
   | SetRegion
   | SetSquadSize
   | SetPerspective

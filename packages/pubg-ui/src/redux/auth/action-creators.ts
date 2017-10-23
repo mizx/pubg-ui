@@ -11,6 +11,6 @@ export const setAuthData = (authData: AuthState): SetAuthData => ({
   payload: authData
 });
 
-export type Action =
+export type Actions =
   | SetAuthData
 ;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 
-import store from '@src/redux/store';
+import store from '@src/store';
 import { Authentication, ProviderContext, ProviderState, ProviderAction } from './interfaces';
 import { getPreferences, setPreferences, PreferenceOptions } from '../preferences';
 

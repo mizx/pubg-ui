@@ -1,0 +1,8 @@
+export const SET_REGION = 'OPTION::SET_REGION';
+export type SET_REGION = typeof SET_REGION;
+
+export const SET_SQUAD_SIZE = 'OPTION::SET_SQUAD_SIZE';
+export type SET_SQUAD_SIZE = typeof SET_SQUAD_SIZE;
+
+export const SET_PERSPECTIVE = 'OPTION::SET_PERSPECTIVE';
+export type SET_PERSPECTIVE = typeof SET_PERSPECTIVE;

@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose, Store } from 'redux';
 
-import { RootState, rootReducer } from './index';
+import { RootState, rootReducer } from './root';
 
 const composeEnhancers = (
   process.env.NODE_ENV === 'development'

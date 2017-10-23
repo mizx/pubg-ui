@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose, Store } from 'redux';
 
-import { RootState, rootReducer } from './redux';
+import { RootState, rootReducer } from './index';
+import { loadState, saveState } from './localStorage';
 
 const composeEnhancers = (
   process.env.NODE_ENV === 'development'
@@ -24,6 +25,12 @@ const configureStore = (initialState?: RootState) => {
   );
 };
 
-const store = configureStore();
+const persistedState = loadState<RootState>();
+
+const store = configureStore(persistedState);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 export default store;

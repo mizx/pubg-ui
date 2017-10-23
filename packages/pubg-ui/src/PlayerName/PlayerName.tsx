@@ -1,19 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { ProviderContext } from '../Provider';
+import { RootState } from '../redux';
 
-export interface Props { }
+export interface StateProps {
+  name: string;
+}
 
-export const PlayerNameComponent: React.SFC<Props> = (props, context: ProviderContext) => {
-  const { auth } = context.pubg;
+export type Props = StateProps;
 
-  // stateless components don't allow string returns?
-  return auth ? auth.userDisplayName as any : null;
-};
+export const PlayerNameComponent: React.SFC<Props> = (props) => props.name as any;
 
-PlayerNameComponent.contextTypes = {
-  pubg: PropTypes.object
-};
+const mapStateToProps = (state: RootState): StateProps => ({
+  name: state.auth.userDisplayName
+});
 
-export default PlayerNameComponent;
+export default connect(mapStateToProps)(PlayerNameComponent);

@@ -14,7 +14,6 @@ export type Props = DispatchProps;
 export class AuthComponent extends React.Component<Props> {
 
   componentDidMount() {
-    console.log('authenticate');
     this.props.authenticate();
   }
 

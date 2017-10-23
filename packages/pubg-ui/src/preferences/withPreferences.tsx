@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { PreferenceOptions } from './interfaces';
 import { SetPreference } from './types';
-import { ProviderContext } from '@src/Provider';
+import { ProviderContext } from '../Provider';
 
 export interface PreferenceProps {
   preferences: PreferenceOptions;

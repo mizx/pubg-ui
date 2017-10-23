@@ -1,7 +1,7 @@
 import { combineReducers, AnyAction } from 'redux';
 
-import { reducer as auth, State as AuthState } from '@src/redux/auth';
-import { reducer as option, State as OptionState } from '@src/redux/option';
+import { reducer as auth, State as AuthState } from '../redux/auth';
+import { reducer as option, State as OptionState } from '../redux/option';
 
 export interface RootState {
   auth: AuthState;

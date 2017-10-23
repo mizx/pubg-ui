@@ -5,7 +5,6 @@ import { PubgProvider } from 'pubg-ui';
 
 import './App.css';
 
-import store from './store';
 import Background from 'components/background';
 import Party from 'components/party';
 import Routes from 'components/routes';
@@ -19,16 +18,16 @@ const Wrapper = styled.div`
 
 export const App: React.SFC = props => (
   <ThemeProvider theme={theme}>
-      <HashRouter>
-        <PubgProvider>
-          <Wrapper>
-            <Background />
-            <Party />
-            <Navigation />
-            <Routes />
-          </Wrapper>
-        </PubgProvider>
-      </HashRouter>
+    <HashRouter>
+      <PubgProvider>
+        <Wrapper>
+          <Background />
+          <Party />
+          <Navigation />
+          <Routes />
+        </Wrapper>
+      </PubgProvider>
+    </HashRouter>
   </ThemeProvider>
 );
 

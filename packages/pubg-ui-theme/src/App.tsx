@@ -17,18 +17,18 @@ const Wrapper = styled.div`
 `;
 
 export const App: React.SFC = props => (
-  <ThemeProvider theme={theme}>
-    <HashRouter>
-      <PubgProvider>
+  <PubgProvider>
+    <ThemeProvider theme={theme}>
+      <HashRouter>
         <Wrapper>
           <Background />
           <Party />
           <Navigation />
           <Routes />
         </Wrapper>
-      </PubgProvider>
-    </HashRouter>
-  </ThemeProvider>
+      </HashRouter>
+    </ThemeProvider>
+  </PubgProvider>
 );
 
 export default App;

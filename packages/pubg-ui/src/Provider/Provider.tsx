@@ -1,8 +1,10 @@
 import React from 'react';
+import { Provider as ReduxProvider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 
+import store from '../modules/store';
 import { Authentication, ProviderContext, ProviderState, ProviderAction } from './interfaces';
 import { getPreferences, setPreferences, PreferenceOptions } from '../preferences';
 
@@ -74,7 +76,16 @@ class Provider extends React.Component<Props, ProviderState> {
 
   render() {
     const { children } = this.props;
-    return children ? React.Children.only(children) : null;
+
+    if (children) {
+      return (
+        <ReduxProvider store={store}>
+          {React.Children.only(children)}
+        </ReduxProvider>
+      );
+    }
+
+    return null;
   }
 }
 

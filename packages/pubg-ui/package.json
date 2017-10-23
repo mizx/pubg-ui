@@ -11,6 +11,14 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "rxjs": "^5.4.3",
+    "typescript": "^2.5.3"
+  },
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
@@ -19,9 +27,6 @@
     "@types/node": "^8.0.33",
     "@types/react": "^16.0.10",
     "@types/react-dom": "^16.0.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "rxjs": "^5.4.3",
-    "typescript": "^2.5.3"
+    "@types/react-redux": "^5.0.10"
   }
 }

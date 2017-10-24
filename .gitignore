@@ -4,6 +4,7 @@
 node_modules
 env/
 dist/
+build/
 *.egg-info/
 *.egg
 *.pyc

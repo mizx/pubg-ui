@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled';
 import { Link } from 'react-router-dom';
-import { ButtonAction } from 'pubg-ui';
+import { ActionButton } from 'pubg-ui';
 
 import Typography from 'components/typography';
 import Logo from 'components/logo';
@@ -31,12 +31,12 @@ export const MainComponent: React.SFC = props => (
       <Link to="/friends">
         <Typography type="main-sm">Friends list</Typography>
       </Link>
-      <ButtonAction action="options">
+      <ActionButton trigger="options">
         <Typography type="main-sm">Options</Typography>
-      </ButtonAction>
-      <ButtonAction action="quit">
+      </ActionButton>
+      <ActionButton trigger="quit">
         <Typography type="main-sm">Quit</Typography>
-      </ButtonAction>
+      </ActionButton>
     </ButtonGroup>
   </Main>
 );

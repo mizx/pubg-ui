@@ -17,25 +17,30 @@ export interface Props extends BaseButtonProps {
   type?: LinkType;
 }
 
-const handleClick = (url: string, type: LinkType) =>
+const handleClick = (url: string, type: LinkType, onClick?: Function) =>
   (event: React.MouseEvent<HTMLButtonElement>) => {
     switch (type) {
       case TYPE_PLATFORM: {
         window.engine.trigger('ShowWebPageOnPlatform', url);
-        return;
+        break;
       }
       case TYPE_EXTERNAL: {
         window.engine.trigger('OpenExternalBrowser', url);
-        return;
+        break;
       }
+    }
+
+    // invoke onClick if it was passed through
+    if (onClick) {
+      onClick(event);
     }
   };
 
 export const LinkButtonComponent: React.SFC<Props> = (props) => {
-  const { children, type = TYPE_PLATFORM, url, ref, ...other } = props;
+  const { children, onClick, type = TYPE_PLATFORM, url, ref, ...other } = props;
 
   return (
-    <BaseButton onClick={handleClick(url, type)} {...other}>
+    <BaseButton onClick={handleClick(url, type, onClick)} {...other}>
       {children}
     </BaseButton>
   );

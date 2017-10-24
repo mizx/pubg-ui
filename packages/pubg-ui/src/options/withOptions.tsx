@@ -30,12 +30,6 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   }, dispatch)
 });
 
-// const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({
-//   setRegion,
-//   setSquadSize,
-//   setPerspective
-// }, dispatch);
-
 export const withOptions = <P extends {}>(Component: React.ComponentType<P & InjectedProps>) => (
   connect(mapStateToProps, mapDispatchToProps)(Component)
 );

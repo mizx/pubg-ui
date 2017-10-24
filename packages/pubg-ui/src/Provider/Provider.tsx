@@ -1,8 +1,10 @@
+import '../polyfills';
+
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Authentication from '../auth';
+import Wrapper from './wrapper';
 import store from '../redux/store';
 
 export interface ProviderContext {
@@ -27,9 +29,9 @@ class Provider extends React.Component {
     if (children) {
       return (
         <ReduxProvider store={store}>
-          <Authentication>
+          <Wrapper>
             {React.Children.only(children)}
-          </Authentication>
+          </Wrapper>
         </ReduxProvider>
       );
     }

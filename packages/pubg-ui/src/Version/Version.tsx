@@ -1,6 +1,5 @@
 import React from 'react';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromPromise';
 
 export interface Props {
   prefix?: string;

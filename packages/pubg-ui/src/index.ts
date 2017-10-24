@@ -1,6 +1,6 @@
 import './coherent';
 
-export { ButtonAction, ButtonLink } from './Button';
+export * from './button';
 export { default as PubgProvider } from './Provider';
 export * from './Provider';
 export * from './options';

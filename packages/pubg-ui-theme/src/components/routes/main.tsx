@@ -17,7 +17,7 @@ const ButtonGroup = styled.div`
 
 export const MainComponent: React.SFC = props => (
   <Main>
-    <Logo version={true} />
+    <Logo />
     <ButtonGroup>
       <Link to="/play">
         <Typography type="main">Play</Typography>

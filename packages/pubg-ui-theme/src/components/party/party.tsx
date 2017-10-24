@@ -37,7 +37,7 @@ export const PartyComponent: React.SFC<Props> = props => (
       avatar="/img/profile.jpg"
     />
     <Player
-      name={<PlayerName />}
+      name={'mizx'}
       state="connected"
       isLeader={true}
       isLocal={true}

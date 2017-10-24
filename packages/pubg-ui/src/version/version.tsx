@@ -14,7 +14,6 @@ export const VersionComponent: React.SFC<Props & VersionProps> = props => {
   }
 
   return `${prefix}${version}` as any;
-
 }
 
 export default withVersion(VersionComponent);

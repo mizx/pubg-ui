@@ -1,5 +1,6 @@
+import './coherent';
+
 export { ButtonAction, ButtonLink } from './Button';
-export { default as PlayerName } from './PlayerName';
 export { default as PubgProvider } from './Provider';
 export * from './Provider';
 export * from './options';

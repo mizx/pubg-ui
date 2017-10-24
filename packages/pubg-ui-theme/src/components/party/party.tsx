@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PlayerName } from 'pubg-ui';
 
 import Player from './player';
 

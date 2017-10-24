@@ -2,16 +2,14 @@ import { connect } from 'react-redux';
 
 import { RootState } from '../redux';
 
-export interface StateProps {
+export interface VersionProps {
   version: string | null;
-}
+};
 
-export type InjectedProps = StateProps;
-
-const mapStateToProps = (state: RootState): StateProps => ({
+const mapStateToProps = (state: RootState): VersionProps => ({
   version: state.app.version
 });
 
-export const withVersion = <P extends {}>(Component: React.ComponentType<P & InjectedProps>) => (
+export const withVersion = <P extends {}>(Component: React.ComponentType<P & VersionProps>) => (
   connect(mapStateToProps)(Component)
 );

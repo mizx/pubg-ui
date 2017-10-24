@@ -1,11 +1,10 @@
 import React from 'react';
-import { withVersion, VersionProps } from 'pubg-ui';
+import { Version } from 'pubg-ui';
 
 import styled from 'styled';
 import Typography from 'components/typography';
 
-interface OwnProps { }
-type Props = OwnProps & VersionProps;
+interface Props { }
 
 const LogoImage = styled.img`
   width: 100%;
@@ -23,23 +22,13 @@ const VersionWrapper = styled.div`
   left: 78%;
 `;
 
-const renderIfVersion = (props: Props) => {
-  if (!props.version) {
-    return null;
-  }
-
-  return (
-    <VersionWrapper>
-      <Typography type="version">v{props.version}</Typography>
-    </VersionWrapper>
-  );
-};
-
 export const LogoComponent: React.SFC<Props> = (props) => (
   <Logo>
     <LogoImage src="/img/logo.png" />
-    {renderIfVersion(props)}
+    <VersionWrapper>
+      <Typography type="version"><Version prefix="v" /></Typography>
+    </VersionWrapper>
   </Logo>
 );
 
-export default withVersion(LogoComponent);
+export default LogoComponent;

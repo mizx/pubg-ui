@@ -1,1 +1,2 @@
-export { withVersion, InjectedProps as VersionProps } from './withVersion';
+export { default as Version } from './version';
+export { withVersion, VersionProps } from './withVersion';

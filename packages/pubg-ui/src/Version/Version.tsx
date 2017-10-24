@@ -1,38 +1,27 @@
 import React from 'react';
-import { Observable } from 'rxjs/Observable';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export interface Props {
+import { RootState } from '../redux';
+
+export interface OwnProps {
   prefix?: string;
 };
 
-export interface State {
+export interface StateProps {
   version: string;
 }
 
-class Version extends React.Component<Props, State> {
+export type Props = OwnProps & StateProps;
 
-  constructor() {
-    super();
+export const VersionComponent: React.SFC<Props> = props => {
+  const { prefix = '', version } = props;
 
-    this.state = { version: '' };
-  }
-
-  componentDidMount() {
-    // hack to get around promise never firing with coherent
-    setTimeout(() => this.getVersion(), 32);
-  }
-
-  getVersion() {
-    Observable
-      .fromPromise(window.engine.call<string>('GetGameVersion'))
-      .subscribe(version => this.setState({ version }));
-  }
-
-  render() {
-    const { prefix = '' } = this.props;
-
-    return `${prefix}${this.state.version}`;
-  }
+  return `${prefix}${version}` as any;
 }
 
-export default Version;
+const mapStateToProps = (state: RootState): StateProps => ({
+  version: state.app.version
+});
+
+export default connect(mapStateToProps)(VersionComponent);

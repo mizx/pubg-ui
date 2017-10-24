@@ -1,4 +1,5 @@
 import * as ActionType from './action-types';
+import { Platform } from '../../types';
 
 export interface GetVersion {
   type: ActionType.GET_VERSION;
@@ -18,7 +19,29 @@ export const setVersion = (version: string): SetVersion => ({
   payload: { version }
 });
 
+export interface SetAppId {
+  type: ActionType.SET_APP_ID;
+  payload: { appId: string };
+}
+
+export const setAppId = (appId: string): SetAppId => ({
+  type: ActionType.SET_APP_ID,
+  payload: { appId }
+});
+
+export interface SetPlatform {
+  type: ActionType.SET_PLATFORM;
+  payload: { platform: Platform };
+}
+
+export const setPlatform = (platform: Platform): SetPlatform => ({
+  type: ActionType.SET_PLATFORM,
+  payload: { platform }
+});
+
 export type Actions =
   | GetVersion
   | SetVersion
+  | SetAppId
+  | SetPlatform
 ;

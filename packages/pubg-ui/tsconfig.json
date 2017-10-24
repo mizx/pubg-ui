@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "strict": true,
+    "pretty": true,
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"]

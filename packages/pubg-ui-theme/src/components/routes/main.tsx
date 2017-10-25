@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled';
 import { Link } from 'react-router-dom';
-import { ActionButton } from 'pubg-ui';
 
+import Button from 'components/button';
 import Typography from 'components/typography';
 import Logo from 'components/logo';
 
@@ -19,24 +19,24 @@ export const MainComponent: React.SFC = props => (
   <Main>
     <Logo />
     <ButtonGroup>
-      <Link to="/play">
-        <Typography type="main">Play</Typography>
-      </Link>
-      <Link to="/character">
-        <Typography type="main">Character</Typography>
-      </Link>
-      <Link to="/crates">
-        <Typography type="main">Loot Crates</Typography>
-      </Link>
-      <Link to="/friends">
-        <Typography type="main-sm">Friends list</Typography>
-      </Link>
-      <ActionButton trigger="options">
-        <Typography type="main-sm">Options</Typography>
-      </ActionButton>
-      <ActionButton trigger="quit">
-        <Typography type="main-sm">Quit</Typography>
-      </ActionButton>
+      <Button type="menu-lg" to="/play">
+        <Typography type="menu-main">Play</Typography>
+      </Button>
+      <Button type="menu-lg" to="/character">
+        <Typography type="menu-main">Character</Typography>
+      </Button>
+      <Button type="menu-lg" to="/crates">
+        <Typography type="menu-main">Loot Crates</Typography>
+      </Button>
+      <Button type="menu-sm" to="/friends">
+        <Typography type="menu-main-sm">Friends list</Typography>
+      </Button>
+      <Button type="menu-sm" action="options">
+        <Typography type="menu-main-sm">Options</Typography>
+      </Button>
+      <Button type="menu-sm" action="quit">
+        <Typography type="menu-main-sm">Quit</Typography>
+      </Button>
     </ButtonGroup>
   </Main>
 );

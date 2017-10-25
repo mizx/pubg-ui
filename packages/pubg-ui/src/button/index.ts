@@ -1,2 +1,1 @@
-export { default as ActionButton } from './action';
-export { default as LinkButton } from './link';
+export { default as Button, Action as ButtonAction, Props as ButtonProps } from './button';

@@ -1,18 +1,14 @@
 import React, { CSSProperties } from 'react';
 
-import styled from 'styled';
+import styled, { StyledComponentClass } from 'styled';
 
-const MainLarge = styled.div`
-  font-size: ${props => props.theme.unit(8)};
+const MenuMain = styled.div`
   font-family: ${props => props.theme.font.display};
   text-transform: uppercase;
 `;
 
-const MainSmall = styled.div`
-  font-size: ${props => props.theme.unit(4)};
-  font-family: ${props => props.theme.font.display};
-  text-transform: uppercase;
-  letter-spacing: ${props => props.theme.unit(.2)}
+const MenuMainSmall = MenuMain.extend`
+  letter-spacing: ${props => props.theme.unit(.2)};
 `;
 
 const Version = styled.div`
@@ -21,8 +17,8 @@ const Version = styled.div`
 `;
 
 type Type =
-  | 'main'
-  | 'main-sm'
+  | 'menu-main'
+  | 'menu-main-sm'
   | 'version'
 ;
 
@@ -31,9 +27,9 @@ interface Props {
 }
 
 // TODO: Not sure how to correctly get strongly typed StyledComponentClass
-const typeMap: { [K in Type]: typeof MainLarge } = {
-  'main': MainLarge,
-  'main-sm': MainSmall,
+const typeMap: { [K in Type]: StyledComponentClass } = {
+  'menu-main': MenuMain,
+  'menu-main-sm': MenuMainSmall,
   'version': Version
 };
 

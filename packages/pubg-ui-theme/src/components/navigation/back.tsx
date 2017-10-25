@@ -2,11 +2,8 @@ import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import styled from 'styled';
-
-const Back = styled.button`
-  padding: ${props => props.theme.unit(2)};
-  background: rgba(255, 255, 255, .2);
-`;
+import Button from 'components/button';
+import Typography from 'components/typography';
 
 interface Props { }
 
@@ -18,11 +15,9 @@ export const BackComponent: React.SFC<RouteComponentProps<Props>> = props => {
   }
 
   return (
-    <Back
-      onClick={() => props.history.goBack()}
-    >
-      Back
-    </Back>
+    <Button type="navigation" onClick={() => props.history.goBack()}>
+      <Typography type="menu-main-sm">Back</Typography>
+    </Button>
   );
 };
 

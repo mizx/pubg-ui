@@ -1,10 +1,10 @@
 import React from 'react';
 
-export interface BaseButtonProps extends React.HTMLProps<HTMLButtonElement> {
+export interface Props extends React.HTMLProps<HTMLButtonElement> {
   component?: React.ReactType;
 }
 
-export class BaseButtonComponent extends React.Component<BaseButtonProps> {
+export class BaseButtonComponent extends React.Component<Props> {
 
   render() {
     const { component, children, ...props } = this.props;

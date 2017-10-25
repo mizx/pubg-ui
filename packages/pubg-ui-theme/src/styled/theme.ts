@@ -5,6 +5,10 @@ export interface Theme {
     primary: string;
     secondary: string;
   };
+  button: {
+    color: string;
+    hoverColor: string;
+  };
   font: {
     display: string;
     body: string;
@@ -24,6 +28,10 @@ export const theme: Theme = {
   color: {
     primary: '#F6BC00',
     secondary: '#FFF'
+  },
+  button: {
+    color: 'rgba(255, 255, 255, .5)',
+    hoverColor: '#F6BC00'
   },
   font: {
     display: `'Headliner45', sans-serif`,

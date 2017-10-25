@@ -100,19 +100,19 @@ export class PlayComponent extends React.Component<Props & OptionProps> {
   render() {
     return (
       <Play>
-        <Typography type="main-sm">Region</Typography>
+        <Typography type="menu-main-sm">Region</Typography>
         <div>
           {this.renderRegions()}
         </div>
-        <Typography type="main-sm">Squad Size</Typography>
+        <Typography type="menu-main-sm">Squad Size</Typography>
         <div>
           {this.renderSquads()}
         </div>
-        <Typography type="main-sm">Perspective</Typography>
+        <Typography type="menu-main-sm">Perspective</Typography>
         <div>
           {this.renderPerspectives()}
         </div>
-        <Typography type="main">Play</Typography>
+        <Typography type="menu-main">Play</Typography>
       </Play>
     );
   }

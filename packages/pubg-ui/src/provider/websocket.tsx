@@ -23,7 +23,7 @@ export class WebsocketComponent extends React.Component<Props> {
   }
 
   render() {
-    return null;
+    return React.Children.only(this.props.children);
   }
 }
 

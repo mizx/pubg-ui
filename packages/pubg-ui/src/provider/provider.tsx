@@ -5,6 +5,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Wrapper from './wrapper';
+import Websocket from './websocket';
 import store from '../redux/store';
 
 export interface ProviderContext {
@@ -30,7 +31,9 @@ class Provider extends React.Component {
       return (
         <ReduxProvider store={store}>
           <Wrapper>
-            {React.Children.only(children)}
+            <Websocket>
+              {React.Children.only(children)}
+            </Websocket>
           </Wrapper>
         </ReduxProvider>
       );

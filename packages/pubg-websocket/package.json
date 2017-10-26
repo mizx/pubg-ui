@@ -9,9 +9,13 @@
   "dependencies": {
     "ts-node": "^3.3.0",
     "typescript": "^2.5.3",
-    "websocket": "^1.0.25"
+    "ws": "^3.2.0"
   },
   "devDependencies": {
-    "@types/websocket": "^0.0.34"
+    "@types/ws": "^3.2.0",
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "start": "nodemon"
   }
 }

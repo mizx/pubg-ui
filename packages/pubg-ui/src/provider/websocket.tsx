@@ -1,5 +1,4 @@
 import React from 'react';
-import { client } from 'websocket';
 
 export interface Props { }
 
@@ -14,7 +13,7 @@ export class WebsocketComponent extends React.Component<Props> {
   constructor() {
     super();
 
-    this.connection = new WebSocket('wss://echo.websocket.org');
+    this.connection = new WebSocket('ws://localhost:8080/');
     this.connection.onmessage = (event) => {
       console.log(event);
     }

@@ -1,0 +1,17 @@
+{
+  "name": "pubg-websocket",
+  "version": "1.0.0",
+  "description": "Mock backend websocket for pubg.",
+  "main": "index.js",
+  "author": "Cody Mathisen",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3",
+    "websocket": "^1.0.25"
+  },
+  "devDependencies": {
+    "@types/websocket": "^0.0.34"
+  }
+}

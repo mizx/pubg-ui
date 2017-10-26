@@ -51,6 +51,12 @@
   version "16.0.14"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.14.tgz#c46d92be936820a93a14ffc84ad805e83f6535ef"
 
+"@types/websocket@^0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/websocket/-/websocket-0.0.34.tgz#25596764cec885eda070fdb6d19cd76fe582747c"
+  dependencies:
+    "@types/node" "*"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -2610,7 +2616,7 @@ is-svg@^2.0.0:
   dependencies:
     html-comment-regex "^1.1.0"
 
-is-typedarray@~1.0.0:
+is-typedarray@^1.0.0, is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
 
@@ -3410,7 +3416,7 @@ mz@^2.4.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nan@^2.3.0:
+nan@^2.3.0, nan@^2.3.3:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.7.0.tgz#d95bf721ec877e08db276ed3fc6eb78f9083ad46"
 
@@ -5467,6 +5473,12 @@ type-is@~1.6.15:
     media-typer "0.3.0"
     mime-types "~2.1.15"
 
+typedarray-to-buffer@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/typedarray-to-buffer/-/typedarray-to-buffer-3.1.2.tgz#1017b32d984ff556eba100f501589aba1ace2e04"
+  dependencies:
+    is-typedarray "^1.0.0"
+
 typescript@^2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.3.tgz#df3dcdc38f3beb800d4bc322646b04a3f6ca7f0d"
@@ -5779,6 +5791,15 @@ websocket-extensions@>=0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.2.tgz#0e18781de629a18308ce1481650f67ffa2693a5d"
 
+websocket@^1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/websocket/-/websocket-1.0.25.tgz#998ec790f0a3eacb8b08b50a4350026692a11958"
+  dependencies:
+    debug "^2.2.0"
+    nan "^2.3.3"
+    typedarray-to-buffer "^3.1.2"
+    yaeti "^0.0.6"
+
 whatwg-encoding@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/whatwg-encoding/-/whatwg-encoding-1.0.1.tgz#3c6c451a198ee7aec55b1ec61d0920c67801a5f4"
@@ -5893,6 +5914,10 @@ xtend@^4.0.0, xtend@^4.0.1:
 y18n@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
+
+yaeti@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/yaeti/-/yaeti-0.0.6.tgz#f26f484d72684cf42bedfb76970aa1608fbf9577"
 
 yallist@^2.1.2:
   version "2.1.2"

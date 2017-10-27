@@ -26,9 +26,13 @@ export class WrapperComponent extends React.Component<Props> {
 
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => bindActionCreators({
-  authenticate,
-  getVersion
-}, dispatch);
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
+  bindActionCreators(
+    {
+      authenticate,
+      getVersion
+    },
+    dispatch
+  );
 
-export default connect(undefined, mapDispatchToProps)(WrapperComponent);
+export default connect(null, mapDispatchToProps)(WrapperComponent);

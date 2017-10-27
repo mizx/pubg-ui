@@ -1,3 +1,6 @@
+export const WEBSOCKET_READY = 'APP::WEBSOCKET_READY';
+export type WEBSOCKET_READY = typeof WEBSOCKET_READY;
+
 export const GET_VERSION = 'APP::GET_VERSION';
 export type GET_VERSION = typeof GET_VERSION;
 

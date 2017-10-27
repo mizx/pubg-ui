@@ -1,6 +1,14 @@
 import * as ActionType from './action-types';
 import { Platform } from '../../types';
 
+export interface WebSocketReady {
+  type: ActionType.WEBSOCKET_READY;
+}
+
+export const webSocketReady = (): WebSocketReady => ({
+  type: ActionType.WEBSOCKET_READY
+});
+
 export interface GetVersion {
   type: ActionType.GET_VERSION;
 }
@@ -40,6 +48,7 @@ export const setPlatform = (platform: Platform): SetPlatform => ({
 });
 
 export type Actions =
+  | WebSocketReady
   | GetVersion
   | SetVersion
   | SetAppId

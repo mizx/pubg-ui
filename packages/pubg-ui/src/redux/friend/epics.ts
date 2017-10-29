@@ -23,24 +23,19 @@ export const onEngineReadyEpic: Epic<RootAction, RootState> = action$ =>
         // .repeat(-1)
     );
 
-export const engineRequestEpic: Epic<RootAction, RootState> = action$ =>
+export const onSteamFriendsRequestEpic: Epic<RootAction, RootState> = action$ =>
   action$
     .ofType(ActionType.STEAM_FRIENDS_REQUEST)
     .do(() => window.engine.trigger('ReadFriendList'))
     .ignoreElements();
 
-// export const socketFriendsEpic: Epic<RootAction, RootState> = action$ =>
-//   action$
-//     .ofType(AppActionType.WEBSOCKET_READY)
-//     .switchMap(action =>
-//       Observable
-//         .of(socketFriendsRequest())
-//         .delay(5000)
-//         .repeat(-1)
-//     );
+export const onSteamResponseEpic: Epic<RootAction, RootState> = action$ =>
+  action$
+    .ofType(ActionType.STEAM_FRIENDS_RESPONSE)
+    .map(() => socketFriendsRequest());
 
 export default combineEpics(
   onEngineReadyEpic,
-  engineRequestEpic,
-  // socketFriendsEpic
+  onSteamFriendsRequestEpic,
+  onSteamResponseEpic
 );

@@ -1,6 +1,14 @@
 import * as ActionType from './action-types';
 import { Platform } from '../../types';
 
+export interface WebSocketInit {
+  type: ActionType.WEBSOCKET_INIT;
+}
+
+export const websocketInit = (): WebSocketInit => ({
+  type: ActionType.WEBSOCKET_INIT
+});
+
 export interface WebSocketReady {
   type: ActionType.WEBSOCKET_READY;
 }

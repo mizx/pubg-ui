@@ -1,3 +1,6 @@
+export const WEBSOCKET_INIT = 'APP::WEBSOCKET_INIT';
+export type WEBSOCKET_INIT = typeof WEBSOCKET_INIT;
+
 export const WEBSOCKET_READY = 'APP::WEBSOCKET_READY';
 export type WEBSOCKET_READY = typeof WEBSOCKET_READY;
 

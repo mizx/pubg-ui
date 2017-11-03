@@ -9,6 +9,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
+    "serve": "serve -s build -p 80",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
@@ -33,6 +34,7 @@
     "redux": "^3.7.2",
     "redux-observable": "^0.16.0",
     "rxjs": "^5.4.3",
+    "serve": "^6.3.1",
     "styled-components": "^2.2.1"
   }
 }

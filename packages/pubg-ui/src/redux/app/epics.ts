@@ -24,33 +24,33 @@ export const engineReadyEpic: Epic<RootAction, RootState> = action$ =>
     .delay(1500) // TODO: Remove this delay.
     .map(() => engineReady());
 
-export const onEngineReady: Epic<RootAction, RootState> = action$ =>
+export const getVersion: Epic<RootAction, RootState> = action$ =>
   action$
     .ofType(ActionType.ENGINE_READY)
-    .mergeMap(action =>
+    .switchMap(action =>
       Observable
-        .concat(
-          // fetch non-blocking auth and version, then call webSocketInit()
-          Observable.merge(
-            Observable
-              .fromPromise(window.engine.call<AuthDataResponse>('GetClientAuthData'))
-              .mergeMap(auth => ([
-                setAppId(auth.appId),
-                setPlatform(auth.platformType),
-                setPlatformName(auth.userDisplayName),
-                setAccessToken(auth.accessToken),
-                setPlayerNetId(auth.playerNetId),
-                setUserSerial(auth.userSerial)
-              ])),
-            Observable
-              .fromPromise(window.engine.call<string>('GetGameVersion'))
-              .map(version => setVersion(version)),
-          ),
-          Observable.of(webSocketInit())
-        )
+        .fromPromise(window.engine.call<string>('GetGameVersion'))
+        .map(version => setVersion(version))
+      );
+
+export const authenticate: Epic<RootAction, RootState> = action$ =>
+  action$
+    .ofType(ActionType.ENGINE_READY)
+    .switchMap(action =>
+      Observable
+        .fromPromise(window.engine.call<AuthDataResponse>('GetClientAuthData'))
+        .mergeMap(auth => ([
+          setAppId(auth.appId),
+          setPlatform(auth.platformType),
+          setPlatformName(auth.userDisplayName),
+          setAccessToken(auth.accessToken),
+          setPlayerNetId(auth.playerNetId),
+          setUserSerial(auth.userSerial)
+        ]))
     );
 
 export default combineEpics(
   engineReadyEpic,
-  onEngineReady
+  getVersion,
+  authenticate
 );

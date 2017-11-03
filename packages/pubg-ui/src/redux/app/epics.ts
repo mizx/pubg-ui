@@ -2,7 +2,7 @@ import { combineEpics, Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 
 import { RootAction, RootState } from '..';
-import { setVersion, engineReady, webSocketReady } from './action-creators'
+import { setVersion, engineReady, webSocketInit } from './action-creators'
 import * as ActionType from './action-types';
 
 // TODO: make this actually check when engine is ready for calls
@@ -12,10 +12,10 @@ export const engineReadyEpic: Epic<RootAction, RootState> = action$ =>
     .delay(1500) // TODO: Remove this delay.
     .map(() => engineReady());
 
-export const webSocketReadyEpic: Epic<RootAction, RootState> = action$ =>
+export const webSocketInitEpic: Epic<RootAction, RootState> = action$ =>
   Observable.of(null)
     .delay(2500) // TODO: wait for auth, version, and country code
-    .map(() => webSocketReady());
+    .map(() => webSocketInit());
 
 export const versionEpic: Epic<RootAction, RootState> = action$ =>
   action$
@@ -29,6 +29,6 @@ export const versionEpic: Epic<RootAction, RootState> = action$ =>
 
 export default combineEpics(
   engineReadyEpic,
-  webSocketReadyEpic,
+  webSocketInitEpic,
   versionEpic
 );

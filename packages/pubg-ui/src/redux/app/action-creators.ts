@@ -5,7 +5,7 @@ export interface WebSocketInit {
   type: ActionType.WEBSOCKET_INIT;
 }
 
-export const websocketInit = (): WebSocketInit => ({
+export const webSocketInit = (): WebSocketInit => ({
   type: ActionType.WEBSOCKET_INIT
 });
 
@@ -65,6 +65,7 @@ export const setPlatform = (platform: Platform): SetPlatform => ({
 
 export type Actions =
   | EngineReady
+  | WebSocketInit
   | WebSocketReady
   | GetVersion
   | SetVersion

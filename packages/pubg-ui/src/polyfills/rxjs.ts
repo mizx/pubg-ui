@@ -1,7 +1,8 @@
 // rxjs observables
+import 'rxjs/add/observable/concat';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/concat';
+import 'rxjs/add/observable/merge';
 
 // rxjs operators
 import 'rxjs/add/operator/delay';

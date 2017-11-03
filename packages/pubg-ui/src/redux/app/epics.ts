@@ -24,58 +24,31 @@ export const engineReadyEpic: Epic<RootAction, RootState> = action$ =>
     .delay(1500) // TODO: Remove this delay.
     .map(() => engineReady());
 
-// export const webSocketInitEpic: Epic<RootAction, RootState> = action$ =>
-//   Observable.of(null)
-//     .delay(2500) // TODO: wait for auth, version, and country code
-//     .map(() => webSocketInit());
-
 export const onEngineReady: Epic<RootAction, RootState> = action$ =>
   action$
     .ofType(ActionType.ENGINE_READY)
     .mergeMap(action =>
       Observable
         .concat(
-          Observable
-            .fromPromise(window.engine.call<string>('GetGameVersion'))
-            .map(version => setVersion(version)),
-          Observable
-            .fromPromise(window.engine.call<AuthDataResponse>('GetClientAuthData'))
-            .mergeMap(auth => ([
-              setAppId(auth.appId),
-              setPlatform(auth.platformType),
-              setPlatformName(auth.userDisplayName),
-              setAccessToken(auth.accessToken),
-              setPlayerNetId(auth.playerNetId),
-              setUserSerial(auth.userSerial)
-            ])),
+          // fetch non-blocking auth and version, then call webSocketInit()
+          Observable.merge(
+            Observable
+              .fromPromise(window.engine.call<AuthDataResponse>('GetClientAuthData'))
+              .mergeMap(auth => ([
+                setAppId(auth.appId),
+                setPlatform(auth.platformType),
+                setPlatformName(auth.userDisplayName),
+                setAccessToken(auth.accessToken),
+                setPlayerNetId(auth.playerNetId),
+                setUserSerial(auth.userSerial)
+              ])),
+            Observable
+              .fromPromise(window.engine.call<string>('GetGameVersion'))
+              .map(version => setVersion(version)),
+          ),
           Observable.of(webSocketInit())
         )
-    )
-
-// export const authenticate: Epic<RootAction, RootState> = action$ =>
-//   action$
-//     .ofType(ActionType.ENGINE_READY)
-//     .switchMap(action =>
-//       Observable
-//         .fromPromise(window.engine.call<AuthDataResponse>('GetClientAuthData'))
-//         .mergeMap(auth => ([
-//           setAppId(auth.appId),
-//           setPlatform(auth.platformType),
-//           setPlatformName(auth.userDisplayName),
-//           setAccessToken(auth.accessToken),
-//           setPlayerNetId(auth.playerNetId),
-//           setUserSerial(auth.userSerial)
-//         ]))
-//     );
-//
-// export const versionEpic: Epic<RootAction, RootState> = action$ =>
-//   action$
-//     .ofType(ActionType.ENGINE_READY)
-//     .switchMap(action =>
-//       Observable
-//         .fromPromise(window.engine.call<string>('GetGameVersion'))
-//         .map(version => setVersion(version))
-//     );
+    );
 
 export default combineEpics(
   engineReadyEpic,

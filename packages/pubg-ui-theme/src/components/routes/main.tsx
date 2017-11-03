@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled';
 import { Link } from 'react-router-dom';
 
+import styled from 'styled';
 import Button from 'components/button';
 import Typography from 'components/typography';
 import Logo from 'components/logo';

@@ -25,12 +25,12 @@ export const engineReady = (): EngineReady => ({
   type: ActionType.ENGINE_READY
 });
 
-export interface GetVersion {
-  type: ActionType.GET_VERSION;
+export interface Authenticate {
+  type: ActionType.AUTHENTICATE;
 }
 
-export const getVersion = (): GetVersion => ({
-  type: ActionType.GET_VERSION
+export const authenticate = (): Authenticate => ({
+  type: ActionType.AUTHENTICATE
 });
 
 export interface SetVersion {
@@ -67,7 +67,6 @@ export type Actions =
   | EngineReady
   | WebSocketInit
   | WebSocketReady
-  | GetVersion
   | SetVersion
   | SetAppId
   | SetPlatform

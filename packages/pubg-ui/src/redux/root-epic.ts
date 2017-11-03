@@ -9,6 +9,5 @@ export type Epic = Epic<RootAction, RootState>;
 
 export const rootEpic = combineEpics(
   app,
-  auth,
   friend
 );

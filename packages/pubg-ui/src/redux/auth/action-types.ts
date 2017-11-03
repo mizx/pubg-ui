@@ -1,2 +1,0 @@
-export const AUTHENTICATE = 'AUTH::AUTHENTICATE';
-export type AUTHENTICATE = typeof AUTHENTICATE;

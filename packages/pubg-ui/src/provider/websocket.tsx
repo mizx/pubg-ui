@@ -31,7 +31,7 @@ export class WebsocketComponent extends React.Component<Props> {
   }
 
   componentDidMount() {
-    this.props.webSocketReady();
+    // this.props.webSocketReady();
   }
 
   render() {

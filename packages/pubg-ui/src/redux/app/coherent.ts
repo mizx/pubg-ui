@@ -11,4 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
   });
 
   window.engine.mock('GetClientAuthData', getAuthData);
+
+  const getGameVersion = () => '1.2.3';
+  window.engine.mock('GetGameVersion', getGameVersion);
 }

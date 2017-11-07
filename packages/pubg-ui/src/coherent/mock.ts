@@ -1,9 +1,6 @@
 // tslint:disable-next-line:no-console
 const log = (...message: string[]) => console.log(...message);
 
-const getGameVersion = () => '1.2.3';
-window.engine.mock('GetGameVersion', getGameVersion, false);
-
 const openWebPage = (url: string) => window.open(url, '_blank');
 
 const openPlatformUrl = (url: string) => {

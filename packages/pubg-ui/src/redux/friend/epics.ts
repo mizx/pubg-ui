@@ -16,12 +16,7 @@ import { ActionType } from './index';
 export const onEngineReadyEpic: Epic<RootAction, RootState> = action$ =>
   action$
     .ofType(AppActionType.ENGINE_READY)
-    .switchMap(action =>
-      Observable
-        .of(steamFriendsRequest())
-        // .delay(5000)
-        // .repeat(-1)
-    );
+    .switchMap(() => Observable.of(steamFriendsRequest()));
 
 export const onSteamFriendsRequestEpic: Epic<RootAction, RootState> = action$ =>
   action$

@@ -2,20 +2,18 @@ import { combineEpics, Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 
 import { RootAction, RootState } from '..';
-import { Platform } from '../../types';
-import { setVersion, engineReady, webSocketInit, setAppId, setPlatform } from './action-creators'
+import {
+  ActionType,
+  setVersion,
+  engineReady,
+  webSocketInit,
+  setAppId,
+  setPlatform,
+  Platform,
+  AuthResponse
+} from '.'
 import { setPlatformName } from '../profile';
 import { setAccessToken, setPlayerNetId, setUserSerial } from '../session';
-import * as ActionType from './action-types';
-
-export interface AuthDataResponse {
-  accessToken: string; // 468 character hex string
-  appId: string; // "578080"
-  platformType: Platform; // "Steam"
-  playerNetId: string; // 64bit SteamID
-  userDisplayName: string; // Steam name
-  userSerial: string; // 64bit SteamID
-}
 
 // TODO: make this actually check when engine is ready for calls
 export const engineReadyEpic: Epic<RootAction, RootState> = action$ =>
@@ -38,7 +36,7 @@ export const authenticate: Epic<RootAction, RootState> = action$ =>
     .ofType(ActionType.ENGINE_READY)
     .switchMap(action =>
       Observable
-        .fromPromise(window.engine.call<AuthDataResponse>('GetClientAuthData'))
+        .fromPromise(window.engine.call<AuthResponse>('GetClientAuthData'))
         .mergeMap(auth => ([
           setAppId(auth.appId),
           setPlatform(auth.platformType),

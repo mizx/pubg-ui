@@ -8,4 +8,8 @@ if (process.env.NODE_ENV) {
 
   window.engine.mock('ShowWebPageOnPlatform', openUrlCommand('Platform'));
   window.engine.mock('OpenExternalBrowser', openUrlCommand('External'));
+
+  // "Actions"
+  window.engine.mock('ShowGameOption', () => console.log('OPTIONS'));
+  window.engine.mock('Quit', () => console.log('QUIT'));
 }

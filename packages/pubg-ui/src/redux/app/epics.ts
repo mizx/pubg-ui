@@ -22,7 +22,7 @@ export const engineReadyEpic: Epic<RootAction, RootState> = action$ =>
     .delay(1500) // TODO: Remove this delay.
     .map(() => engineReady());
 
-export const getVersion: Epic<RootAction, RootState> = action$ =>
+export const getVersionEpic: Epic<RootAction, RootState> = action$ =>
   action$
     .ofType(ActionType.ENGINE_READY)
     .switchMap(action =>
@@ -31,7 +31,7 @@ export const getVersion: Epic<RootAction, RootState> = action$ =>
         .map(version => setVersion(version))
       );
 
-export const authenticate: Epic<RootAction, RootState> = action$ =>
+export const authenticateEpic: Epic<RootAction, RootState> = action$ =>
   action$
     .ofType(ActionType.ENGINE_READY)
     .switchMap(action =>
@@ -49,6 +49,6 @@ export const authenticate: Epic<RootAction, RootState> = action$ =>
 
 export default combineEpics(
   engineReadyEpic,
-  getVersion,
-  authenticate
+  getVersionEpic,
+  authenticateEpic
 );

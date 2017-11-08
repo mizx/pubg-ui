@@ -8,3 +8,7 @@ export interface AuthResponse {
   userDisplayName: string;  // Steam name
   userSerial: string;       // 64bit SteamID
 }
+
+export interface CountryCodeResponse {
+  country_code: string;
+}

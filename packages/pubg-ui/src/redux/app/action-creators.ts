@@ -1,4 +1,4 @@
-import { ActionType, Platform } from '.';
+import { ActionType, Platform, AuthResponse } from '.';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;
@@ -8,6 +8,82 @@ export const appInitialize = (): AppInitialize => ({
   type: ActionType.APP_INITIALIZE
 });
 
+export interface EngineReady {
+  type: ActionType.ENGINE_READY;
+}
+
+export const engineReady = (): EngineReady => ({
+  type: ActionType.ENGINE_READY
+});
+
+// AUTHENTICATION
+export interface AuthRequest {
+  type: ActionType.AUTH_REQUEST;
+}
+
+export const authRequest = (): AuthRequest => ({
+  type: ActionType.AUTH_REQUEST
+});
+
+export interface AuthSuccess {
+  type: ActionType.AUTH_SUCCESS;
+  payload: AuthResponse;
+}
+
+export const authSuccess = (response: AuthResponse): AuthSuccess => ({
+  type: ActionType.AUTH_SUCCESS,
+  payload: response
+});
+
+export interface AuthFailure {
+  type: ActionType.AUTH_FAILURE;
+  payload: { error: string };
+}
+
+export const authFailure = (error: Error): AuthFailure => ({
+  type: ActionType.AUTH_FAILURE,
+  payload: { error: error.message }
+});
+
+// COUNTRY CODE
+export interface CountryCodeRequest {
+  type: ActionType.COUNTRY_CODE_REQUEST;
+}
+
+export const countryCodeRequest = (): CountryCodeRequest => ({
+  type: ActionType.COUNTRY_CODE_REQUEST
+});
+
+export interface CountryCodeSuccess {
+  type: ActionType.COUNTRY_CODE_SUCCESS;
+  payload: { countryCode: string };
+}
+
+export const countryCodeSuccess = (countryCode: string): CountryCodeSuccess => ({
+  type: ActionType.COUNTRY_CODE_SUCCESS,
+  payload: { countryCode }
+});
+
+// VERSIONING
+export interface VersionRequest {
+  type: ActionType.VERSION_REQUEST;
+}
+
+export const versionRequest = (): VersionRequest => ({
+  type: ActionType.VERSION_REQUEST
+});
+
+export interface VersionSuccess {
+  type: ActionType.VERSION_SUCCESS;
+  payload: { version: string };
+}
+
+export const versionSuccess = (version: string): VersionSuccess => ({
+  type: ActionType.VERSION_SUCCESS,
+  payload: { version }
+});
+
+// WEBSOCKETS
 export interface WebSocketInit {
   type: ActionType.WEBSOCKET_INIT;
 }
@@ -24,58 +100,16 @@ export const webSocketReady = (): WebSocketReady => ({
   type: ActionType.WEBSOCKET_READY
 });
 
-export interface EngineReady {
-  type: ActionType.ENGINE_READY;
-}
-
-export const engineReady = (): EngineReady => ({
-  type: ActionType.ENGINE_READY
-});
-
-export interface Authenticate {
-  type: ActionType.AUTHENTICATE;
-}
-
-export const authenticate = (): Authenticate => ({
-  type: ActionType.AUTHENTICATE
-});
-
-export interface SetVersion {
-  type: ActionType.SET_VERSION;
-  payload: { version: string };
-}
-
-export const setVersion = (version: string): SetVersion => ({
-  type: ActionType.SET_VERSION,
-  payload: { version }
-});
-
-export interface SetAppId {
-  type: ActionType.SET_APP_ID;
-  payload: { appId: string };
-}
-
-export const setAppId = (appId: string): SetAppId => ({
-  type: ActionType.SET_APP_ID,
-  payload: { appId }
-});
-
-export interface SetPlatform {
-  type: ActionType.SET_PLATFORM;
-  payload: { platform: Platform };
-}
-
-export const setPlatform = (platform: Platform): SetPlatform => ({
-  type: ActionType.SET_PLATFORM,
-  payload: { platform }
-});
-
 export type Actions =
   | AppInitialize
   | EngineReady
+  | AuthRequest
+  | AuthSuccess
+  | AuthFailure
+  | CountryCodeRequest
+  | CountryCodeSuccess
+  | VersionRequest
+  | VersionSuccess
   | WebSocketInit
   | WebSocketReady
-  | SetVersion
-  | SetAppId
-  | SetPlatform
 ;

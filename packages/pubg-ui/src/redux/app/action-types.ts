@@ -1,23 +1,38 @@
 export const APP_INITIALIZE = 'APP::INITIALIZE';
 export type APP_INITIALIZE = typeof APP_INITIALIZE;
 
+// When engine is ready to take calls
+export const ENGINE_READY = 'APP::ENGINE_READY';
+export type ENGINE_READY = typeof ENGINE_READY;
+
+// AUTHENTICATION
+export const AUTH_REQUEST = 'APP::AUTH_REQUEST';
+export type AUTH_REQUEST = typeof AUTH_REQUEST;
+
+export const AUTH_SUCCESS = 'APP::AUTH_SUCCESS';
+export type AUTH_SUCCESS = typeof AUTH_SUCCESS;
+
+// TODO: This is not currently in use.
+export const AUTH_FAILURE = 'APP::AUTH_FAILURE';
+export type AUTH_FAILURE = typeof AUTH_FAILURE;
+
+// COUNTRY CODE
+export const COUNTRY_CODE_REQUEST = 'SESSION::COUNTRY_CODE_REQUEST';
+export type COUNTRY_CODE_REQUEST = typeof COUNTRY_CODE_REQUEST;
+
+export const COUNTRY_CODE_SUCCESS = 'SESSION::COUNTRY_CODE_SUCCESS';
+export type COUNTRY_CODE_SUCCESS = typeof COUNTRY_CODE_SUCCESS;
+
+// VERSIONING
+export const VERSION_REQUEST = 'APP::VERSION_REQUEST';
+export type VERSION_REQUEST = typeof VERSION_REQUEST;
+
+export const VERSION_SUCCESS = 'APP::VERSION_SUCCESS';
+export type VERSION_SUCCESS = typeof VERSION_SUCCESS;
+
+// WEBSOCKETS
 export const WEBSOCKET_INIT = 'APP::WEBSOCKET_INIT';
 export type WEBSOCKET_INIT = typeof WEBSOCKET_INIT;
 
 export const WEBSOCKET_READY = 'APP::WEBSOCKET_READY';
 export type WEBSOCKET_READY = typeof WEBSOCKET_READY;
-
-export const ENGINE_READY = 'APP::ENGINE_READY';
-export type ENGINE_READY = typeof ENGINE_READY;
-
-export const AUTHENTICATE = 'APP::AUTHENTICATE';
-export type AUTHENTICATE = typeof AUTHENTICATE;
-
-export const SET_VERSION = 'APP::SET_VERSION';
-export type SET_VERSION = typeof SET_VERSION;
-
-export const SET_APP_ID = 'APP::SET_APP_ID';
-export type SET_APP_ID = typeof SET_APP_ID;
-
-export const SET_PLATFORM = 'APP::SET_PLATFORM';
-export type SET_PLATFORM = typeof SET_PLATFORM;

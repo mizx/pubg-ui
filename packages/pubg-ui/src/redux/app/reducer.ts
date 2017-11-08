@@ -1,23 +1,57 @@
 import { ActionType, Actions, Platform } from '.';
 
 export interface State {
-  version: string | null;
-  appId: string;
-  platform: Platform | null;
+  version?: string;
+  appId?: string;
+  platform?: Platform;
+  session: {
+    token?: string;
+    playerNetId?: string;
+    userSerial?: string;
+    countryCode?: string;
+  }
 }
 
 export const initialState: State = {
-  version: null,
   appId: '578080',
-  platform: 'Steam'
+  session: { }
 };
 
 export default (state: State = initialState, action: Actions): State => {
   switch (action.type) {
-    case ActionType.SET_APP_ID:
-    case ActionType.SET_PLATFORM:
-    case ActionType.SET_VERSION: {
+    case ActionType.VERSION_SUCCESS: {
       return { ...state, ...action.payload }
+    }
+    case ActionType.COUNTRY_CODE_SUCCESS: {
+      return {
+        ...state,
+        session: {
+          ...state.session,
+          ...action.payload
+        }
+      }
+    }
+    case ActionType.AUTH_SUCCESS: {
+      const {
+        accessToken,
+        appId,
+        platformType,
+        playerNetId,
+        userDisplayName,
+        userSerial
+      } = action.payload;
+
+      return {
+        ...state,
+        appId,
+        platform: platformType,
+        session: {
+          ...state.session,
+          token: accessToken,
+          playerNetId,
+          userSerial
+        }
+      }
     }
     default: return state;
   }

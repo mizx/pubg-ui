@@ -2,14 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { Dispatch } from '../redux';
+import { Dispatch, RootState } from '../redux';
 import { webSocketReady } from '../redux/app';
 
 export interface DispatchProps {
   webSocketReady: typeof webSocketReady;
 }
 
-export type Props = DispatchProps;
+export interface StateProps {
+
+}
+
+export type Props = DispatchProps & StateProps;
 
 export interface State {
 
@@ -27,11 +31,11 @@ export class WebsocketComponent extends React.Component<Props> {
       console.log(event);
     }
 
-    setInterval(() => this.connection.send(String(Math.random())), 2000);
+    // setInterval(() => this.connection.send(String(Math.random())), 2000);
   }
 
   componentDidMount() {
-    // this.props.webSocketReady();
+
   }
 
   render() {
@@ -39,10 +43,14 @@ export class WebsocketComponent extends React.Component<Props> {
   }
 }
 
+const mapStateToProps = (state: RootState): StateProps => ({
+
+})
+
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     { webSocketReady },
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(WebsocketComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(WebsocketComponent);

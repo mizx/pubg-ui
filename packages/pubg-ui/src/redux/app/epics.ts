@@ -13,7 +13,7 @@ import {
   AuthResponse
 } from '.'
 import { setPlatformName } from '../profile';
-import { setAccessToken, setPlayerNetId, setUserSerial } from '../session';
+import { setAccessToken, setPlayerNetId, setUserSerial, ActionType as SessionActionType } from '../session';
 
 // TODO: make this actually check when engine is ready for calls
 export const engineReadyEpic: Epic<RootAction, RootState> = action$ =>
@@ -47,8 +47,19 @@ export const authenticateEpic: Epic<RootAction, RootState> = action$ =>
         ]))
     );
 
+export const websocketForkEpic: Epic<RootAction, RootState> = action$ =>
+  Observable.forkJoin(
+    action$.ofType(ActionType.SET_PLATFORM).take(1),
+    action$.ofType(ActionType.SET_VERSION).take(1),
+    action$.ofType(SessionActionType.SET_ACCESS_TOKEN).take(1),
+    action$.ofType(SessionActionType.SET_PLAYER_NET_ID).take(1),
+    action$.ofType(SessionActionType.COUNTRY_CODE_SUCCESS).take(1)
+  )
+  .map(() => webSocketInit())
+
 export default combineEpics(
   engineReadyEpic,
   getVersionEpic,
-  authenticateEpic
+  authenticateEpic,
+  websocketForkEpic
 );

@@ -1,5 +1,6 @@
 import { Dispatch as ReduxDispatch } from 'redux';
+import { Epic as ReduxEpic } from 'redux-observable';
 
-import { RootState, RootAction } from '../redux';
+import { RootAction, RootState } from '../redux';
 
 export type Dispatch = ReduxDispatch<RootState>;

@@ -3,14 +3,19 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { Dispatch } from '../redux';
+import { appInitialize } from '../redux/app';
 
 export interface DispatchProps {
+  appInitialize: typeof appInitialize;
 }
 
 export type Props = DispatchProps;
 
-// TODO: This component is probably useless now. 
 export class WrapperComponent extends React.Component<Props> {
+
+  componentDidMount() {
+    this.props.appInitialize();
+  }
 
   render() {
     return React.Children.only(this.props.children);
@@ -21,6 +26,7 @@ export class WrapperComponent extends React.Component<Props> {
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
+      appInitialize
     },
     dispatch
   );

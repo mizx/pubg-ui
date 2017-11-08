@@ -1,3 +1,6 @@
+export const APP_INITIALIZE = 'APP::INITIALIZE';
+export type APP_INITIALIZE = typeof APP_INITIALIZE;
+
 export const WEBSOCKET_INIT = 'APP::WEBSOCKET_INIT';
 export type WEBSOCKET_INIT = typeof WEBSOCKET_INIT;
 

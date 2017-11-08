@@ -1,7 +1,4 @@
-import * as ActionType from './action-types';
-import * as ActionCreators from './action-creators';
-import { Actions } from './action-creators';
-import { Platform } from '../../types';
+import { ActionType, Actions, Platform } from '.';
 
 export interface State {
   version: string | null;

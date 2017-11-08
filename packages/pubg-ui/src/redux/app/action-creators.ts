@@ -1,5 +1,12 @@
-import * as ActionType from './action-types';
-import { Platform } from '../../types';
+import { ActionType, Platform } from '.';
+
+export interface AppInitialize {
+  type: ActionType.APP_INITIALIZE;
+}
+
+export const appInitialize = (): AppInitialize => ({
+  type: ActionType.APP_INITIALIZE
+});
 
 export interface WebSocketInit {
   type: ActionType.WEBSOCKET_INIT;
@@ -64,6 +71,7 @@ export const setPlatform = (platform: Platform): SetPlatform => ({
 });
 
 export type Actions =
+  | AppInitialize
   | EngineReady
   | WebSocketInit
   | WebSocketReady

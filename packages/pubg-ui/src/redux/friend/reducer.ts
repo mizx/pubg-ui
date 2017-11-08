@@ -1,10 +1,11 @@
-import { ActionType, Actions } from './index';
 import {
+  ActionType,
+  Actions,
   EngineFriendResponse,
   SocketFriendResponse,
   InviteAllow,
   FriendState
-} from '../../types';
+} from '.';
 
 export interface Friend {
   platformId: string;

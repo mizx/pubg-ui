@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV) {
+if (process.env.NODE_ENV !== 'production') {
   const openWebPage = (url: string) => window.open(url, '_blank');
   const openUrlCommand = (type: string) => (url: string) => {
     // tslint:disable-next-line:no-console

@@ -9,7 +9,7 @@ const onReadFriendsListResult = (unknown: number, error: string | null, friends:
   }
 }
 
-window.engine.on('ReadFriendListResult', onReadFriendsListResult);
+// window.engine.on('ReadFriendListResult', onReadFriendsListResult);
 
 // REMOVED IN PRODUCTION BUILDS
 if (process.env.NODE_ENV !== 'production') {
@@ -53,5 +53,5 @@ if (process.env.NODE_ENV !== 'production') {
   ];
 
   const onReadFriendsList = () => window.engine.trigger('ReadFriendListResult', 1, null, friends);
-  window.engine.mock('ReadFriendList', onReadFriendsList, false);
+  // window.engine.mock('ReadFriendList', onReadFriendsList, false);
 }

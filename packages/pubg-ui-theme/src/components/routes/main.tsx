@@ -15,10 +15,43 @@ const ButtonGroup = styled.div`
   margin-top: ${props => props.theme.unit(10)};
 `;
 
+interface State {
+  AddOrRemoveOnHandler: string;
+  storage: string;
+}
+
+declare var engine: any;
+
+class TestComponent extends React.Component<{}, State> {
+
+  constructor() {
+    super();
+  }
+
+  componentDidMount() {
+
+    setInterval(() => this.test(), 500);
+  }
+
+  test() {
+    this.setState({
+      AddOrRemoveOnHandler: typeof engine.AddOrRemoveOnHandler,
+      storage: JSON.stringify(Object.keys(window.localStorage))
+    });
+  }
+
+  render() {
+    return JSON.stringify(this.state);
+  }
+}
+
 export const MainComponent: React.SFC = props => (
   <Main>
     <Logo />
     <ButtonGroup>
+      <div>
+        <TestComponent />
+      </div>
       <Button type="menu-lg" to="/play">
         <Typography type="menu-main">Play</Typography>
       </Button>

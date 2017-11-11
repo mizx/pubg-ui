@@ -1,3 +1,5 @@
+// import './coherent';
+
 export * from './button';
 export * from './friends';
 export { default as PubgProvider } from './provider';

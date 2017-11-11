@@ -10,8 +10,8 @@ if (process.env.NODE_ENV !== 'production') {
     userSerial: '76561197988861...'
   });
 
-  window.engine.mock('GetClientAuthData', getAuthData);
+  // window.engine.mock('GetClientAuthData', getAuthData);
 
   const getGameVersion = () => '1.2.3';
-  window.engine.mock('GetGameVersion', getGameVersion);
+  // window.engine.mock('GetGameVersion', getGameVersion);
 }

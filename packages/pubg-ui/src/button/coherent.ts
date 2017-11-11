@@ -6,10 +6,10 @@ if (process.env.NODE_ENV !== 'production') {
     openWebPage(url);
   }
 
-  window.engine.mock('ShowWebPageOnPlatform', openUrlCommand('Platform'));
-  window.engine.mock('OpenExternalBrowser', openUrlCommand('External'));
+  // window.engine.mock('ShowWebPageOnPlatform', openUrlCommand('Platform'));
+  // window.engine.mock('OpenExternalBrowser', openUrlCommand('External'));
 
   // "Actions"
-  window.engine.mock('ShowGameOption', () => console.log('OPTIONS'));
-  window.engine.mock('Quit', () => console.log('QUIT'));
+  // window.engine.mock('ShowGameOption', () => console.log('OPTIONS'));
+  // window.engine.mock('Quit', () => console.log('QUIT'));
 }

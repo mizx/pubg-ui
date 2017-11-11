@@ -5,4 +5,6 @@ import App from './App';
 
 import './index.css';
 
-render(<App />, document.getElementById('root') as HTMLElement);
+var root = document.getElementById('root');
+
+render(<App />, root);

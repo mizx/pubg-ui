@@ -6,20 +6,9 @@ import {
   EngineFriendResponse,
   SocketFriendResponse,
   InviteAllow,
-  FriendState
+  FriendState,
+  FriendMap
 } from './types';
-
-export interface Friend {
-  platformId: string;
-  platformName: string;
-  accountId?: string;        // delayed
-  nickname?: string;         // delayed
-  avatarUrl?: string;        // delayed
-  inviteAllow?: InviteAllow; // delayed
-  friendState?: FriendState;   // delayed
-}
-
-export type FriendMap = { [platformId: string]: Friend };
 
 export interface State {
   loading: boolean;

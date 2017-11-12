@@ -37,3 +37,16 @@ export interface EngineFriendResponse {
     status: SteamOnlineState;
   }
 }
+
+// a friend instance within the friend state reducer
+export interface Friend {
+  platformId: string;
+  platformName: string;
+  accountId?: string;        // delayed
+  nickname?: string;         // delayed
+  avatarUrl?: string;        // delayed
+  inviteAllow?: InviteAllow; // delayed
+  friendState?: FriendState;   // delayed
+}
+
+export type FriendMap = { [platformId: string]: Friend };

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { RootState } from '../redux';
 
 export interface VersionProps {
-  version: string | null;
+  version?: string;
 };
 
 const mapStateToProps = (state: RootState): VersionProps => ({

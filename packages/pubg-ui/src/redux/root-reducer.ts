@@ -1,9 +1,9 @@
 import { combineReducers, AnyAction } from 'redux';
 
-import { reducer as app, State as AppState } from './app'
-import { reducer as friend, State as FriendState } from './friend';
-import { reducer as option, State as OptionState } from './option';
-import { reducer as profile, State as ProfileState } from './profile';
+import { reducer as app, AppState } from './app'
+import { reducer as friend, FriendState } from './friend';
+import { reducer as option, OptionState } from './option';
+import { reducer as profile, ProfileState } from './profile';
 
 export interface RootState {
   app: AppState;

@@ -1,3 +1,5 @@
+import { Reducer } from 'redux';
+
 import { ActionType, Actions, Platform } from '.';
 
 export interface State {
@@ -17,7 +19,7 @@ export const initialState: State = {
   session: { }
 };
 
-export default (state: State = initialState, action: Actions): State => {
+export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.VERSION_SUCCESS: {
       return { ...state, ...action.payload }
@@ -56,3 +58,5 @@ export default (state: State = initialState, action: Actions): State => {
     default: return state;
   }
 }
+
+export default reducer;

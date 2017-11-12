@@ -1,3 +1,5 @@
+import { Reducer } from 'redux';
+
 import {
   ActionType,
   Actions,
@@ -67,7 +69,7 @@ const friendsSocketMap = (state: FriendMap, friends: SocketFriendResponse[]) => 
   return newState;
 };
 
-export default (state: State = initialState, action: Actions): State => {
+export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.STEAM_FRIENDS_REQUEST: {
       return {
@@ -108,3 +110,5 @@ export default (state: State = initialState, action: Actions): State => {
     default: return state;
   }
 };
+
+export default reducer;

@@ -1,3 +1,5 @@
+import { Reducer } from 'redux';
+
 import * as ActionType from './action-types';
 import * as ActionCreators from './action-creators';
 import { Actions } from './action-creators';
@@ -15,7 +17,7 @@ export const initialState: State = {
   perspective: 'third-person'
 };
 
-export default (state: State = initialState, action: Actions): State => {
+export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.SET_REGION: {
       const { region } = action.payload;
@@ -31,4 +33,6 @@ export default (state: State = initialState, action: Actions): State => {
     }
     default: return state;
   }
-}
+};
+
+export default reducer;

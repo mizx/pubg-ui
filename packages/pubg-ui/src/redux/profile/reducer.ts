@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 
-import { ActionType } from '.';
+import * as ActionType from './action-types';
 import * as ActionCreators from './action-creators';
 import { Actions } from './action-creators';
 

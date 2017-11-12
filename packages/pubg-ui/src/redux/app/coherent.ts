@@ -1,4 +1,4 @@
-import { AuthResponse } from '.';
+import { AuthResponse } from './types';
 
 if (process.env.NODE_ENV !== 'production') {
   const getAuthData = (): AuthResponse => ({

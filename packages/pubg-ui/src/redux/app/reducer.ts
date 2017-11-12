@@ -1,6 +1,8 @@
 import { Reducer } from 'redux';
 
-import { ActionType, Actions, Platform } from '.';
+import * as ActionType from './action-types';
+import { Actions } from './action-creators';
+import { Platform } from './types';
 
 export interface State {
   version?: string;

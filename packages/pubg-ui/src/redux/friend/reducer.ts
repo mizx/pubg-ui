@@ -1,13 +1,13 @@
 import { Reducer } from 'redux';
 
+import * as ActionType from './action-types';
+import { Actions } from './action-creators';
 import {
-  ActionType,
-  Actions,
   EngineFriendResponse,
   SocketFriendResponse,
   InviteAllow,
   FriendState
-} from '.';
+} from './types';
 
 export interface Friend {
   platformId: string;

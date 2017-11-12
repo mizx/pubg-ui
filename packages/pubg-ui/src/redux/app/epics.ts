@@ -2,7 +2,7 @@ import { combineEpics, Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 
 import { RootAction, RootState } from '..';
-import { ActionType } from '.';
+import * as ActionType from './action-types';
 import { AuthResponse, CountryCodeResponse, Platform } from './types';
 import {
   engineReady,

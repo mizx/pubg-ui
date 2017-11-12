@@ -19,17 +19,10 @@ export const initialState: State = {
 
 export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
   switch (action.type) {
-    case ActionType.SET_REGION: {
-      const { region } = action.payload;
-      return { ...state, region };
-    }
+    case ActionType.SET_PERSPECTIVE:
+    case ActionType.SET_REGION:
     case ActionType.SET_SQUAD_SIZE: {
-      const { squadSize } = action.payload;
-      return { ...state, squadSize };
-    }
-    case ActionType.SET_PERSPECTIVE: {
-      const { perspective } = action.payload;
-      return { ...state, perspective };
+      return { ...state, ...action.payload };
     }
     default: return state;
   }

@@ -1,5 +1,6 @@
 import store from '../store';
-import { EngineFriendResponse, steamFriendsResponse, steamFriendsFailure } from '.';
+import { steamFriendsResponse, steamFriendsFailure } from './action-creators';
+import { EngineFriendResponse } from './types';
 
 const onReadFriendsListResult = (unknown: number, error: string | null, friends: EngineFriendResponse[]) => {
   if (error) {

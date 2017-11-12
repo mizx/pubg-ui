@@ -1,5 +1,5 @@
 import * as ActionType from './action-types';
-import { SocketFriendResponse, EngineFriendResponse } from '.';
+import { SocketFriendResponse, EngineFriendResponse } from './types';
 
 export interface SteamFriendsRequest {
   type: ActionType.STEAM_FRIENDS_REQUEST;

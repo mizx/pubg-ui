@@ -1,5 +1,4 @@
 import * as ActionType from './action-types';
-import { State as OptionState } from './reducer';
 import { Region, SquadSize, Perspective } from './types';
 
 export interface SetRegion {

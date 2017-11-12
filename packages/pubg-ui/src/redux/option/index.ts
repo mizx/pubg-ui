@@ -1,4 +1,6 @@
+import * as ActionType from './action-types';
+
+export { ActionType };
 export * from './action-creators';
-// import * as ActionTypes from './action-types';
-export { Actions } from './action-creators';
-export { State, default as reducer } from './reducer';
+export * from './action-types';
+export { default as reducer, State as OptionState } from './reducer';

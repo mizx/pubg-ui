@@ -1,4 +1,5 @@
-import { ActionType, Platform, AuthResponse } from '.';
+import * as ActionType from './action-types';
+import { Platform, AuthResponse } from './types';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;

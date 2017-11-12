@@ -41,7 +41,6 @@ export const reducer: Reducer<State> = (state = initialState, action: Actions) =
         appId,
         platformType,
         playerNetId,
-        userDisplayName,
         userSerial
       } = action.payload;
 

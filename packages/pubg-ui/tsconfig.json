@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "removeComments": true,
     "declaration": true,
+    "noUnusedLocals": false,
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "strict": true,

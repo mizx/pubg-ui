@@ -11,7 +11,7 @@ export interface WebSocketArgs {
     playerNetId?: string;
 }
 
-const getWebSocketArgs: Selector<WebSocketArgs> = state => {
+export const getWebSocketArgs: Selector<WebSocketArgs> = state => {
     const {
         platform: provider = 'steam',
         session,

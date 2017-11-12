@@ -1,7 +1,6 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { RootState, Dispatch } from '../redux';
+import { RootState } from '../redux';
 import { FriendMap } from '../redux/friend'
 import { getFriends } from '../redux/selectors';
 

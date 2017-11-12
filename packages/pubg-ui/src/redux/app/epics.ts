@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { RootAction, RootState } from '..';
 import * as ActionType from './action-types';
-import { AuthResponse, CountryCodeResponse, Platform } from './types';
+import { AuthResponse, CountryCodeResponse } from './types';
 import {
   engineReady,
   authRequest,

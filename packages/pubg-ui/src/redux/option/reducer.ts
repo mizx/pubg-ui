@@ -1,7 +1,6 @@
 import { Reducer } from 'redux';
 
 import * as ActionType from './action-types';
-import * as ActionCreators from './action-creators';
 import { Actions } from './action-creators';
 import { Region, SquadSize, Perspective } from './types';
 

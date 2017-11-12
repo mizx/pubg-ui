@@ -5,11 +5,7 @@ import { RootAction, RootState } from '..';
 import { ActionType as AppActionType } from '../app';
 import {
   steamFriendsRequest,
-  steamFriendsResponse,
-  steamFriendsFailure,
-  socketFriendsRequest,
-  socketFriendsSuccess,
-  socketFriendsFailure
+  socketFriendsRequest
 } from './action-creators';
 import { ActionType } from './index';
 

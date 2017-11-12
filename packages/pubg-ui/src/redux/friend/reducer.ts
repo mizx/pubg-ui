@@ -5,8 +5,6 @@ import { Actions } from './action-creators';
 import {
   EngineFriendResponse,
   SocketFriendResponse,
-  InviteAllow,
-  FriendState,
   FriendMap
 } from './types';
 

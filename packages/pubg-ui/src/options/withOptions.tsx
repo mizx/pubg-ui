@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { RootState, Dispatch } from '../redux';
-import { State as OptionState, setRegion, setSquadSize, setPerspective } from '../redux/option';
+import { OptionState, setRegion, setSquadSize, setPerspective } from '../redux/option';
 
 export interface StateProps {
   option: OptionState;

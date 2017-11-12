@@ -11,16 +11,12 @@ import {
 export interface State {
   loading: boolean;
   friends: FriendMap;
-  friendsOnline: number;
-  friendsInGame: number;
   error: string | null;
 }
 
 export const initialState: State = {
   loading: true,
   friends: {},
-  friendsOnline: 0,
-  friendsInGame: 0,
   error: null
 };
 

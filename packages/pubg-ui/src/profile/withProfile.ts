@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { RootState } from '../redux';
+import { getPlayerPlatformName } from '../redux/selectors';
 
 export interface StateProps {
   platformName?: string;
@@ -9,7 +10,7 @@ export interface StateProps {
 export type InjectedProps = StateProps;
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  platformName: state.profile.platformUsername
+  platformName: getPlayerPlatformName(state)
 });
 
 export const withProfile = <P extends {}>(Component: React.ComponentType<P & InjectedProps>) => (

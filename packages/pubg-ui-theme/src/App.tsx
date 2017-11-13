@@ -6,6 +6,7 @@ import { PubgProvider } from 'pubg-ui';
 import './App.css';
 
 import Background from 'components/background';
+import Overlay from 'components/overlay';
 import Party from 'components/party';
 import Routes from 'components/routes';
 import Navigation from 'components/navigation';
@@ -22,6 +23,7 @@ export const App: React.SFC = props => (
       <HashRouter>
         <Wrapper>
           <Background />
+          <Overlay />
           <Party />
           <Navigation />
           <Routes />

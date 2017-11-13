@@ -26,12 +26,12 @@ export const unit = (value: number, vUnit: ViewportUnit = 'vmin') => `${value}${
 
 export const theme: Theme = {
   color: {
-    primary: '#F6BC00',
+    primary: '#f19f00',
     secondary: '#FFF'
   },
   button: {
     color: 'rgba(255, 255, 255, .5)',
-    hoverColor: '#F6BC00'
+    hoverColor: '#f19f00'
   },
   font: {
     display: `'Headliner45', sans-serif`,

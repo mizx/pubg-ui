@@ -6,6 +6,7 @@ const Overlay = styled.div`
     position: fixed;
     width: 100vw;
     height: 100vh;
+    z-index: 200;
 `;
 
 const OverlayLayer = styled.div`

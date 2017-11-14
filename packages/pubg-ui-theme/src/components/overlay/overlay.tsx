@@ -7,6 +7,7 @@ const Overlay = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 200;
+    pointer-events: none;
 `;
 
 const OverlayLayer = styled.div`

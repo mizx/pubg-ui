@@ -1,5 +1,6 @@
 import { combineEpics, Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
+import { push } from 'react-router-redux';
 
 import { RootAction, RootState } from '..';
 import * as ActionType from './action-types';
@@ -13,6 +14,7 @@ import {
   versionRequest,
   versionSuccess,
   webSocketInit,
+  webSocketReady
 } from './action-creators';
 
 const ajaxOptions = {
@@ -76,6 +78,16 @@ export const websocketForkEpic: Epic<RootAction, RootState> = action$ =>
   )
   .map(() => webSocketInit())
 
+export const onWebSocketInit: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.WEBSOCKET_INIT)
+    .delay(1000)
+    .map(() => webSocketReady());
+
+// TODO: TEMPORARY! Remove when websocket gets implemented.
+export const onWebSocketReady: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.WEBSOCKET_READY)
+    .map(() => push('/auth'))
+  
 export default combineEpics(
   appInitializeEpic,
   engineReadyEpic,
@@ -83,5 +95,7 @@ export default combineEpics(
   authRequestEpic,
   countryCodeEpic,
   versionRequestEpic,
-  websocketForkEpic
+  websocketForkEpic,
+  onWebSocketInit,
+  onWebSocketReady
 );

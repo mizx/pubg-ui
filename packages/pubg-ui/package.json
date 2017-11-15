@@ -15,6 +15,7 @@
   "dependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-popper": "^0.7.4",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-observable": "^0.16.0",

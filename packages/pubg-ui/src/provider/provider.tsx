@@ -2,45 +2,23 @@ import '../polyfills';
 
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
-import PropTypes from 'prop-types';
+import { ConnectedRouter } from 'react-router-redux';
 
+import { history } from '../history';
 import Wrapper from './wrapper';
 import Websocket from './websocket';
 import store from '../redux/store';
 
-export interface ProviderContext {
-  pubg: string;
-}
+export interface Props { }
 
-class Provider extends React.Component {
-
-  static childContextTypes = {
-    pubg: PropTypes.string
-  };
-
-  getChildContext(): ProviderContext {
-    return {
-      pubg: 'pubg'
-    };
-  }
-
-  render() {
-    const { children } = this.props;
-
-    if (children) {
-      return (
-        <ReduxProvider store={store}>
-          <Wrapper>
-            <Websocket>
-              {React.Children.only(children)}
-            </Websocket>
-          </Wrapper>
-        </ReduxProvider>
-      );
-    }
-
-    return null;
-  }
-}
+export const Provider: React.SFC<Props> = props => (
+  <ReduxProvider store={store}>
+    <ConnectedRouter history={history}>
+      <Wrapper>
+        {React.Children.only(props.children)}
+      </Wrapper>
+    </ConnectedRouter>
+  </ReduxProvider>
+)
 
 export default Provider;

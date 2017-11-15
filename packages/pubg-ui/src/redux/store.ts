@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose, Store } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
+import { routerMiddleware } from 'react-router-redux';
 
+import { history } from '../history';
 import { RootState, rootReducer, rootEpic } from './index';
 import { loadState, saveState } from './localStorage';
 
@@ -13,7 +15,8 @@ const composeEnhancers = (
 const configureStore = (initialState?: RootState) => {
   // configure middlewares
   const middlewares = [
-    createEpicMiddleware(rootEpic)
+    createEpicMiddleware(rootEpic),
+    routerMiddleware(history)
   ];
 
   // compose enhancers

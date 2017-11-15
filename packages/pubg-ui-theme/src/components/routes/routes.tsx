@@ -1,9 +1,8 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router';
 import styled from 'styled';
 
 import Root from './root';
-import Empty from './empty';
 import Auth from './auth';
 import Main from './main';
 import Play from './play';
@@ -17,8 +16,7 @@ const Wrapper = styled.div`
 const Routes: React.SFC = props => (
   <Wrapper>
     <Switch>
-      <Route path="/" exact={true} component={Empty} />
-      <Route path="/auth" exact={true} component={Auth} />
+      <Route path="/auth" component={Auth} />
       <Route path="/main" component={Main} />
       <Route path="/play" component={Play} />
       <Route path="/friends" component={Friends} />

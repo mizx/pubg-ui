@@ -83,10 +83,16 @@ export const onWebSocketInit: Epic<RootAction, RootState> = action$ =>
     .delay(1000)
     .map(() => webSocketReady());
 
-// TODO: TEMPORARY! Remove when websocket gets implemented.
-export const onWebSocketReady: Epic<RootAction, RootState> = action$ =>
+// TODO: temp! Remove when websocket and auth gets implemented.
+export const tempPushAuthPageEpic: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.APP_INITIALIZE)
+    .delay(1) // FIXME: action not firing but route is changing, delay registers action
+    .map(() => push('/auth'));
+
+// TODO: temp! Remove when websocket gets implemented.
+export const tempOnWebSocketReadyEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.WEBSOCKET_READY)
-    .map(() => push('/auth'))
+    .map(() => push('/main'));
   
 export default combineEpics(
   appInitializeEpic,
@@ -97,5 +103,6 @@ export default combineEpics(
   versionRequestEpic,
   websocketForkEpic,
   onWebSocketInit,
-  onWebSocketReady
+  tempPushAuthPageEpic,
+  tempOnWebSocketReadyEpic
 );

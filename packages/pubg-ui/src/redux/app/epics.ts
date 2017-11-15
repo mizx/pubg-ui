@@ -78,21 +78,24 @@ export const websocketForkEpic: Epic<RootAction, RootState> = action$ =>
   )
   .map(() => webSocketInit())
 
-export const onWebSocketInit: Epic<RootAction, RootState> = action$ =>
+export const onWebSocketInitEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.WEBSOCKET_INIT)
     .delay(1000)
     .map(() => webSocketReady());
 
-// TODO: temp! Remove when websocket and auth gets implemented.
-export const tempPushAuthPageEpic: Epic<RootAction, RootState> = action$ =>
-  action$.ofType(ActionType.APP_INITIALIZE)
-    .delay(1) // FIXME: action not firing but route is changing, delay registers action
-    .map(() => push('/auth'));
+export const onWebSocketClosedEpic: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.WEBSOCKET_CLOSED)
+    .map(() => push('/closed'));
 
-// TODO: temp! Remove when websocket gets implemented.
 export const tempOnWebSocketReadyEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.WEBSOCKET_READY)
     .map(() => push('/main'));
+
+// FIXME: push action is not firing but route is changing
+export const tempPushAuthPageEpic: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.APP_INITIALIZE)
+    .delay(1)
+    .map(() => push('/auth'));
   
 export default combineEpics(
   appInitializeEpic,
@@ -102,7 +105,8 @@ export default combineEpics(
   countryCodeEpic,
   versionRequestEpic,
   websocketForkEpic,
-  onWebSocketInit,
+  onWebSocketInitEpic,
+  onWebSocketClosedEpic,
   tempPushAuthPageEpic,
   tempOnWebSocketReadyEpic
 );

@@ -40,14 +40,6 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router-dom@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.2.1.tgz#c5583550d7246dea60612cc55a523cf980d56df1"
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-    "@types/react-router" "*"
-
 "@types/react-router-redux@^5.0.10":
   version "5.0.10"
   resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-5.0.10.tgz#42f612fe6c608e2803b476c035ef81606bdd3bbf"

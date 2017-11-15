@@ -11,18 +11,50 @@ const AuthPage = styled.div`
   justify-content: center;
 `;
 
-const rotate360 = keyframes`
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(90deg); }
-  100% { transform: rotate(90deg); }
+const xAxis = keyframes`
+  0%    { transform: translateX(-200%); }
+  20%   { transform: translateX(0%); }
+  25%   { transform: translateX(-50%); }
+  30%   { transform: translateX(0%); }
+  50%   { transform: translateX(200%); }
+  70%   { transform: translateX(0%); }
+  75%   { transform: translateX(50%); }
+  80%   { transform: translateX(0%);}
+  100%  { transform: translateX(-200%); }
 `;
 
+const yAxis = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+`;
+
+const loaderSize = '1vmin';
+
 const AuthLoader = styled.div`
-  width: 4vmin;
-  height: 4vmin;
-  margin: 2vmin;
-  background: ${props => props.theme.color.primary};
-  animation: ${rotate360} .75s linear infinite;
+  margin: 4vmin;
+  animation: ${xAxis} 3s infinite ease-in-out;
+
+  &::after {
+    content: '';
+    display: block;
+    background: ${props => props.theme.color.primary};
+    width: ${loaderSize};
+    height: ${loaderSize};
+    animation: ${yAxis} 1s infinite ease-in-out;
+    border-radius: 100%;
+  }
 `;
 
 const AuthText = styled.div`

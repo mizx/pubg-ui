@@ -93,6 +93,16 @@ export const webSocketInit = (): WebSocketInit => ({
   type: ActionType.WEBSOCKET_INIT
 });
 
+export interface WebSocketClosed {
+  type: ActionType.WEBSOCKET_CLOSED;
+  payload: { reason: string };
+}
+
+export const webSocketClosed = (reason: string): WebSocketClosed => ({
+  type: ActionType.WEBSOCKET_CLOSED,
+  payload: { reason }
+});
+
 export interface WebSocketReady {
   type: ActionType.WEBSOCKET_READY;
 }
@@ -112,5 +122,6 @@ export type Actions =
   | VersionRequest
   | VersionSuccess
   | WebSocketInit
+  | WebSocketClosed
   | WebSocketReady
 ;

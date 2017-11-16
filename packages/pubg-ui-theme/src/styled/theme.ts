@@ -5,6 +5,14 @@ export interface Theme {
     primary: string;
     secondary: string;
   };
+  palette: {
+    common: {
+      black: string;
+      white: string;
+      darkBlack: string;
+      lightWhite: string;
+    };
+  };
   button: {
     color: string;
     hoverColor: string;
@@ -28,6 +36,14 @@ export const theme: Theme = {
   color: {
     primary: '#f19f00',
     secondary: '#FFF'
+  },
+  palette: {
+    common: {
+      black: '#000',
+      white: '#fff',
+      darkBlack: '#222',
+      lightWhite: 'rgba(255, 255, 255, .54)'
+    }
   },
   button: {
     color: 'rgba(255, 255, 255, .5)',

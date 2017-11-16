@@ -1,5 +1,6 @@
 import { combineEpics, Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
+import { push } from 'react-router-redux';
 
 import { RootAction, RootState } from '..';
 import * as ActionType from './action-types';
@@ -13,6 +14,7 @@ import {
   versionRequest,
   versionSuccess,
   webSocketInit,
+  webSocketReady
 } from './action-creators';
 
 const ajaxOptions = {
@@ -76,6 +78,25 @@ export const websocketForkEpic: Epic<RootAction, RootState> = action$ =>
   )
   .map(() => webSocketInit())
 
+export const onWebSocketInitEpic: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.WEBSOCKET_INIT)
+    .delay(1000)
+    .map(() => webSocketReady());
+
+export const onWebSocketClosedEpic: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.WEBSOCKET_CLOSED)
+    .map(() => push('/closed'));
+
+export const tempOnWebSocketReadyEpic: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.WEBSOCKET_READY)
+    .map(() => push('/main'));
+
+// FIXME: push action is not firing but route is changing
+export const tempPushAuthPageEpic: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.APP_INITIALIZE)
+    .delay(1)
+    .map(() => push('/auth'));
+  
 export default combineEpics(
   appInitializeEpic,
   engineReadyEpic,
@@ -83,5 +104,9 @@ export default combineEpics(
   authRequestEpic,
   countryCodeEpic,
   versionRequestEpic,
-  websocketForkEpic
+  websocketForkEpic,
+  onWebSocketInitEpic,
+  onWebSocketClosedEpic,
+  tempPushAuthPageEpic,
+  tempOnWebSocketReadyEpic
 );

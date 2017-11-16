@@ -3,6 +3,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import { routerMiddleware } from 'react-router-redux';
 
 import { history } from '../history';
+import { webSocketMiddleware } from '../websocket/middleware';
 import { RootState, rootReducer, rootEpic } from './index';
 import { loadState, saveState } from './localStorage';
 
@@ -16,7 +17,8 @@ const configureStore = (initialState?: RootState) => {
   // configure middlewares
   const middlewares = [
     createEpicMiddleware(rootEpic),
-    routerMiddleware(history)
+    routerMiddleware(history),
+    webSocketMiddleware()
   ];
 
   // compose enhancers

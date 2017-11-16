@@ -8,10 +8,6 @@ const WEBSOCKET_URL = 'ws://echo.websocket.org';
 
 export const socket$ = webSocket(WEBSOCKET_URL);
 
-export const doRequest = (random: number) => {
-  socket$.next(random);
-}
-
 socket$.subscribe(
   (msg) => store.dispatch(webSocketResponse(msg as number)),
   (err) => console.error('error:', err),

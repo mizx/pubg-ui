@@ -2,8 +2,6 @@ import { combineEpics, Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 import { push } from 'react-router-redux';
 
-import { doRequest } from '../../websocket/create';
-import { WebSocketRequest } from './action-creators';
 import { RootAction, RootState } from '..';
 import * as ActionType from './action-types';
 import { AuthResponse, CountryCodeResponse } from './types';
@@ -98,15 +96,6 @@ export const tempPushAuthPageEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.APP_INITIALIZE)
     .delay(1)
     .map(() => push('/auth'));
-
-export const exampleWebSocketRequest: Epic<RootAction, RootState> = action$ =>
-  action$.ofType(ActionType.WEBSOCKET_REQUEST)
-    .do(action => {
-      const { payload } = action as WebSocketRequest;
-      
-      doRequest(payload.random);
-    })
-    .ignoreElements();
   
 export default combineEpics(
   appInitializeEpic,
@@ -119,6 +108,5 @@ export default combineEpics(
   onWebSocketInitEpic,
   onWebSocketClosedEpic,
   tempPushAuthPageEpic,
-  tempOnWebSocketReadyEpic,
-  exampleWebSocketRequest
+  tempOnWebSocketReadyEpic
 );

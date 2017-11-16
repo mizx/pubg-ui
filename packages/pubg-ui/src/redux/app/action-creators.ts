@@ -111,6 +111,26 @@ export const webSocketReady = (): WebSocketReady => ({
   type: ActionType.WEBSOCKET_READY
 });
 
+export interface WebSocketRequest {
+  type: ActionType.WEBSOCKET_REQUEST;
+  payload: { random: number };
+}
+
+export const webSocketRequest = (random: number): WebSocketRequest => ({
+  type: ActionType.WEBSOCKET_REQUEST,
+  payload: { random }
+});
+
+export interface WebSocketResponse {
+  type: ActionType.WEBSOCKET_RESPONSE;
+  payload: { random: number };
+}
+
+export const webSocketResponse = (random: number): WebSocketResponse => ({
+  type: ActionType.WEBSOCKET_RESPONSE,
+  payload: { random }
+});
+
 export type Actions =
   | AppInitialize
   | EngineReady
@@ -124,4 +144,6 @@ export type Actions =
   | WebSocketInit
   | WebSocketClosed
   | WebSocketReady
+  | WebSocketRequest
+  | WebSocketResponse
 ;

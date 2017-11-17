@@ -1,2 +1,6 @@
 import './coherent';
-export { default as Button, Action as ButtonAction, Props as ButtonProps } from './button';
+export {
+  default as Button,
+  Action as ButtonAction,
+  Props as ButtonProps
+} from './button';

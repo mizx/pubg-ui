@@ -1,10 +1,11 @@
 import React from 'react';
+import { Button } from 'pubg-ui';
 
 import Typography from 'components/typography';
 import styled from 'styled';
 import { withOptions, OptionProps, Region, SquadSize, Perspective } from 'pubg-ui';
 
-const Button = styled.button`
+const ButtonTemp = styled.button`
   padding: ${props => props.theme.unit(1)};
   margin: ${props => props.theme.unit(.6)};
 
@@ -52,13 +53,13 @@ export class PlayComponent extends React.Component<Props & OptionProps> {
       const className = region === this.props.option.region ? 'active' : '';
 
       return (
-        <Button
+        <ButtonTemp
           key={region}
           className={className}
           onClick={() => this.props.setOption.setRegion(region)}
         >
           {regionName}
-        </Button>
+        </ButtonTemp>
       );
     });
   }
@@ -69,13 +70,13 @@ export class PlayComponent extends React.Component<Props & OptionProps> {
       const className = squad === this.props.option.squadSize ? 'active' : '';
 
       return (
-        <Button
+        <ButtonTemp
           key={squad}
           className={className}
           onClick={() => this.props.setOption.setSquadSize(squad)}
         >
           {squadName}
-        </Button>
+        </ButtonTemp>
       );
     });
   }
@@ -86,13 +87,13 @@ export class PlayComponent extends React.Component<Props & OptionProps> {
       const className = perspective === this.props.option.perspective ? 'active' : '';
 
       return (
-        <Button
+        <ButtonTemp
           key={perspective}
           className={className}
           onClick={() => this.props.setOption.setPerspective(perspective)}
         >
           {perspectiveName}
-        </Button>
+        </ButtonTemp>
       );
     });
   }
@@ -112,7 +113,9 @@ export class PlayComponent extends React.Component<Props & OptionProps> {
         <div>
           {this.renderPerspectives()}
         </div>
-        <Typography type="menu-main">Play</Typography>
+        <Button action="play">
+          <Typography type="menu-main">Play</Typography>
+        </Button>
       </Play>
     );
   }

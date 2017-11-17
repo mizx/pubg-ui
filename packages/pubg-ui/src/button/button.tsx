@@ -1,23 +1,35 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
+import { Dispatch } from '../redux';
 import ButtonBase, { Props as ButtonBaseProps } from './base';
+import { toggleReady } from '../redux/matchmake';
+import store from '../redux/store';
+
+export interface DispatchProps {
+  toggleReady: typeof toggleReady;
+}
 
 export type Action =
+  | 'play'
   | 'options'
   | 'url'
   | 'quit'
 ;
 
-export interface Props extends ButtonBaseProps {
+export interface OwnProps extends ButtonBaseProps {
   action?: Action;
   external?: boolean;
   url?: string;
 }
 
+export type Props = OwnProps & DispatchProps;
+
 type ButtonClick = React.MouseEvent<HTMLButtonElement>;
 
 const handleClick = (props: Props) => (event: ButtonClick) => {
-  const { action, external, url, onClick } = props;
+  const { action, external, url, onClick, toggleReady } = props;
 
   if (onClick) {
     onClick(event);
@@ -36,6 +48,10 @@ const handleClick = (props: Props) => (event: ButtonClick) => {
       }
       return;
     }
+    case 'play': {
+      props.toggleReady();
+      return;
+    }
     case 'options': {
       window.engine.trigger('ShowGameOption');
       return;
@@ -48,13 +64,17 @@ const handleClick = (props: Props) => (event: ButtonClick) => {
 };
 
 export const ButtonComponent: React.SFC<Props> = props => {
-  const { children, ref, ...other } = props;
+  const { children, ref, toggleReady, ...other } = props;
 
   return (
     <ButtonBase onClick={handleClick(props)} {...other}>
       {children}
     </ButtonBase>
-  )
-}
+  );
+};
 
-export default ButtonComponent;
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => bindActionCreators({
+  toggleReady
+}, dispatch);
+
+export default connect(null, mapDispatchToProps)(ButtonComponent);

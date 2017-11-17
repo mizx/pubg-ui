@@ -21,7 +21,7 @@ export class WrapperComponent extends React.Component<Props> {
   componentDidMount() {
     this.props.appInitialize();
 
-    setInterval(() => this.props.webSocketRequest(Math.random()), 5000);
+    // setInterval(() => this.props.webSocketRequest(Math.random()), 5000);
   }
 
   render() {

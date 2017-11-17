@@ -1,6 +1,7 @@
 import { Middleware } from 'redux';
 
 import { ActionType } from '../redux/app';
+import { ActionType as ActionMMType } from '../redux/matchmake';
 import { socket$ } from '../websocket/create';
 
 /**
@@ -13,7 +14,7 @@ import { socket$ } from '../websocket/create';
 export function webSocketMiddleware(): Middleware {
   return api => next => action => {
     switch (action.type) {
-      case ActionType.WEBSOCKET_REQUEST: {
+      case ActionMMType.QUEUE_START: {
         socket$.next(Math.random());
       }
     }

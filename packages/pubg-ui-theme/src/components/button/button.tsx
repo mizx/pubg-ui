@@ -46,7 +46,7 @@ interface Props extends ButtonProps {
 }
 
 export const ButtonComponent: React.SFC<Props & RouteComponentProps<{}>> = props => {
-  const { children, history, to, type = 'navigation', ...other } = props;
+  const { children, history, to, type = 'navigation', ref, ...other } = props;
   const Component = buttonTypeMap[type];
 
   if (to) {

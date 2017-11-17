@@ -2,5 +2,5 @@ import './coherent';
 export {
   default as Button,
   Action as ButtonAction,
-  Props as ButtonProps
+  OwnProps as ButtonProps
 } from './button';

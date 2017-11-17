@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 
 import { Dispatch } from '../redux';
 import ButtonBase, { Props as ButtonBaseProps } from './base';
@@ -77,4 +78,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => bindActionCrea
   toggleReady
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(ButtonComponent);
+const enhancer = compose<Props, OwnProps>(
+  connect(null, mapDispatchToProps)
+);
+
+export default enhancer(ButtonComponent);

@@ -2,8 +2,6 @@ import { RootState } from './root-reducer';
 import { FriendMap } from './friend';
 import { OptionState } from './option';
 
-export type Selector<T> = (state: RootState)  => T;
-
 export interface WebSocketArgs {
     provider: string;
     clientGameVersion?: string;
@@ -11,7 +9,7 @@ export interface WebSocketArgs {
     playerNetId?: string;
 }
 
-export const getWebSocketArgs: Selector<WebSocketArgs> = state => {
+export const getWebSocketArgs = (state: RootState): WebSocketArgs => {
     const {
         platform: provider = 'steam',
         session,
@@ -26,7 +24,8 @@ export const getWebSocketArgs: Selector<WebSocketArgs> = state => {
     };
 }
 
-export const getPlayerPlatformName: Selector<string | undefined> = state => state.profile.platformUsername;
-export const getFriends: Selector<FriendMap> = state => state.friend.friends;
-export const getOptions: Selector<OptionState> = state => state.option;
-export const getVersion: Selector<string | undefined> = state => state.app.version;
+export const getPlayerPlatformName = (state: RootState) => state.profile.platformUsername;
+export const getFriends = (state: RootState) => state.friend.friends;
+export const getOptions = (state: RootState) => state.option;
+export const getVersion = (state: RootState) => state.app.version;
+export const isReady = (state: RootState) => state.matchmake.ready;

@@ -15,7 +15,7 @@ export function webSocketMiddleware(): Middleware {
   return api => next => action => {
     switch (action.type) {
       case ActionMMType.QUEUE_START: {
-        socket$.next(Math.random());
+        socket$.next(JSON.stringify({command: 'startmatchmaking'}));
       }
     }
 

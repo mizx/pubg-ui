@@ -93,6 +93,24 @@ export const webSocketInit = (): WebSocketInit => ({
   type: ActionType.WEBSOCKET_INIT
 });
 
+export interface WebSocketReady {
+  type: ActionType.WEBSOCKET_READY;
+}
+
+export const webSocketReady = (): WebSocketReady => ({
+  type: ActionType.WEBSOCKET_READY
+});
+
+export interface WebSocketError {
+  type: ActionType.WEBSOCKET_ERROR;
+  payload: { error: any };
+}
+
+export const webSocketError = (error: any): WebSocketError => ({
+  type: ActionType.WEBSOCKET_ERROR,
+  payload: { error }
+});
+
 export interface WebSocketClosed {
   type: ActionType.WEBSOCKET_CLOSED;
   payload: { reason: string };
@@ -103,32 +121,24 @@ export const webSocketClosed = (reason: string): WebSocketClosed => ({
   payload: { reason }
 });
 
-export interface WebSocketReady {
-  type: ActionType.WEBSOCKET_READY;
-}
-
-export const webSocketReady = (): WebSocketReady => ({
-  type: ActionType.WEBSOCKET_READY
-});
-
 export interface WebSocketRequest {
   type: ActionType.WEBSOCKET_REQUEST;
-  payload: { random: number };
+  payload: any[];
 }
 
-export const webSocketRequest = (random: number): WebSocketRequest => ({
+export const webSocketRequest = (...payload: any[]): WebSocketRequest => ({
   type: ActionType.WEBSOCKET_REQUEST,
-  payload: { random }
+  payload: Array.from(payload)
 });
 
 export interface WebSocketResponse {
   type: ActionType.WEBSOCKET_RESPONSE;
-  payload: { random: number };
+  payload: {};
 }
 
-export const webSocketResponse = (random: number): WebSocketResponse => ({
+export const webSocketResponse = (payload: {}): WebSocketResponse => ({
   type: ActionType.WEBSOCKET_RESPONSE,
-  payload: { random }
+  payload
 });
 
 export type Actions =
@@ -142,8 +152,9 @@ export type Actions =
   | VersionRequest
   | VersionSuccess
   | WebSocketInit
-  | WebSocketClosed
   | WebSocketReady
+  | WebSocketError
+  | WebSocketClosed
   | WebSocketRequest
   | WebSocketResponse
 ;

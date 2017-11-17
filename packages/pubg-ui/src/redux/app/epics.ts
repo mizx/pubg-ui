@@ -13,8 +13,7 @@ import {
   countryCodeSuccess,
   versionRequest,
   versionSuccess,
-  webSocketInit,
-  webSocketReady
+  webSocketInit
 } from './action-creators';
 
 const ajaxOptions = {
@@ -78,11 +77,6 @@ export const websocketForkEpic: Epic<RootAction, RootState> = action$ =>
   )
   .map(() => webSocketInit())
 
-export const onWebSocketInitEpic: Epic<RootAction, RootState> = action$ =>
-  action$.ofType(ActionType.WEBSOCKET_INIT)
-    .delay(1000)
-    .map(() => webSocketReady());
-
 export const onWebSocketClosedEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.WEBSOCKET_CLOSED)
     .map(() => push('/closed'));
@@ -105,7 +99,6 @@ export default combineEpics(
   countryCodeEpic,
   versionRequestEpic,
   websocketForkEpic,
-  onWebSocketInitEpic,
   onWebSocketClosedEpic,
   tempPushAuthPageEpic,
   tempOnWebSocketReadyEpic

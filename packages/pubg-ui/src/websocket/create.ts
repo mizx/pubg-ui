@@ -1,25 +1,44 @@
 import { webSocket } from 'rxjs/observable/dom/webSocket';
-import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
+import { WebSocketSubject, WebSocketSubjectConfig } from 'rxjs/observable/dom/WebSocketSubject';
+import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import store from '../redux/store';
-import { webSocketResponse } from '../redux/app';
+import {
+  webSocketReady,
+  webSocketResponse,
+  webSocketError,
+  webSocketClosed
+} from '../redux/app';
 
-const WEBSOCKET_URL = 'ws://echo.websocket.org';
+const close$ = new Subject<CloseEvent>();
+const open$ = new Subject<Event>();
+const queue$ = new ReplaySubject<any>();
+
+const config: WebSocketSubjectConfig = {
+  url: 'ws://echo.websocket.org',
+  openObserver: open$,
+  closeObserver: close$
+};
 
 // TODO: make a queue observable to pass to socket$
 
 /**
  * We will eventually need this to start after WEBSOCKET_INIT action is called
  */
-export const socket$ = webSocket(WEBSOCKET_URL);
+export const socket$ = webSocket(config);
 
-/**
- * the 1st callback will eventually need to go to a switch statement
- * of some kind. We'll also probably have to keep an incrementing
- * counter to map responses back to their request.
- */
+// TODO: need to include a closed observable 
 socket$.subscribe(
-  (msg) => store.dispatch(webSocketResponse(msg as number)),
-  (err) => console.error('error:', err),
-  () => console.log('socket complete')
+  (payload) => store.dispatch(webSocketResponse(payload)),
+  (err) => store.dispatch(webSocketError(err)), // FIXME: this is either an Error or Event
+  () => store.dispatch(webSocketClosed('closed')) // TODO: remove? using close$ subject
+);
+
+open$.subscribe(
+  (event) => store.dispatch(webSocketReady())
+);
+
+close$.subscribe(
+  (event) => store.dispatch(webSocketClosed(event.reason))
 );

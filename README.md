@@ -6,6 +6,10 @@
 ## pubg-ui-theme
 React app that will replace the PUBG Main Menu UI. This will be a great reference and example for react developers on how to interact with the pubg-ui package.
 
+# Usage
+(cd packages/pubg-ui-theme; yarn start)
+(cd packages/pubg-ui; yarn watch)
+
 ## pubg-ui
 Core logic/components/modules theme authors will utilize to make their own PUBG Main Menu UI. The goal for this package is to allow react developers to create PUBG menus without needing to worry about how to communicate with the game engine or backend servers within PUBG.
 

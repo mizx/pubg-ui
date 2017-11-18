@@ -10,6 +10,6 @@ export const setPlatformUsername = (platformUsername: string): SetPlatformUserna
   payload: { platformUsername }
 });
 
-export type Actions =
+export type ProfileActions =
   SetPlatformUsername
 ;

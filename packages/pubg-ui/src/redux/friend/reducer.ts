@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import * as ActionType from './action-types';
-import { Actions } from './action-creators';
+import { RootAction } from '../root-action';
 import {
   EngineFriendResponse,
   BackendFriendResponse,
@@ -52,7 +52,7 @@ const friendsSocketMap = (state: FriendMap, friends: BackendFriendResponse[]) =>
   return newState;
 };
 
-export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
+export const reducer: Reducer<State> = (state = initialState, action: RootAction): State => {
   switch (action.type) {
     case ActionType.STEAM_FRIENDS_REQUEST: {
       return {

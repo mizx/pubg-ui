@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import * as ActionType from './action-types';
-import { Actions } from './action-creators';
+import { RootAction } from '../root-action';
 
 export interface State {
   platformUsername?: string;
@@ -9,7 +9,7 @@ export interface State {
 
 export const initialState: State = { };
 
-export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
+export const reducer: Reducer<State> = (state = initialState, action: RootAction): State => {
   switch (action.type) {
     case ActionType.SET_PLATFORM_USERNAME: {
       return { ...state, ...action.payload };

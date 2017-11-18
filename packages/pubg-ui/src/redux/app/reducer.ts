@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import * as ActionType from './action-types';
-import { Actions } from './action-creators';
+import { RootAction } from '../root-action';
 import { Platform } from './types';
 
 export interface State {
@@ -21,7 +21,7 @@ export const initialState: State = {
   session: { }
 };
 
-export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
+export const reducer: Reducer<State> = (state = initialState, action: RootAction): State => {
   switch (action.type) {
     case ActionType.VERSION_SUCCESS: {
       return { ...state, ...action.payload }

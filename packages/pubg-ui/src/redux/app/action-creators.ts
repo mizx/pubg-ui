@@ -143,7 +143,7 @@ export const webSocketResponse = (payload: {}): WebSocketResponse => ({
   payload
 });
 
-export type Actions =
+export type AppActions =
   | AppInitialize
   | EngineReady
   | AuthRequest

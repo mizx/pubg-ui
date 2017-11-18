@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import * as ActionType from './action-types';
-import { Actions } from './action-creators';
+import { RootAction } from '../root-action';
 
 export interface State {
   inQueue: boolean;
@@ -17,7 +17,7 @@ export const initialState: State = {
   error: null
 }
 
-export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
+export const reducer: Reducer<State> = (state = initialState, action: RootAction): State => {
   switch (action.type) {
     case ActionType.QUEUE_START: {
       return { ...state, inQueue: true };

@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import * as ActionType from './action-types';
-import { Actions } from './action-creators';
+import { RootAction } from '../root-action';
 import { Region, SquadSize, Perspective } from './types';
 
 export interface State {
@@ -16,7 +16,7 @@ export const initialState: State = {
   perspective: 'third-person'
 };
 
-export const reducer: Reducer<State> = (state = initialState, action: Actions) => {
+export const reducer: Reducer<State> = (state = initialState, action: RootAction): State => {
   switch (action.type) {
     case ActionType.SET_PERSPECTIVE:
     case ActionType.SET_REGION:

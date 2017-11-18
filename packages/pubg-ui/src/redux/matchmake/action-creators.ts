@@ -34,7 +34,7 @@ export const queueError = (error: Error): QueueError => ({
   payload: { error: error.message }
 });
 
-export type Actions =
+export type MatchmakeActions =
   | ToggleReady
   | QueueStart
   | QueueCancel

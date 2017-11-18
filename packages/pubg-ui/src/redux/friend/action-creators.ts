@@ -63,7 +63,7 @@ export const backendFriendsFailure = (error: Error): BackendFriendsFailure => ({
   payload: { error: error.message }
 });
 
-export type Actions =
+export type FriendActions =
   | SteamFriendsRequest
   | SteamFriendsResponse
   | SteamFriendsFailure

@@ -1,5 +1,9 @@
 import * as ActionType from './action-types';
-import { SocketFriendResponse, EngineFriendResponse } from './types';
+import {
+  BackendFriendResponse,
+  EngineFriendResponse,
+  FriendMap
+} from './types';
 
 export interface SteamFriendsRequest {
   type: ActionType.STEAM_FRIENDS_REQUEST;
@@ -29,31 +33,33 @@ export const steamFriendsFailure = (error: Error): SteamFriendsFailure => ({
   payload: { error: error.message }
 });
 
-export interface SocketFriendsRequest {
-  type: ActionType.SOCKET_FRIENDS_REQUEST;
+export interface BackendFriendsRequest {
+  type: ActionType.BACKEND_FRIENDS_REQUEST;
+  payload: FriendMap;
 }
 
-export const socketFriendsRequest = (): SocketFriendsRequest => ({
-  type: ActionType.SOCKET_FRIENDS_REQUEST
+export const backendFriendsRequest = (friends: FriendMap): BackendFriendsRequest => ({
+  type: ActionType.BACKEND_FRIENDS_REQUEST,
+  payload: friends
 });
 
-export interface SocketFriendsSuccess {
-  type: ActionType.SOCKET_FRIENDS_SUCCESS;
-  payload: { friends: SocketFriendResponse[] };
+export interface BackendFriendsSuccess {
+  type: ActionType.BACKEND_FRIENDS_SUCCESS;
+  payload: { friends: BackendFriendResponse[] };
 }
 
-export const socketFriendsSuccess = (friends: SocketFriendResponse[]): SocketFriendsSuccess => ({
-  type: ActionType.SOCKET_FRIENDS_SUCCESS,
+export const backendFriendsSuccess = (friends: BackendFriendResponse[]): BackendFriendsSuccess => ({
+  type: ActionType.BACKEND_FRIENDS_SUCCESS,
   payload: { friends }
 });
 
-export interface SocketFriendsFailure {
-  type: ActionType.SOCKET_FRIENDS_FAILURE;
+export interface BackendFriendsFailure {
+  type: ActionType.BACKEND_FRIENDS_FAILURE;
   payload: { error: string }
 }
 
-export const socketFriendsFailure = (error: Error): SocketFriendsFailure => ({
-  type: ActionType.SOCKET_FRIENDS_FAILURE,
+export const backendFriendsFailure = (error: Error): BackendFriendsFailure => ({
+  type: ActionType.BACKEND_FRIENDS_FAILURE,
   payload: { error: error.message }
 });
 
@@ -61,7 +67,7 @@ export type Actions =
   | SteamFriendsRequest
   | SteamFriendsResponse
   | SteamFriendsFailure
-  | SocketFriendsRequest
-  | SocketFriendsSuccess
-  | SocketFriendsFailure
+  | BackendFriendsRequest
+  | BackendFriendsSuccess
+  | BackendFriendsFailure
 ;

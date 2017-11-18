@@ -1,5 +1,5 @@
 import * as ActionType from './action-types';
-import { AuthResponse } from './types';
+import { AuthResponse, Service, Command } from './types';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;
@@ -126,9 +126,11 @@ export interface WebSocketRequest {
   payload: any[];
 }
 
-export const webSocketRequest = (...payload: any[]): WebSocketRequest => ({
+let counter = 10000;
+
+export const webSocketRequest = (service: Service, command: Command, ...payload: any[]): WebSocketRequest => ({
   type: ActionType.WEBSOCKET_REQUEST,
-  payload: Array.from(payload)
+  payload: [counter++, null, service, command, ...payload]
 });
 
 export interface WebSocketResponse {

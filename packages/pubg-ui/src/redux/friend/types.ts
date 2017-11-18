@@ -1,7 +1,7 @@
 export type InviteAllow = null | 'all' | 'friend';
 export type FriendState = '' | 'play' | 'offline' | 'party';
 
-export interface SocketFriendResponse {
+export interface BackendFriendResponse {
   AccountId: string;      // PUBG ID?
   AvatarUrl: string;      // Steam Avatar URL
   InviteAllow: InviteAllow;

@@ -5,8 +5,9 @@ import { RootAction, RootState } from '..';
 import { ActionType as AppActionType } from '../app';
 import {
   steamFriendsRequest,
-  socketFriendsRequest
+  backendFriendsRequest
 } from './action-creators';
+import { getFriends } from '../selectors';
 import { ActionType } from './index';
 
 export const onEngineReadyEpic: Epic<RootAction, RootState> = action$ =>
@@ -20,10 +21,15 @@ export const onSteamFriendsRequestEpic: Epic<RootAction, RootState> = action$ =>
     .do(() => window.engine.trigger('ReadFriendList'))
     .ignoreElements();
 
-export const onSteamResponseEpic: Epic<RootAction, RootState> = action$ =>
+export const onSteamResponseEpic: Epic<RootAction, RootState> = (action$, api) =>
   action$
     .ofType(ActionType.STEAM_FRIENDS_RESPONSE)
-    .map(() => socketFriendsRequest());
+    .map(() => {
+      const state = api.getState();
+      const friends = getFriends(state);
+      
+      return backendFriendsRequest(friends);
+    });
 
 export default combineEpics(
   onEngineReadyEpic,

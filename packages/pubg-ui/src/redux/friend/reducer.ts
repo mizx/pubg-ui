@@ -4,7 +4,7 @@ import * as ActionType from './action-types';
 import { Actions } from './action-creators';
 import {
   EngineFriendResponse,
-  SocketFriendResponse,
+  BackendFriendResponse,
   FriendMap
 } from './types';
 
@@ -33,7 +33,7 @@ const friendsEngineMap = (state: FriendMap, friends: EngineFriendResponse[]) => 
   return newState;
 };
 
-const friendsSocketMap = (state: FriendMap, friends: SocketFriendResponse[]) =>  {
+const friendsSocketMap = (state: FriendMap, friends: BackendFriendResponse[]) =>  {
   const newState = { ...state };
 
   friends.forEach(friend => {
@@ -68,14 +68,14 @@ export const reducer: Reducer<State> = (state = initialState, action: Actions) =
         friends: friendsEngineMap(state.friends, action.payload.friends)
       }
     }
-    case ActionType.SOCKET_FRIENDS_REQUEST: {
+    case ActionType.BACKEND_FRIENDS_REQUEST: {
       return {
         ...state,
         loading: true,
         error: null
       };
     }
-    case ActionType.SOCKET_FRIENDS_SUCCESS: {
+    case ActionType.BACKEND_FRIENDS_SUCCESS: {
       return {
         ...state,
         loading: false,
@@ -83,7 +83,7 @@ export const reducer: Reducer<State> = (state = initialState, action: Actions) =
       };
     }
     case ActionType.STEAM_FRIENDS_FAILURE:
-    case ActionType.SOCKET_FRIENDS_FAILURE: {
+    case ActionType.BACKEND_FRIENDS_FAILURE: {
       return {
         ...state,
         loading: false,

@@ -2,10 +2,10 @@ import { InviteAllow } from '../friend';
 
 export interface WebSocketArgs {
   provider: string;
-  clientGameVersion?: string;
-  ticket?: string;
-  playerNetId?: string;
-  cc?: string;
+  clientGameVersion: string;
+  ticket: string;
+  playerNetId: string;
+  cc: string;
 }
 
 export type RequestId = number;

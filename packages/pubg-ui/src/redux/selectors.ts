@@ -4,21 +4,21 @@ import { OptionState } from './option';
 import { WebSocketArgs } from './websocket';
 
 export const getWebSocketArgs = (state: RootState): WebSocketArgs => {
-    const {
-        platform: provider = 'steam',
-        token,
-        platformId,
-        countryCode,
-        version
-    } = state.app;
-
-    return {
-        provider: provider.toLowerCase(),
-        ticket: token,
-        playerNetId: platformId,
-        cc: countryCode,
-        clientGameVersion: version
-    };
+  const {
+    platform,
+    token,
+    platformId,
+    countryCode,
+    version
+  } = state.app;
+  
+  return {
+    provider: platform.toLowerCase(),
+    ticket: token,
+    playerNetId: platformId,
+    cc: countryCode,
+    clientGameVersion: version
+  };
 };
 
 export const getPlayerPlatformName = (state: RootState) => state.profile.platformUsername;

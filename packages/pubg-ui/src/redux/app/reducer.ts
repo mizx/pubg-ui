@@ -5,18 +5,24 @@ import { RootAction } from '../root-action';
 import { Platform } from './types';
 
 export interface State {
-  version?: string;
-  appId?: string;
-  platform?: Platform;
-  token?: string;
-  platformId?: string;
-  backendId?: string;
-  userSerial?: string;
-  countryCode?: string;
+  version: string;
+  appId: string;
+  platform: Platform;
+  token: string;
+  platformId: string;
+  userSerial: string;
+  backendId: string;
+  countryCode: string;
 }
 
 export const initialState: State = {
+  version: '0.0.0',
   appId: '578080',
+  platform: 'Steam',
+  token: '',
+  platformId: '',
+  userSerial: '',
+  backendId: '',
   countryCode: 'US'
 };
 

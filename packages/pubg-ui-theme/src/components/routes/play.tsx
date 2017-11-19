@@ -43,10 +43,6 @@ interface Props { }
 
 export class PlayComponent extends React.Component<Props & OptionProps> {
 
-  constructor() {
-    super();
-  }
-
   renderRegions() {
     return Object.keys(regionMap).map((region: Region) => {
       const regionName = regionMap[region];

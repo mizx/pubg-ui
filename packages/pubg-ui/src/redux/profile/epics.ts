@@ -6,8 +6,10 @@ import { ActionType as AppActionType, AuthSuccess } from '../app';
 
 export const authSuccessEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(AppActionType.AUTH_SUCCESS)
-    .map((action: AuthSuccess) => setPlatformUsername(action.payload.userDisplayName));
-
+    .map((action) => {
+      const { payload } = (action as AuthSuccess);
+      return setPlatformUsername(payload.userDisplayName);
+    });
 
 export default combineEpics(
   authSuccessEpic

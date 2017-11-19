@@ -6,7 +6,6 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import { history } from '../history';
 import Wrapper from './wrapper';
-import Websocket from './websocket';
 import store from '../redux/store';
 
 export interface Props { }

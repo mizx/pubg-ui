@@ -5,6 +5,7 @@ import { push } from 'react-router-redux';
 import { RootAction, RootState } from '..';
 import {
   webSocketInit,
+  WebSocketInit,
   webSocketError,
   webSocketResponse,
   WebSocketResponse
@@ -12,14 +13,15 @@ import {
 import * as ActionType from '../action-types';
 import { identifyResponse, mapResponseToAction } from '../../backend-api/response';
 import { createWebSocket } from '../../websocket';
+import { getWebSocketArgs } from '../selectors';
 
-export const initWebSocket: Epic<RootAction, RootState> = action$ =>
+export const initWebSocket: Epic<RootAction, RootState> = (action$, api) =>
   Observable.forkJoin(
     action$.ofType(ActionType.AUTH_SUCCESS).take(1),
     action$.ofType(ActionType.VERSION_SUCCESS).take(1),
     action$.ofType(ActionType.COUNTRY_CODE_SUCCESS).take(1)
   )
-  .map(() => webSocketInit());
+  .map(() => webSocketInit(getWebSocketArgs(api.getState())));
 
 export const onWebSocketClosed: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.WEBSOCKET_CLOSED)
@@ -37,8 +39,8 @@ export const onWebSocketResponse: Epic<RootAction, RootState> = action$ =>
 
 export const onWebSocketInit: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.WEBSOCKET_INIT)
-    .mergeMap(() => 
-      createWebSocket()
+    .mergeMap(action => 
+      createWebSocket((action as WebSocketInit).payload)
         .map(payload => webSocketResponse(payload as any[]))
         .catch(error => Observable.of(webSocketError(error))
     ));

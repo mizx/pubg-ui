@@ -4,15 +4,18 @@ import {
   RequestId,
   Unknown,
   Service,
-  Command
+  Command,
+  WebSocketArgs
 } from './types';
 
 export interface WebSocketInit {
   type: ActionType.WEBSOCKET_INIT;
+  payload: WebSocketArgs;
 }
 
-export const webSocketInit = (): WebSocketInit => ({
-  type: ActionType.WEBSOCKET_INIT
+export const webSocketInit = (payload: WebSocketArgs): WebSocketInit => ({
+  type: ActionType.WEBSOCKET_INIT,
+  payload
 });
 
 export interface WebSocketReady {

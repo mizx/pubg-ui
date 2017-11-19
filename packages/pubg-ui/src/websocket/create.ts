@@ -10,6 +10,7 @@ import {
   webSocketError,
   webSocketClosed
 } from '../redux/action-creators';
+import { WebSocketArgs } from '../redux/websocket';
 
 import { Server } from 'mock-socket';
 
@@ -19,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
     require('./mock-server');
 }
 
-export const createWebSocket = () => {
+export const createWebSocket = (args: WebSocketArgs) => {
   const close$ = new Subject<CloseEvent>();
   const open$ = new Subject<Event>();
   

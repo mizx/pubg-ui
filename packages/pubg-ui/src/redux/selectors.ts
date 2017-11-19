@@ -1,14 +1,7 @@
 import { RootState } from './root-reducer';
 import { FriendMap } from './friend';
 import { OptionState } from './option';
-
-export interface WebSocketArgs {
-    provider: string;
-    clientGameVersion?: string;
-    ticket?: string;
-    playerNetId?: string;
-    cc?: string;
-}
+import { WebSocketArgs } from './websocket';
 
 export const getWebSocketArgs = (state: RootState): WebSocketArgs => {
     const {

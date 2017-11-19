@@ -1,5 +1,13 @@
 import { InviteAllow } from '../friend';
 
+export interface WebSocketArgs {
+  provider: string;
+  clientGameVersion?: string;
+  ticket?: string;
+  playerNetId?: string;
+  cc?: string;
+}
+
 export type RequestId = number;
 export type Unknown = null; // all are null?
 export type Service = 'UserProxyApi';

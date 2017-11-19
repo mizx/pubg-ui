@@ -7,9 +7,8 @@ import { queue } from '../websocket/create';
 export function webSocketMiddleware(): Middleware {
   return api => next => action => {
     if (action.type === WEBSOCKET_REQUEST) {
-        // FIXME: Dispatch<A> extends Action (no payload), not AnyAction
-        const json = JSON.stringify((action as any).payload);
-        queue.next(json);
+        const { payload } = (action as any);
+        queue.next(payload);
     }
 
     return next(action);

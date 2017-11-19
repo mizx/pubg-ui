@@ -11,9 +11,18 @@ import {
   webSocketClosed
 } from '../redux/action-creators';
 
+export const queue = new ReplaySubject<any>();
+
 const close$ = new Subject<CloseEvent>();
 const open$ = new Subject<Event>();
-const queue$ = new ReplaySubject<any>();
+
+open$.subscribe(
+  (event) => store.dispatch(webSocketReady())
+);
+
+close$.subscribe(
+  (event) => store.dispatch(webSocketClosed(event.reason))
+);
 
 const config: WebSocketSubjectConfig = {
   url: 'ws://echo.websocket.org',
@@ -26,19 +35,12 @@ const config: WebSocketSubjectConfig = {
 /**
  * We will eventually need this to start after WEBSOCKET_INIT action is called
  */
-export const socket$ = webSocket(config);
+const socket$ = webSocket(config);
 
-// TODO: need to include a closed observable 
 socket$.subscribe(
   (payload) => store.dispatch(webSocketResponse(payload as any[])),
   (err) => store.dispatch(webSocketError(err)), // FIXME: this is either an Error or Event
   () => store.dispatch(webSocketClosed('closed')) // TODO: remove? using close$ subject
 );
 
-open$.subscribe(
-  (event) => store.dispatch(webSocketReady())
-);
-
-close$.subscribe(
-  (event) => store.dispatch(webSocketClosed(event.reason))
-);
+queue.subscribe(socket$);

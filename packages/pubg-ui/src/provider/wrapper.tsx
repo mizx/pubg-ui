@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux';
 import { Dispatch } from '../redux';
 import { appInitialize } from '../redux/app';
 
-import { socket$ } from '../websocket/create';
-
 // setInterval(() => socket$.next(Math.random()), 5000);
 
 export interface DispatchProps {

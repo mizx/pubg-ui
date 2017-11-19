@@ -19,10 +19,10 @@ export interface ConnectionAcceptedResponse {
     AccountId: string;
     partnerId: string | null,
     Region: string; // TODO: can this be null? make option static typed?
-  },
+  };
   inventory: null;
-  inviteAllow: InviteAllow,
-  playinggame: null, // TODO: what are the options?
+  inviteAllow: InviteAllow;
+  playinggame: null; // TODO: what are the options?
   profile: {
     InviteAllow: InviteAllow,
     Nickname: string; // TODO: can be null if not set?
@@ -34,5 +34,5 @@ export interface ConnectionAcceptedResponse {
       Presets: string;
     },
     record: null
-  }
+  };
 }

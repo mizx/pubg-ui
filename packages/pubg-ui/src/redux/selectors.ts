@@ -7,22 +7,26 @@ export interface WebSocketArgs {
     clientGameVersion?: string;
     ticket?: string;
     playerNetId?: string;
+    cc?: string;
 }
 
 export const getWebSocketArgs = (state: RootState): WebSocketArgs => {
     const {
         platform: provider = 'steam',
-        session,
+        token,
+        platformId,
+        countryCode,
         version
     } = state.app;
 
     return {
         provider: provider.toLowerCase(),
-        clientGameVersion: version,
-        ticket: session.token,
-        playerNetId: session.playerNetId
+        ticket: token,
+        playerNetId: platformId,
+        cc: countryCode,
+        clientGameVersion: version
     };
-}
+};
 
 export const getPlayerPlatformName = (state: RootState) => state.profile.platformUsername;
 export const getFriends = (state: RootState) => state.friend.friends;

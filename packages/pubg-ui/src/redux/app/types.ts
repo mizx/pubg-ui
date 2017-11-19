@@ -1,3 +1,5 @@
+import { InviteAllow } from '../friend';
+
 export type Platform = 'Steam';
 
 export interface AuthResponse {
@@ -13,8 +15,9 @@ export interface CountryCodeResponse {
   country_code: string;
 }
 
-// export type WebSocketRequestId = number;
-// export type WebSocketUnknown = null; // all are null?
+
+export type WebSocketRequestId = number;
+export type WebSocketUnknown = null; // all are null?
 export type Service = 'UserProxyApi';
 export type Command = 
   | 'GetPartyData'
@@ -26,3 +29,28 @@ export type Command =
   | 'GetBroUserStatesBySteamId'
   | 'RequestMatch'
 ;
+
+export type WebSocketResponsePayload = any[];
+
+export interface ConnectionAcceptedResponse {
+  account: {
+    AccountId: string;
+    partnerId: string | null,
+    Region: string; // TODO: can this be null? make option static typed?
+  },
+  inventory: null;
+  inviteAllow: InviteAllow,
+  playinggame: null, // TODO: what are the options?
+  profile: {
+    InviteAllow: InviteAllow,
+    Nickname: string; // TODO: can be null if not set?
+    ProfileStatus: null,
+    Skin: {
+      Face: string;
+      Gender: string;
+      Hair: string;
+      Presets: string;
+    },
+    record: null
+  }
+}

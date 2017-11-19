@@ -30,7 +30,7 @@ export const socket$ = webSocket(config);
 
 // TODO: need to include a closed observable 
 socket$.subscribe(
-  (payload) => store.dispatch(webSocketResponse(payload)),
+  (payload) => store.dispatch(webSocketResponse(payload as any[])),
   (err) => store.dispatch(webSocketError(err)), // FIXME: this is either an Error or Event
   () => store.dispatch(webSocketClosed('closed')) // TODO: remove? using close$ subject
 );

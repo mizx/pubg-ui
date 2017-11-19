@@ -1,5 +1,5 @@
 import * as ActionType from './action-types';
-import { AuthResponse, Service, Command } from './types';
+import { AuthResponse, Service, Command, ConnectionAcceptedResponse } from './types';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;
@@ -126,6 +126,16 @@ export interface WebSocketRequest {
   payload: any[];
 }
 
+export interface ConnectionAccepted {
+  type: ActionType.WEBSOCKET_CONNECTED;
+  payload: ConnectionAcceptedResponse;
+}
+
+export const webSocketConnected = (response: ConnectionAcceptedResponse): ConnectionAccepted => ({
+  type: ActionType.WEBSOCKET_CONNECTED,
+  payload: response
+});
+
 let counter = 10000;
 
 export const webSocketRequest = (service: Service, command: Command, ...payload: any[]): WebSocketRequest => ({
@@ -135,10 +145,10 @@ export const webSocketRequest = (service: Service, command: Command, ...payload:
 
 export interface WebSocketResponse {
   type: ActionType.WEBSOCKET_RESPONSE;
-  payload: {};
+  payload: any[];
 }
 
-export const webSocketResponse = (payload: {}): WebSocketResponse => ({
+export const webSocketResponse = (payload: any[]): WebSocketResponse => ({
   type: ActionType.WEBSOCKET_RESPONSE,
   payload
 });
@@ -159,4 +169,5 @@ export type AppActions =
   | WebSocketClosed
   | WebSocketRequest
   | WebSocketResponse
+  | ConnectionAccepted
 ;

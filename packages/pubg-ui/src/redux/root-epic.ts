@@ -5,7 +5,7 @@ import { epic as app } from './app';
 import { epic as friend } from './friend';
 import { epic as matchmake } from './matchmake';
 import { epic as profile } from './profile';
-import { default as websocket } from '../backend-api/response/response';
+import { epic as websocket } from './websocket';
 
 export type Epic = Epic<RootAction, RootState>;
 

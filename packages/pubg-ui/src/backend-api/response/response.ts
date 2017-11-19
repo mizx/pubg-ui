@@ -4,19 +4,10 @@ import { RootAction, RootState } from '../../redux';
 import { WEBSOCKET_RESPONSE } from '../../redux/action-types';
 import { WebSocketResponse, webSocketConnected, webSocketError } from '../../redux/action-creators';
 import { ResponseType, ResponseClientApiType, Response } from '../types';
-import { WebSocketResponsePayload, ConnectionAcceptedResponse } from '../../redux/app';
+import { ConnectionAccepted, WebSocketError } from '../../redux/action-creators';
+import { ConnectionAcceptedResponse } from '../../redux/websocket/types';
 
-export const onResponse: Epic<RootAction, RootState> = action$ =>
-  action$.ofType(WEBSOCKET_RESPONSE)
-    .map(action => action as WebSocketResponse)
-    .map(action => identifyResponse(action.payload))
-    .map(response => mapResponseToAction(response));
-
-export default combineEpics(
-  onResponse
-);
-
-export const identifyResponse = (payload: WebSocketResponsePayload): Response => {
+export const identifyResponse = (payload: any[]): Response => {
   const [requestId, unknown, service, ...other] = payload;
 
   switch (service) {
@@ -29,7 +20,7 @@ export const identifyResponse = (payload: WebSocketResponsePayload): Response =>
   }
 };
 
-const mapResponseToAction = (response: Response) => {
+export const mapResponseToAction = (response: Response) => {
   const { payload } = response;
 
   switch (response.type) {

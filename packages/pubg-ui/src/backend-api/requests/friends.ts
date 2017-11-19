@@ -2,7 +2,7 @@ import { combineEpics, Epic } from 'redux-observable';
 
 import { RootAction, RootState } from '../../redux';
 import { ActionType, BackendFriendsRequest } from '../../redux/friend';
-import { webSocketRequest } from '../../redux/app';
+import { webSocketRequest } from '../../redux/websocket/action-creators';
 
 export const onBackendFriendsRequest: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.BACKEND_FRIENDS_REQUEST)

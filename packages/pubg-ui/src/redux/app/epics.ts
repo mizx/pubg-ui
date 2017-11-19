@@ -12,8 +12,7 @@ import {
   countryCodeRequest,
   countryCodeSuccess,
   versionRequest,
-  versionSuccess,
-  webSocketInit
+  versionSuccess
 } from './action-creators';
 
 const ajaxOptions = {
@@ -42,8 +41,7 @@ export const onEngineReadyEpic: Epic<RootAction, RootState> = action$ =>
         Observable.of(authRequest()),
         Observable.of(versionRequest())
       )
-    )
-
+    );
 
 export const authRequestEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.AUTH_REQUEST)
@@ -69,22 +67,6 @@ export const versionRequestEpic: Epic<RootAction, RootState> = action$ =>
         .map(version => versionSuccess(version))
     );
 
-export const websocketForkEpic: Epic<RootAction, RootState> = action$ =>
-  Observable.forkJoin(
-    action$.ofType(ActionType.AUTH_SUCCESS).take(1),
-    action$.ofType(ActionType.VERSION_SUCCESS).take(1),
-    action$.ofType(ActionType.COUNTRY_CODE_SUCCESS).take(1)
-  )
-  .map(() => webSocketInit())
-
-export const onWebSocketClosedEpic: Epic<RootAction, RootState> = action$ =>
-  action$.ofType(ActionType.WEBSOCKET_CLOSED)
-    .map(() => push('/closed'));
-
-export const tempOnWebSocketReadyEpic: Epic<RootAction, RootState> = action$ =>
-  action$.ofType(ActionType.WEBSOCKET_READY)
-    .map(() => push('/main'));
-
 // FIXME: push action is not firing but route is changing
 export const tempPushAuthPageEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.APP_INITIALIZE)
@@ -98,8 +80,5 @@ export default combineEpics(
   authRequestEpic,
   countryCodeEpic,
   versionRequestEpic,
-  websocketForkEpic,
-  onWebSocketClosedEpic,
   tempPushAuthPageEpic,
-  tempOnWebSocketReadyEpic
 );

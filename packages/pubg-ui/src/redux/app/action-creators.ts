@@ -1,5 +1,5 @@
 import * as ActionType from './action-types';
-import { AuthResponse, Service, Command, ConnectionAcceptedResponse } from './types';
+import { AuthResponse } from './types';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;
@@ -84,75 +84,6 @@ export const versionSuccess = (version: string): VersionSuccess => ({
   payload: { version }
 });
 
-// WEBSOCKETS
-export interface WebSocketInit {
-  type: ActionType.WEBSOCKET_INIT;
-}
-
-export const webSocketInit = (): WebSocketInit => ({
-  type: ActionType.WEBSOCKET_INIT
-});
-
-export interface WebSocketReady {
-  type: ActionType.WEBSOCKET_READY;
-}
-
-export const webSocketReady = (): WebSocketReady => ({
-  type: ActionType.WEBSOCKET_READY
-});
-
-export interface WebSocketError {
-  type: ActionType.WEBSOCKET_ERROR;
-  payload: { error: any };
-}
-
-export const webSocketError = (error: any): WebSocketError => ({
-  type: ActionType.WEBSOCKET_ERROR,
-  payload: { error }
-});
-
-export interface WebSocketClosed {
-  type: ActionType.WEBSOCKET_CLOSED;
-  payload: { reason: string };
-}
-
-export const webSocketClosed = (reason: string): WebSocketClosed => ({
-  type: ActionType.WEBSOCKET_CLOSED,
-  payload: { reason }
-});
-
-export interface WebSocketRequest {
-  type: ActionType.WEBSOCKET_REQUEST;
-  payload: any[];
-}
-
-export interface ConnectionAccepted {
-  type: ActionType.WEBSOCKET_CONNECTED;
-  payload: ConnectionAcceptedResponse;
-}
-
-export const webSocketConnected = (response: ConnectionAcceptedResponse): ConnectionAccepted => ({
-  type: ActionType.WEBSOCKET_CONNECTED,
-  payload: response
-});
-
-let counter = 10000;
-
-export const webSocketRequest = (service: Service, command: Command, ...payload: any[]): WebSocketRequest => ({
-  type: ActionType.WEBSOCKET_REQUEST,
-  payload: [counter++, null, service, command, ...payload]
-});
-
-export interface WebSocketResponse {
-  type: ActionType.WEBSOCKET_RESPONSE;
-  payload: any[];
-}
-
-export const webSocketResponse = (payload: any[]): WebSocketResponse => ({
-  type: ActionType.WEBSOCKET_RESPONSE,
-  payload
-});
-
 export type AppActions =
   | AppInitialize
   | EngineReady
@@ -163,11 +94,4 @@ export type AppActions =
   | CountryCodeSuccess
   | VersionRequest
   | VersionSuccess
-  | WebSocketInit
-  | WebSocketReady
-  | WebSocketError
-  | WebSocketClosed
-  | WebSocketRequest
-  | WebSocketResponse
-  | ConnectionAccepted
 ;

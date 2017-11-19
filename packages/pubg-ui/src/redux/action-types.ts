@@ -3,3 +3,4 @@ export * from './friend/action-types';
 export * from './matchmake/action-types';
 export * from './option/action-types';
 export * from './profile/action-types';
+export * from './websocket/action-types';

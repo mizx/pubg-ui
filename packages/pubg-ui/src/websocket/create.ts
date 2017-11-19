@@ -9,7 +9,7 @@ import {
   webSocketResponse,
   webSocketError,
   webSocketClosed
-} from '../redux/app';
+} from '../redux/action-creators';
 
 const close$ = new Subject<CloseEvent>();
 const open$ = new Subject<Event>();

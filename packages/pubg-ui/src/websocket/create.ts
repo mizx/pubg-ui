@@ -11,7 +11,13 @@ import {
   webSocketClosed
 } from '../redux/action-creators';
 
+import { Server } from 'mock-socket';
+
 export const queue = new ReplaySubject<any[]>();
+
+if (process.env.NODE_ENV !== 'production') {
+    require('./mock-server');
+}
 
 export const createWebSocket = () => {
   const close$ = new Subject<CloseEvent>();

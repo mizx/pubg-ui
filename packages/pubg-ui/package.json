@@ -33,6 +33,7 @@
     "@types/react-dom": "^16.0.1",
     "@types/react-redux": "^5.0.10",
     "@types/react-router-redux": "^5.0.10",
-    "@types/recompose": "^0.24.3"
+    "@types/recompose": "^0.24.3",
+    "mock-socket": "^7.1.0"
   }
 }

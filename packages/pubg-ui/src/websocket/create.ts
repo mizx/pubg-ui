@@ -2,6 +2,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from 'rxjs/observable/dom/We
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { AsyncSubject } from 'rxjs/AsyncSubject';
 
 import store from '../redux/store';
 import {
@@ -11,11 +12,11 @@ import {
   webSocketClosed
 } from '../redux/action-creators';
 import { WebSocketArgs } from '../redux/websocket';
-import { Request } from './types';
+import { RequestCommand, RequestService } from './types';
 
 import { Server } from 'mock-socket';
 
-export const queue = new ReplaySubject<Request>();
+export const queue = new ReplaySubject<any[]>();
 
 // if (process.env.NODE_ENV !== 'production') {
 //     require('./mock-server');
@@ -36,17 +37,11 @@ export const createWebSocket = (args: WebSocketArgs) => {
 
   const webSocket = Observable.webSocket(config);
 
-  webSocket.subscribe(p => console.log('event', p));
-
-  let counter = 10000;
+  // webSocket.subscribe(p => console.log('event', p));
   
   queue
-    .map(request => [counter++, null, 'UserProxyApi', ...request])
     .map(request => JSON.stringify(request))
     .subscribe(webSocket);
 
   return webSocket;
 };
-
-queue.next(['GetPartyData']);
-queue.next(['RequestMatch', 'na', 'solo-fpp', false]);

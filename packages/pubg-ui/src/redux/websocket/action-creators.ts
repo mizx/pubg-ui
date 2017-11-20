@@ -46,11 +46,6 @@ export const webSocketClosed = (reason: string): WebSocketClosed => ({
   payload: { reason }
 });
 
-export interface WebSocketRequest {
-  type: ActionType.WEBSOCKET_REQUEST;
-  payload: any[];
-}
-
 export interface ConnectionAccepted {
   type: ActionType.WEBSOCKET_CONNECTED;
   payload: ConnectionAcceptedResponse;
@@ -63,9 +58,14 @@ export const webSocketConnected = (response: ConnectionAcceptedResponse): Connec
 
 let counter = 10000;
 
-export const webSocketRequest = (service: string, command: Command, ...payload: any[]): WebSocketRequest => ({
+export interface WebSocketRequest {
+  type: ActionType.WEBSOCKET_REQUEST;
+  payload: any[];
+}
+
+export const webSocketRequest = (payload: any[]): WebSocketRequest => ({
   type: ActionType.WEBSOCKET_REQUEST,
-  payload: [counter++, null, service, command, ...payload]
+  payload
 });
 
 export interface WebSocketResponse {

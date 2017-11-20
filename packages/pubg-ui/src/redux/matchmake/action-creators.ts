@@ -34,9 +34,40 @@ export const queueError = (error: Error): QueueError => ({
   payload: { error: error.message }
 });
 
+export interface PartyRequest {
+  type: ActionType.PARTY_REQUEST;
+}
+
+export const partyRequest = (): PartyRequest => ({
+  type: ActionType.PARTY_REQUEST
+});
+
+export interface PartyResponse {
+  type: ActionType.PARTY_RESPONSE;
+  payload: any[];
+}
+
+export const partyResponse = (payload: any[]): PartyResponse => ({
+  type: ActionType.PARTY_RESPONSE,
+  payload
+});
+
+export interface PartyFailure {
+  type: ActionType.PARTY_FAILURE;
+  payload: { error: string };
+}
+
+export const partyFailure = (error: Error): PartyFailure => ({
+  type: ActionType.PARTY_FAILURE,
+  payload: { error: error.message }
+});
+
 export type MatchmakeActions =
   | ToggleReady
   | QueueStart
   | QueueCancel
   | QueueError
+  | PartyRequest
+  | PartyResponse
+  | PartyFailure
 ;

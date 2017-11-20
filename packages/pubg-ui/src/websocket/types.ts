@@ -2,6 +2,8 @@ import { Region, SquadSize, Perspective } from '../options';
 
 export type FillSquad = boolean;
 
+export type RequestService = 'UserProxyApi';
+
 export type RequestCommand = 
   | 'GetPartyData'
   | 'GetAnnouncement'
@@ -19,11 +21,11 @@ export type RequestCommand =
 //   | [number, null, 'UserProxyApi', 'GetBroUserStatesBySteamId']
 // ;
 
-export type Request =
-  | ['GetPartyData']
-  | ['GetAnnouncement']
-  | ['GetUserMatchState']
-  | ['GetGameInfo']
-  | ['GetBroUserStatesBySteamId', string[]]
-  | ['RequestMatch', Region, string, FillSquad]
-;
+// export type Request =
+//   | ['GetPartyData']
+//   | ['GetAnnouncement']
+//   | ['GetUserMatchState']
+//   | ['GetGameInfo']
+//   | ['GetBroUserStatesBySteamId', string[]]
+//   | ['RequestMatch', Region, string, FillSquad]
+// ;

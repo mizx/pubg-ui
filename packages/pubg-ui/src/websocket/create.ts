@@ -11,14 +11,15 @@ import {
   webSocketClosed
 } from '../redux/action-creators';
 import { WebSocketArgs } from '../redux/websocket';
+import { Request } from './types';
 
 import { Server } from 'mock-socket';
 
-export const queue = new ReplaySubject<any[]>();
+export const queue = new ReplaySubject<Request>();
 
-if (process.env.NODE_ENV !== 'production') {
-    require('./mock-server');
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     require('./mock-server');
+// }
 
 export const createWebSocket = (args: WebSocketArgs) => {
   const close$ = new Subject<CloseEvent>();
@@ -36,10 +37,16 @@ export const createWebSocket = (args: WebSocketArgs) => {
   const webSocket = Observable.webSocket(config);
 
   webSocket.subscribe(p => console.log('event', p));
+
+  let counter = 10000;
   
   queue
-    .map(data => JSON.stringify(data))
+    .map(request => [counter++, null, 'UserProxyApi', ...request])
+    .map(request => JSON.stringify(request))
     .subscribe(webSocket);
 
   return webSocket;
 };
+
+queue.next(['GetPartyData']);
+queue.next(['RequestMatch', 'na', 'solo-fpp', false]);

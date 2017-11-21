@@ -17,9 +17,9 @@ export interface StateProps {
 
 export interface DispatchProps {
   setOption: {
-    setRegion: typeof setRegion;
-    setSquadSize: typeof setSquadSize;
-    setPerspective: typeof setPerspective;
+    setRegion: Function;
+    setSquadSize: Function;
+    setPerspective: Function;
   }
 }
 

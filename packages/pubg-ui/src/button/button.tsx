@@ -9,7 +9,7 @@ import { toggleReady } from '../redux/matchmake';
 import store from '../redux/store';
 
 export interface DispatchProps {
-  toggleReady: typeof toggleReady;
+  toggleReady: Function;
 }
 
 export type Action =

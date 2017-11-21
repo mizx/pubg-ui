@@ -8,7 +8,7 @@ import { appInitialize } from '../redux/app';
 // setInterval(() => socket$.next(Math.random()), 5000);
 
 export interface DispatchProps {
-  appInitialize: typeof appInitialize;
+  appInitialize: Function;
 }
 
 export type Props = DispatchProps;

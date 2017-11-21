@@ -35,8 +35,8 @@ const squadMap: { [key in SquadSize]: string } = {
 };
 
 const perspectiveMap: { [key in Perspective]: string } = {
-  'first-person': 'First-Person',
-  'third-person': 'Third-Person'
+  fpp: 'First-Person',
+  tpp: 'Third-Person'
 };
 
 interface Props { }

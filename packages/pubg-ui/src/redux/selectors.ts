@@ -13,11 +13,11 @@ export const getWebSocketArgs = (state: RootState): WebSocketArgs => {
   } = state.app;
   
   return {
-    provider: platform.toLowerCase(),
-    ticket: token,
-    playerNetId: platformId,
-    cc: countryCode,
-    clientGameVersion: version
+    provider: platform!.toLowerCase(),
+    ticket: token!,
+    playerNetId: platformId!,
+    cc: countryCode!,
+    clientGameVersion: version!
   };
 };
 

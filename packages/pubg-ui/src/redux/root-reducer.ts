@@ -1,5 +1,5 @@
 import { combineReducers, AnyAction } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as router, RouterState } from 'react-router-redux';
 
 import { reducer as app, AppState } from './app'
 import { reducer as friend, FriendState } from './friend';
@@ -13,6 +13,7 @@ export interface RootState {
   matchmake: MatchmakeState;
   option: OptionState;
   profile: ProfileState;
+  router: RouterState;
 }
 
 export const rootReducer = combineReducers<RootState>({
@@ -21,5 +22,5 @@ export const rootReducer = combineReducers<RootState>({
   matchmake,
   option,
   profile,
-  routerReducer
+  router
 });

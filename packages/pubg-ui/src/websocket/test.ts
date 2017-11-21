@@ -11,6 +11,7 @@ import {
   WebSocketError
 } from '../redux/action-creators';
 import { RequestService, RequestCommand } from './types';
+import { Region, SquadSize, Perspective } from '../options';
 
 let counter = 10000;
 
@@ -38,6 +39,8 @@ export class Response {
   }
 }
 
+export type WebSocketCallback = (payload: any[]) => RootAction;
+
 export class Request {
   
   public requestId: number;
@@ -52,7 +55,7 @@ export class Request {
     this.data = data;
   }
 
-  getCallback() {
+  callback(): WebSocketCallback {
     return (payload: any[]) => webSocketError('callback not defined');
   }
 
@@ -72,11 +75,7 @@ export class Request {
   }
 
   registerRequest() {
-    addRequestToMap(this.requestId, this.getCallback());
-  }
-
-  onResponse() {
-    return;
+    addRequestToMap(this.requestId, this.callback());
   }
 
 }
@@ -87,17 +86,23 @@ export class PartyData extends Request {
     super('UserProxyApi', 'GetPartyData');
   }
 
-  onResponse(response: any[]) {
-    const [ requestId, unknown, noTitle, value] = response;
-
-    console.log('dispatch GetPartyData', value);
-
-    return partyResponse(response);
+  callback() {
+    return (payload: any[]) => partyResponse(payload.slice(2));
   }
 
+}
 
-  getCallback() {
-    return (payload: any[]) => partyResponse(payload);
+export class RequestMatch extends Request {
+  constructor(
+    region: Region,
+    squadSize: SquadSize,
+    perspective: Perspective,
+    autoMatchmake: boolean
+  ) {
+    super('UserProxyApi', 'RequestMatch', region, `${squadSize}-${perspective}`, autoMatchmake);
   }
 
+  callback() {
+    return (payload: any[]) => partyResponse(payload.slice(2));
+  }
 }

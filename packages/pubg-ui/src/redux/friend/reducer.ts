@@ -88,7 +88,7 @@ export const reducer: Reducer<State> = (state = initialState, action: RootAction
         ...state,
         loading: false,
         ...action.payload
-      }
+      };
     }
     default: return state;
   }

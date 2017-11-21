@@ -20,7 +20,7 @@ export interface DispatchProps {
     setRegion: Function;
     setSquadSize: Function;
     setPerspective: Function;
-  }
+  };
 }
 
 export type InjectedProps = StateProps & DispatchProps;
@@ -30,11 +30,14 @@ const mapStateToProps = (state: RootState): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  setOption: bindActionCreators({
-    setRegion,
-    setSquadSize,
-    setPerspective
-  }, dispatch)
+  setOption: bindActionCreators(
+    {
+      setRegion,
+      setSquadSize,
+      setPerspective
+    },
+    dispatch
+  )
 });
 
 export const withOptions = <P extends {}>(Component: React.ComponentType<P & InjectedProps>) => (

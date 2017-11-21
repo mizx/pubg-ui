@@ -15,7 +15,7 @@ export const initialState: State = {
   ready: false,
   party: [],
   error: null
-}
+};
 
 export const reducer: Reducer<State> = (state = initialState, action: RootAction): State => {
   switch (action.type) {
@@ -31,6 +31,6 @@ export const reducer: Reducer<State> = (state = initialState, action: RootAction
     }
     default: return state;
   }
-}
+};
 
 export default reducer;

@@ -13,7 +13,7 @@ export interface State {
 export const initialState: State = {
   region: 'na',
   squadSize: 'solo',
-  perspective: 'third-person'
+  perspective: 'tpp'
 };
 
 export const reducer: Reducer<State> = (state = initialState, action: RootAction): State => {

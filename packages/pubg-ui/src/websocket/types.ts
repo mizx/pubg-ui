@@ -1,4 +1,4 @@
-import { Region, SquadSize, Perspective } from '../options';
+import { Region, SquadSize, Perspective } from '../redux/option';
 
 export type FillSquad = boolean;
 

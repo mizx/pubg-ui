@@ -15,6 +15,6 @@ export type SquadSize =
 ;
 
 export type Perspective =
-  | 'first-person'
-  | 'third-person'
+  | 'fpp'
+  | 'tpp'
 ;

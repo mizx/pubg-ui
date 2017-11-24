@@ -12,8 +12,12 @@ import {
   countryCodeRequest,
   countryCodeSuccess,
   versionRequest,
-  versionSuccess
+  versionSuccess,
+  announcementRequest,
+  announcementSuccess
 } from './action-creators';
+import { AnnouncementMultiplex } from '../../websocket/request/announcement';
+import { webSocketRef } from '../../websocket/create';
 
 const ajaxOptions = {
   method: 'GET',
@@ -72,6 +76,14 @@ export const tempPushAuthPageEpic: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.APP_INITIALIZE)
     .delay(1)
     .map(() => push('/auth'));
+
+export const onAnnouncementRequest: Epic<RootAction, RootState> = action$ =>
+  action$.ofType(ActionType.ANNOUNCEMENT_REQUEST)
+    .switchMap(() => {
+      const announce = new AnnouncementMultiplex(webSocketRef!).getMultiplex();
+
+      return announce.map(announcements => announcementSuccess(announcements));
+    });
   
 export default combineEpics(
   appInitializeEpic,
@@ -81,4 +93,5 @@ export default combineEpics(
   countryCodeEpic,
   versionRequestEpic,
   tempPushAuthPageEpic,
+  onAnnouncementRequest
 );

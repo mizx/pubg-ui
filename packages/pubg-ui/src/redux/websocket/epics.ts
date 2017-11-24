@@ -16,6 +16,7 @@ import { identifyResponse, mapResponseToAction } from '../../backend-api/respons
 import { createWebSocket } from '../../websocket';
 import { getWebSocketArgs } from '../selectors';
 import { requestMap, Response } from '../../websocket/test';
+import { setWebSocketRef } from '../../websocket/create';
 
 export const initWebSocket: Epic<RootAction, RootState> = (action$, api) =>
   Observable.forkJoin(
@@ -35,27 +36,24 @@ export const onWebSocketReady: Epic<RootAction, RootState> = action$ =>
 
 // export const onWebSocketResponse: Epic<RootAction, RootState> = action$ =>
 //   action$.ofType(ActionType.WEBSOCKET_RESPONSE)
-//     .map(action => action as WebSocketResponse)
-//     .map(action => identifyResponse(action.payload))
-//     .map(response => mapResponseToAction(response));
-export const onWebSocketResponse: Epic<RootAction, RootState> = action$ =>
-  action$.ofType(ActionType.WEBSOCKET_RESPONSE)
-    .map(action => new Response((action as WebSocketResponse).payload))
-    .map(response => response.invokeCallback());
-    // .map(() => webSocketClosed('test'));
+//     .map(action => new Response((action as WebSocketResponse).payload))
+//     .map(response => response.invokeCallback());
 
 export const onWebSocketInit: Epic<RootAction, RootState> = action$ =>
   action$.ofType(ActionType.WEBSOCKET_INIT)
-    .mergeMap(action => 
-      createWebSocket((action as WebSocketInit).payload)
+    .switchMap(action => {
+      const webSocket = createWebSocket((action as WebSocketInit).payload);
+      setWebSocketRef(webSocket);
+
+      return webSocket
         .map(payload => webSocketResponse(payload as any[]))
-        .catch(error => Observable.of(webSocketError(error))
-    ));
+        .catch(error => Observable.of(webSocketError(error)));
+    });
 
 export default combineEpics(
   initWebSocket,
   onWebSocketClosed,
   onWebSocketReady,
-  onWebSocketResponse,
+  // onWebSocketResponse,
   onWebSocketInit
 );

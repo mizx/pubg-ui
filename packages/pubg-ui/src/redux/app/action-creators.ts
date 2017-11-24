@@ -1,5 +1,6 @@
 import * as ActionType from './action-types';
 import { AuthResponse } from './types';
+import { Announcement } from 'websocket/response';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;
@@ -84,6 +85,34 @@ export const versionSuccess = (version: string): VersionSuccess => ({
   payload: { version }
 });
 
+export interface AnnouncementRequest {
+  type: ActionType.ANNOUNCEMENT_REQUEST;
+}
+
+export const announcementRequest = (): AnnouncementRequest => ({
+  type: ActionType.ANNOUNCEMENT_REQUEST
+});
+
+export interface AnnouncementSuccess {
+  type: ActionType.ANNOUNCEMENT_SUCCESS;
+  payload: Announcement[];
+}
+
+export const announcementSuccess = (announcements: Announcement[]): AnnouncementSuccess => ({
+  type: ActionType.ANNOUNCEMENT_SUCCESS,
+  payload: announcements
+});
+
+export interface AnnouncementFailure {
+  type: ActionType.ANNOUNCEMENT_FAILURE;
+  payload: { error: string };
+}
+
+export const announcementFailure = (error: Error): AnnouncementFailure => ({
+  type: ActionType.ANNOUNCEMENT_FAILURE,
+  payload: { error: error.message }
+});
+
 export type AppActions =
   | AppInitialize
   | EngineReady
@@ -94,4 +123,7 @@ export type AppActions =
   | CountryCodeSuccess
   | VersionRequest
   | VersionSuccess
+  | AnnouncementRequest
+  | AnnouncementSuccess
+  | AnnouncementFailure
 ;

@@ -37,11 +37,24 @@ export const createWebSocket = (args: WebSocketArgs) => {
 
   const webSocket = Observable.webSocket(config);
 
+  const test1 = webSocket.multiplex(
+    () => JSON.stringify([1000, null, 'GetPlayerData']),
+    () => { throw new Error('test'); },
+    (value: any) => value[0] === 1000
+  );
+
   // webSocket.subscribe(p => console.log('event', p));
   
-  queue
-    .map(request => JSON.stringify(request))
-    .subscribe(webSocket);
+  // queue
+  //   .map(request => JSON.stringify(request))
+  //   .subscribe(webSocket);
 
   return webSocket;
 };
+
+let webSocketRef: WebSocketSubject<{}> | undefined;
+
+export { webSocketRef };
+export function setWebSocketRef(webSocket: WebSocketSubject<{}>) {
+  webSocketRef = webSocket;
+}

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
-import { Announcement } from 'websocket/response';
+import { Announcement } from '../../websocket/response';
 
 type MultiplexSub = () => any;
 type MultiplexUnSub = () => any;

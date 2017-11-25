@@ -1,4 +1,4 @@
-import { MatchState } from 'websocket/response';
+import { MatchState } from '../../websocket/response';
 import { Request, Response, RequestConfig } from './base';
 
 export class MatchStateRequest extends Request {

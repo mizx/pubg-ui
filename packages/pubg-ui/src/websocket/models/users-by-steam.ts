@@ -1,4 +1,4 @@
-import { Friend } from 'websocket/response';
+import { Friend } from '../../websocket/response';
 import { Request, Response, RequestConfig } from './base';
 
 export class UsersBySteamIdsRequest extends Request {

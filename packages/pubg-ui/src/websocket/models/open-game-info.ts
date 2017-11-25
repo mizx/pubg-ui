@@ -1,4 +1,4 @@
-import { OpenGameInfo } from 'websocket/response';
+import { OpenGameInfo } from '../../websocket/response';
 import { Request, Response, RequestConfig } from './base';
 
 export class OpenGameInfoRequest extends Request {

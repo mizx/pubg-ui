@@ -1,4 +1,4 @@
-import { PartyData } from 'websocket/response';
+import { PartyData } from '../../websocket/response';
 import { Request, Response, RequestConfig } from './base';
 
 export class PartyDataRequest extends Request {

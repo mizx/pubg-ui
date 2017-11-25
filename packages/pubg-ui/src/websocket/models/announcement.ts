@@ -1,4 +1,4 @@
-import { Announcement } from 'websocket/response';
+import { Announcement } from '../../websocket/response';
 import { Request, Response, RequestConfig } from './base';
 
 export class AnnouncementRequest extends Request {

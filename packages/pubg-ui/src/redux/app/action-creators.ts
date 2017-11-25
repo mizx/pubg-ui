@@ -1,6 +1,6 @@
 import * as ActionType from './action-types';
 import { AuthResponse } from './types';
-import { Announcement } from 'websocket/response';
+import { Announcement } from '../../websocket/response';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;

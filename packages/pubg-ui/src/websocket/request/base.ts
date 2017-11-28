@@ -26,6 +26,7 @@ export class Base<T> {
 
   public query(): Observable<T> {
     return this.getMultiplex()
+      .take(1) // expecting 1 callback, call complete and unsubscribe
       .map(this.mapResponse);
   }
 
@@ -50,8 +51,13 @@ export class Base<T> {
     return JSON.stringify(request);
   }
 
+  /**
+   * WebSocketSubject requires an unsubscribe.
+   * If it's an error object, it ignores. So
+   * respond with an error for now.
+   */
   private getRequestError() {
-    return new Error('noop');
+    throw new Error('noop');
   }
 
   // TODO: this will be a negative response value

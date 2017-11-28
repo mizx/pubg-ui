@@ -9,7 +9,6 @@ export interface RequestBaseOptions {
 export interface RequestOptions extends RequestBaseOptions {
   command: RequestCommand;
   service?: RequestService;
-  payload?: any[];
 }
 
 export type WebSocketSubject = WebSocketSubject<{}>;

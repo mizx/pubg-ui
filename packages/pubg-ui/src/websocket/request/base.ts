@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+
 import {
   RequestOptions,
   RequestBaseOptions,
@@ -6,7 +8,7 @@ import {
   RequestService
 } from '../types';
 
-export class Base {
+export class Base<T> {
 
   private webSocket: WebSocketSubject;
   private requestId: number;
@@ -19,10 +21,23 @@ export class Base {
     this.requestId = options.requestId;
     this.command = options.command;
     this.service = options.service || 'UserProxyApi';
-    this.payload = options.payload || [];
+    this.payload = [];
   }
 
-  getRequest() {
+  public query(): Observable<T> {
+    return this.getMultiplex()
+      .map(this.mapResponse);
+  }
+
+  public setRequestPayload(payload: any[]) {
+    this.payload = payload;
+  }
+
+  protected mapResponse(payload: any): T {
+    return payload;
+  }
+
+  private getSerializedRequest() {
     const request = [
       this.requestId,
       null,
@@ -32,15 +47,24 @@ export class Base {
       ...this.payload
     ];
 
-    return () => JSON.stringify(request);
+    return JSON.stringify(request);
   }
 
-  requestError() {
-    return () => new Error('noop');
+  private getRequestError() {
+    return new Error('noop');
   }
 
   // TODO: this will be a negative response value
-  filterCheck() {
-    return (value: any) => value[0] === this.requestId;
+  private filterCheck(value: any) {
+    return value[0] === this.requestId;
   }
+
+  private getMultiplex() {
+    return this.webSocket.multiplex(
+      () => this.getSerializedRequest(),
+      () => this.getRequestError(),
+      (value: any) => this.filterCheck(value)
+    );
+  }
+
 }

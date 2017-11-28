@@ -6,6 +6,7 @@ import store from '../redux/store';
 import { Announcement } from './request/announcement';
 import { WebSocketArgs } from '../redux/websocket';
 import { RequestBaseOptions } from './types';
+import { Announcement as AnnouncementResponse } from './response'
 
 const WEBSOCKET_URL = 'ws://echo.websocket.org';
 
@@ -45,11 +46,7 @@ export class WebSocketRequests extends WebSocketConnection {
   getAnnouncements() {
     const announcement = new Announcement(this.getOptions());
 
-    return this.webSocket.multiplex(
-      announcement.getRequest(),
-      announcement.requestError(),
-      announcement.filterCheck()
-    );
+    return announcement.query();
   }
 }
 

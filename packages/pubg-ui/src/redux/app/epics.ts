@@ -16,7 +16,6 @@ import {
   announcementRequest,
   announcementSuccess
 } from './action-creators';
-import { AnnouncementMultiplex } from '../../websocket/request/announcement';
 import webSocket from '../../websocket';
 
 const ajaxOptions = {
@@ -81,8 +80,8 @@ export const announcementEpic: Epic<RootAction, RootState> = action$ =>
     action$.ofType(ActionType.ANNOUNCEMENT_REQUEST)
       .switchMap(() => 
         webSocket.getAnnouncements()
-          .do(results => console.log('results', results))
-      ).ignoreElements();
+          .map(announcements => announcementSuccess(announcements))
+      );
   
 export default combineEpics(
   appInitializeEpic,

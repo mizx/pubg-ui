@@ -1,7 +1,12 @@
 import { Observable } from 'rxjs/Observable';
 
 import { WebSocketConnection } from './connection';
-import { Announcement, AnnouncementModel } from './exchanges';
+import {
+  Announcement,
+  AnnouncementModel,
+  PartyData,
+  PartyDataModel
+} from './exchanges';
 
 export class WebSocketRequests extends WebSocketConnection {
 
@@ -9,6 +14,10 @@ export class WebSocketRequests extends WebSocketConnection {
     const announcement = new Announcement(this.getOptions());
 
     return announcement.query();
+  }
+
+  getPartyData() {
+    return new PartyData(this.getOptions()).query();
   }
 
 }

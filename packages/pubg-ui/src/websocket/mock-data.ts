@@ -1,3 +1,4 @@
+/*
 export const onConnectionAccepted = [
     0, 
     null, 
@@ -34,3 +35,4 @@ export const onGetPartyData = [
     'UserProxyApi', 
     'GetPartyData'
 ];
+*/

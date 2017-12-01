@@ -1,3 +1,4 @@
+/*
 import { Server } from 'mock-socket';
 import {
     onConnectionAccepted,
@@ -30,3 +31,4 @@ mockServer.on('message', msg => {
 mockServer.on('close', msg => {
     console.log('[mock-socket] close');
 });
+*/

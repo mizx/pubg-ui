@@ -1,16 +1,30 @@
 import { Observable } from 'rxjs/Observable';
+import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
 
-import {
-  RequestOptions,
-  RequestBaseOptions,
-  WebSocketSubject,
-  RequestCommand,
-  RequestService
-} from '../types';
+export type RequestService = 'UserProxyApi';
 
-export class Base<T> {
+export type RequestCommand = 
+  | 'GetPartyData'
+  | 'GetAnnouncement'
+  | 'GetUserMatchState'
+  | 'GetOpenGameInfo'
+  | 'GetBroUserStatesBySteamId'
+  | 'RequestMatch'
+;
 
-  private webSocket: WebSocketSubject;
+export interface RequestBaseOptions {
+  webSocket: WebSocketSubject<{}>;
+  requestId: number;
+}
+
+export interface RequestOptions extends RequestBaseOptions {
+  command: RequestCommand;
+  service?: RequestService;
+}
+
+export class Request<T> {
+
+  private webSocket: WebSocketSubject<{}>;
   private requestId: number;
   private command: RequestCommand;
   private service: RequestService;

@@ -3,10 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import store from '../redux/store';
-import { Announcement } from './request/announcement';
+import { Announcement, AnnouncementModel } from './exchanges';
+import { RequestBaseOptions } from './request';
 import { WebSocketArgs } from '../redux/websocket';
-import { RequestBaseOptions } from './types';
-import { Announcement as AnnouncementResponse } from './response'
 
 const WEBSOCKET_URL = 'ws://echo.websocket.org';
 
@@ -48,6 +47,7 @@ export class WebSocketRequests extends WebSocketConnection {
 
     return announcement.query();
   }
+
 }
 
 export default new WebSocketRequests();

@@ -1,6 +1,6 @@
 import * as ActionType from './action-types';
 import { AuthResponse } from './types';
-import { Announcement } from '../../websocket/response';
+import { AnnouncementModel } from '../../websocket/exchanges';
 
 export interface AppInitialize {
   type: ActionType.APP_INITIALIZE;
@@ -95,10 +95,10 @@ export const announcementRequest = (): AnnouncementRequest => ({
 
 export interface AnnouncementSuccess {
   type: ActionType.ANNOUNCEMENT_SUCCESS;
-  payload: Announcement[];
+  payload: AnnouncementModel[];
 }
 
-export const announcementSuccess = (announcements: Announcement[]): AnnouncementSuccess => ({
+export const announcementSuccess = (announcements: AnnouncementModel[]): AnnouncementSuccess => ({
   type: ActionType.ANNOUNCEMENT_SUCCESS,
   payload: announcements
 });

@@ -13,11 +13,8 @@ import {
   webSocketReady
 } from './action-creators';
 import * as ActionType from '../action-types';
-import { identifyResponse, mapResponseToAction } from '../../backend-api/response';
 import webSocket from '../../websocket';
 import { getWebSocketArgs } from '../selectors';
-// import { requestMap, Response } from '../../websocket/test';
-// import { setWebSocketRef } from '../../websocket/create';
 
 export const initWebSocket: Epic<RootAction, RootState> = (action$, store) =>
   Observable.forkJoin(

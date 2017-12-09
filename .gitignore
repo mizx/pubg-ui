@@ -28,8 +28,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # debug-server
-debug-server/output*.log
-certs/*.key
-certs/*.pem
-certs/*.cer
-certs/*.pfx
+**/debug-server/certs/generated/
+output.txt

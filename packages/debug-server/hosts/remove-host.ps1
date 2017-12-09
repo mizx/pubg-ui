@@ -12,14 +12,14 @@ try {
         Out-File $filename -Force
 
 } catch [System.UnauthorizedAccessException] {
-    Write-Host "`n`n`n"
-    Write-Host "Permissions Error detected"
-    Write-Host "- Make sure to re-run this as administrator"
-    Write-Host "- (Right click script -> Run as Administrator"
-    Write-Host "`n`n`n" 
+    echo "`n`n`n"
+    echo "Permissions Error detected"
+    echo "- Make sure to re-run this as administrator"
+    echo "- (Right click script -> Run as Administrator"
+    echo "`n`n`n" 
     throw
 }
 
 if (!$error) {
-    Write-Host "`n`n`nCompleted successfully`n`n`n"
+    echo "`n`n`nCompleted successfully`n`n`n"
 }

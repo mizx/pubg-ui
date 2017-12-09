@@ -10,7 +10,12 @@ with open('config/base.yaml', 'r') as f:
 
 assets_dir = os.path.realpath(os.path.join(
     os.getcwd(),
-    config.server.assets,
+    config.server.assets.base,
 ))
+assets_embedded_dir = os.path.realpath(os.path.join(
+    os.getcwd(),
+    config.server.assets.embedded,
+))
+
 base_url = "{}://{}".format(config.url.protocol, config.url.hostname)
 index_url = "{}/index.html".format(base_url)

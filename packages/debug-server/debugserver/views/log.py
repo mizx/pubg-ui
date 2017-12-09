@@ -1,16 +1,10 @@
 from __future__ import print_function
 
 import json
+import logging
 
 import tornado.escape
-# import tornado.gen
-# import tornado.httpclient
-# import tornado.httpserver
-# import tornado.ioloop
-# import tornado.netutil
-# import tornado.process
-# import tornado.simple_httpclient
-# import tornado.web
+from tornado.options import options
 from pygments import highlight, lexers, formatters
 
 from debugserver.views.common import CommonRequestHandler
@@ -31,9 +25,11 @@ class LogHandler(CommonRequestHandler):
             self.set_status(400)
             return
 
-        pretty_print = json.dumps(self.json_args, indent=4, sort_keys=True)
-        print(highlight(
-            tornado.escape.utf8(pretty_print),
-            lexers.JsonLexer(),
-            formatters.TerminalFormatter(),
-        ))
+        result = json.dumps(self.json_args, indent=4, sort_keys=True)
+        if options.pretty_print:
+            result = highlight(
+                tornado.escape.utf8(result),
+                lexers.JsonLexer(),
+                formatters.TerminalFormatter(),
+            )
+        logging.info(result)

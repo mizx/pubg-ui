@@ -1,0 +1,1 @@
+python -m debugserver.main --autoreload=False --port=443 --windows=True --ssl=True

@@ -5,5 +5,5 @@ setup(
     name='Debug server',
     version='0.2',
     license='MIT',
-    install_requires=['pygments', 'pyyaml', 'tornado'],
+    install_requires=['enum34', 'pygments', 'pyyaml', 'tornado'],
 )

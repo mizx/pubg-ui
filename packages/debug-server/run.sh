@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-. env/bin/activate
-PYTHONPATH=. python debugserver/main.py --autoreload=True
+if [ -z "$VIRTUAL_ENV" && -d "env"]; then
+    source env/bin/activate
+fi
+PYTHONPATH=. python debugserver/main.py --autoreload=True --port=3001

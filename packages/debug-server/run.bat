@@ -1,0 +1,1 @@
+PYTHONPATH=. python debugserver/main.py --autoreload=True --port=3001

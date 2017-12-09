@@ -1,4 +1,4 @@
-function sendError(message, level) {
+function sendMessage(message, level) {
   var body = JSON.stringify({
     message: message,
     level: level
@@ -14,32 +14,28 @@ function sendError(message, level) {
   });
 }
 
-// setTimeout(function () {
-//   sendError('Timeout Error', 'warning');
-// }, 5000);
-//
-// document.addEventListener('DOMContentLoaded', function () {
-//   sendError([].slice.call(arguments), 'warning');
-// });
-
-var consoleLog = window.console.log;
-var consoleWarn = window.console.warn;
-var consoleError = window.console.error;
-
-window.console.log = function() {
-  try {
-    sendError(arguments, 'log');
-  } catch (error) {
-    sendError(error.message, 'error');
-  }
+var filterMessages = [
+    '%c next state',
+    '%c prev state'
+]
+var wrapLogger = function(fn) {
+    const errMsg = "Failed to send message"
+    
+    return function() {
+        fn.apply(this, arguments);
+        
+        if (!arguments.length || filterMessages.indexOf(arguments[0]) !== -1) { return; }
+        try {
+            sendMessage(arguments, 'log');
+        } catch (error) {
+            if (arguments.length > 0 && arguments[0] != errMsg) { 
+                fn.apply(this, [errMsg, error, arguments])
+            }
+            sendMessage(error.message, 'error');
+        }
+    }
 }
-//
-// window.console.warn = function() {
-//   consoleWarn.call(arguments);
-//   sendError(arguments, 'warn');
-// }
-//
-// window.console.error = function() {
-//   consoleError.call(arguments);
-//   sendError(arguments, 'error');
-// }
+
+window.console.log = wrapLogger(window.console.log)
+window.console.info = wrapLogger(window.console.info)
+window.console.error = wrapLogger(window.console.error)

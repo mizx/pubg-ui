@@ -5,7 +5,7 @@ from re import search
 
 import tornado.httpclient
 
-from debugserver.lib.config import config, index_url
+from debugserver.lib.config import index_url
 
 
 def get_folder():

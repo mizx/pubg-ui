@@ -26,3 +26,6 @@ server:
     ssl:
         certificate: certs/generated/cert.pem
         private_key: certs/generated/cert-no-password.key
+
+logging:
+    filename: output.txt

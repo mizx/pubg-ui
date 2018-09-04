@@ -2,11 +2,11 @@ pubg-ui
 
 Latest screenshot
 
-!(current)(screenshots/current.png)
+![current](screenshots/current.png)
 
 Design
 
-!(design)(screenshots/design.jpg)
+![design](screenshots/design.jpg)
 
 # What is pubg-ui?
 Pubg-ui is an open-source UI replacement for PlayerUnknown's Battlegrounds.

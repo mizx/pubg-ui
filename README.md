@@ -39,9 +39,6 @@ Later on, PUBG changed this to HTTPS. It was a fun technical challenge
 figuring out how to automate self-signing certs so our UI would still
 work.
 
-Eventually, PUBG will embed these assets and kill this project.
-Until then,
-
 # Requirements
 - yarn (preferred) or npm.
   - install dependencies by running `yarn install` anywhere in the project.

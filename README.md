@@ -1,9 +1,11 @@
 pubg-ui
 
 Latest screenshot
+
 !(current)(screenshots/current.png)
 
 Design
+
 !(design)(screenshots/design.jpg)
 
 # What is pubg-ui?
